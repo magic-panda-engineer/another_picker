@@ -6,7 +6,7 @@
     <title>穿越時空的貓--角色健檢工具</title>
     <meta name="description" content="穿越時空的貓，角色健檢工具">
     <meta name="author" content="KoKo Mexcelsa, 大魔術熊貓工程師">
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/image-picker.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="row">
+        <div class="row col-12">
             <h1>先介紹一下這個工具</h1>
             <h4>穿越時空的貓這款遊戲的角色眾多，常常需要把自己的角色清單拿出來給大家參考與健檢。基於下列原因，自己開發了一個健檢工具：</h4>
             <h4>1、雖然巴哈也有健檢工具，但是以文字為主，常常會角色和人物對不起來。這個工具以圖像選取為主。</h4>
@@ -25,7 +25,7 @@
             <h4>3、角色多的話，遊戲的截圖也會很多張，因此這個工具可以把所有人物整理在一張，方便看圖。</h4>
             <h4>4、只有能升五星的角色供選擇，但是這些角色就夠大家眼花了。</h4>
             <h6>PS1. 有興趣一起讓這個工具更好的工程師朋友，歡迎在Github送PR。</h6>
-            <h6>PS2. 有bug歡迎回報，推荐使用 CHROME。</h6>
+            <h6>PS2. SAFARI有已知的bug，推荐使用 CHROME。</h6>
         </div>
     </div>
     <div class="container">
@@ -170,6 +170,7 @@
             <div class="col-12 text-center">
                 <button type="button" class="btn-lg btn-success" id="generate">產生圖片</button>
                 <button type="button" class="btn-lg btn-danger" id="clear">清除圖片</button>
+                <button type="button" class="btn-lg btn-light" id="download">下載圖片</button>
             </div>
             <div class="col-12 text-center">
                 <canvas id="team-canvas" style="background-color: whitesmoke;" width="1000" height="600"></canvas>
@@ -256,7 +257,14 @@
             }
         }
     });
-    
+
+    $("#download").click(function () {
+        var canvas = document.getElementById('team-canvas');
+        var dataURL = canvas.toDataURL('image/png', 1.0);
+        window.location.href = dataURL;
+    });
+
+
 </script>
 </body>
 </html>
