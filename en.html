@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anothor Eden Team Checker</title>
+    <meta name="description" content="Anothor Eden Team Checker">
+    <meta name="author" content="KoKo Mexcelsa, Magic Panda Engineer">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/image-picker.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="js/image-picker.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>Introduction</h1>
+            <h4>There are lots of characters in Anothor Eden. This tool can help you list you characters, and post it on Reddit or FB for health check.</h4>
+            <h4>1、You select characters you have. </h4>
+            <h4>2、Game screen shots are good, but it can not show AS and normal together.</h4>
+            <h4>3、Game screen shots are good, but too many images make confused. This tool combine all characters in one image.</h4>
+            <h4>4、Only 5-star potential characters can be choosed.</h4>
+            <h6>PS1. Welcome send PR in Github! Let us make this tool better.</h6>
+            <h6>PS2. Welcome bug report. Recommend use CHROME。</h6>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <img src="img/banner.png" alt="another picker" class="img-fluid mx-auto">
+        </div>
+    </div>
+    <div class="container">
+        <h1>Step 1. Choose your <span style="background-color: goldenrod;">5-star</span></h1>
+        <div class="row five-star">
+        <select id="5-star-picker" multiple="multiple" >
+            <option data-img-src="img/Akane_AS.jpg" value="img/Akane_AS.jpg">Akane_AS</option>
+            <option data-img-src="img/Aldo.jpg" value="img/Aldo.jpg">Aldo</option>
+            <option data-img-src="img/Amy.jpg" value="img/Amy.jpg">Amy</option>
+            <option data-img-src="img/Anabel.jpg" value="img/Anabel.jpg">Anabel</option>
+            <option data-img-src="img/Azami.jpg" value="img/Azami.jpg">Azami</option>
+            <option data-img-src="img/Bertrand.jpg" value="img/Bertrand.jpg">Bertrand</option>
+            <option data-img-src="img/Biaka.jpg" value="img/Biaka.jpg">Biaka</option>
+            <option data-img-src="img/Cerrine.jpg" value="img/Cerrine.jpg">Cerrine</option>
+            <option data-img-src="img/Cetie.jpg" value="img/Cetie.jpg">Cetie</option>
+            <option data-img-src="img/Ciel.jpg" value="img/Ciel.jpg">Ciel</option>
+            <option data-img-src="img/Claude.jpg" value="img/Claude.jpg">Claude</option>
+            <option data-img-src="img/Claude_AS.jpg" value="img/Claude_AS.jpg">Claude_AS</option>
+            <option data-img-src="img/Cyrus.jpg" value="img/Cyrus.jpg">Cyrus</option>
+            <option data-img-src="img/Dewey.jpg" value="img/Dewey.jpg">Dewey</option>
+            <option data-img-src="img/Dunarith.jpg" value="img/Dunarith.jpg">Dunarith</option>
+            <option data-img-src="img/Elga.jpg" value="img/Elga.jpg">Elga</option>
+            <option data-img-src="img/Ewan.jpg" value="img/Ewan.jpg">Ewan</option>
+            <option data-img-src="img/Felmina.jpg" value="img/Felmina.jpg">Felmina</option>
+            <option data-img-src="img/Gariyu.jpg" value="img/Gariyu.jpg">Gariyu</option>
+            <option data-img-src="img/Gariyu_AS.jpg" value="img/Gariyu_AS.jpg">Gariyu_AS</option>
+            <option data-img-src="img/Guildna.jpg" value="img/Guildna.jpg">Guildna</option>
+            <option data-img-src="img/Helena.jpg" value="img/Helena.jpg">Helena</option>
+            <option data-img-src="img/Hismena.jpg" value="img/Hismena.jpg">Hismena</option>
+            <option data-img-src="img/Hozuki.jpg" value="img/Hozuki.jpg">Hozuki</option>
+            <option data-img-src="img/Ilulu.jpg" value="img/Ilulu.jpg">Ilulu</option>
+            <option data-img-src="img/Isuka.jpg" value="img/Isuka.jpg">Isuka</option>
+            <option data-img-src="img/Isuka_AS.jpg" value="img/Isuka_AS.jpg">Isuka_AS</option>
+            <option data-img-src="img/Joker.jpg" value="img/Joker.jpg">Joker</option>
+            <option data-img-src="img/Laclair.jpg" value="img/Laclair.jpg">Laclair</option>
+            <option data-img-src="img/Laclair_AS.jpg" value="img/Laclair_AS.jpg">Laclair_AS</option>
+            <option data-img-src="img/Levia.jpg" value="img/Levia.jpg">Levia</option>
+            <option data-img-src="img/Lokido.jpg" value="img/Lokido.jpg">Lokido</option>
+            <option data-img-src="img/Lokido_AS.jpg" value="img/Lokido_AS.jpg">Lokido_AS</option>
+            <option data-img-src="img/Lovely.jpg" value="img/Lovely.jpg">Lovely</option>
+            <option data-img-src="img/Mana.jpg" value="img/Mana.jpg">Mana</option>
+            <option data-img-src="img/Mariel.jpg" value="img/Mariel.jpg">Mariel</option>
+            <option data-img-src="img/Mariel_AS.jpg" value="img/Mariel_AS.jpg">Mariel_AS</option>
+            <option data-img-src="img/Melina.jpg" value="img/Melina.jpg">Melina</option>
+            <option data-img-src="img/Melina_AS.jpg" value="img/Melina_AS.jpg">Melina_AS</option>
+            <option data-img-src="img/Mighty.jpg" value="img/Mighty.jpg">Mighty</option>
+            <option data-img-src="img/Mighty_AS.jpg" value="img/Mighty_AS.jpg">Mighty_AS</option>
+            <option data-img-src="img/Miyu.jpg" value="img/Miyu.jpg">Miyu</option>
+            <option data-img-src="img/Morgana.jpg" value="img/Morgana.jpg">Morgana</option>
+            <option data-img-src="img/Myrus.jpg" value="img/Myrus.jpg">Myrus</option>
+            <option data-img-src="img/Nagi.jpg" value="img/Nagi.jpg">Nagi</option>
+            <option data-img-src="img/Nagi_AS.jpg" value="img/Nagi_AS.jpg">Nagi_AS</option>
+            <option data-img-src="img/Philo.jpg" value="img/Philo.jpg">Philo</option>
+            <option data-img-src="img/Premaya.jpg" value="img/Premaya.jpg">Premaya</option>
+            <option data-img-src="img/Radica.jpg" value="img/Radica.jpg">Radica</option>
+            <option data-img-src="img/Renri.jpg" value="img/Renri.jpg">Renri</option>
+            <option data-img-src="img/Riica.jpg" value="img/Riica.jpg">Riica</option>
+            <option data-img-src="img/Rosetta.jpg" value="img/Rosetta.jpg">Rosetta</option>
+            <option data-img-src="img/Ruina_AS.jpg" value="img/Ruina_AS.jpg">Ruina_AS</option>
+            <option data-img-src="img/Saki_AS.jpg" value="img/Saki_AS.jpg">Saki_AS</option>
+            <option data-img-src="img/Shanie.jpg" value="img/Shanie.jpg">Shanie</option>
+            <option data-img-src="img/Shanie_AS.jpg" value="img/Shanie_AS.jpg">Shanie_AS</option>
+            <option data-img-src="img/Shannon.jpg" value="img/Shannon.jpg">Shannon</option>
+            <option data-img-src="img/Shigure.jpg" value="img/Shigure.jpg">Shigure</option>
+            <option data-img-src="img/Shion.jpg" value="img/Shion.jpg">Shion</option>
+            <option data-img-src="img/Shion_AS.jpg" value="img/Shion_AS.jpg">Shion_AS</option>
+            <option data-img-src="img/Suzette.jpg" value="img/Suzette.jpg">Suzette</option>
+            <option data-img-src="img/Suzette_AS.jpg" value="img/Suzette_AS.jpg">Suzette_AS</option>
+            <option data-img-src="img/Toova.jpg" value="img/Toova.jpg">Toova</option>
+            <option data-img-src="img/Toova_AS.jpg" value="img/Toova_AS.jpg">Toova_AS</option>
+            <option data-img-src="img/Tsubame.jpg" value="img/Tsubame.jpg">Tsubame</option>
+            <option data-img-src="img/Tsukiha.jpg" value="img/Tsukiha.jpg">Tsukiha</option>
+            <option data-img-src="img/Veina.jpg" value="img/Veina.jpg">Veina</option>
+            <option data-img-src="img/Yuna.jpg" value="img/Yuna.jpg">Yuna</option>
+            <option data-img-src="img/Yuna_AS.jpg" value="img/Yuna_AS.jpg">Yuna_AS</option>
+        </select>
+        </div>
+        <h1>Step 2. Choose your <span style="background-color: silver;">4-star</span></h1>
+        <select id="4-star-picker" multiple="multiple">
+            <option data-img-src="img/Akane.jpg" value="img/Akane.jpg">Akane</option>
+            <option data-img-src="img/Aldo.jpg" value="img/Aldo.jpg">Aldo</option>
+            <option data-img-src="img/Amy.jpg" value="img/Amy.jpg">Amy</option>
+            <option data-img-src="img/Anabel.jpg" value="img/Anabel.jpg">Anabel</option>
+            <option data-img-src="img/Azami.jpg" value="img/Azami.jpg">Azami</option>
+            <option data-img-src="img/Bertrand.jpg" value="img/Bertrand.jpg">Bertrand</option>
+            <option data-img-src="img/Biaka.jpg" value="img/Biaka.jpg">Biaka</option>
+            <option data-img-src="img/Cerrine.jpg" value="img/Cerrine.jpg">Cerrine</option>
+            <option data-img-src="img/Cetie.jpg" value="img/Cetie.jpg">Cetie</option>
+            <option data-img-src="img/Ciel.jpg" value="img/Ciel.jpg">Ciel</option>
+            <option data-img-src="img/Claude.jpg" value="img/Claude.jpg">Claude</option>
+            <option data-img-src="img/Cyrus.jpg" value="img/Cyrus.jpg">Cyrus</option>
+            <option data-img-src="img/Dewey.jpg" value="img/Dewey.jpg">Dewey</option>
+            <option data-img-src="img/Dunarith.jpg" value="img/Dunarith.jpg">Dunarith</option>
+            <option data-img-src="img/Elga.jpg" value="img/Elga.jpg">Elga</option>
+            <option data-img-src="img/Ewan.jpg" value="img/Ewan.jpg">Ewan</option>
+            <option data-img-src="img/Felmina.jpg" value="img/Felmina.jpg">Felmina</option>
+            <option data-img-src="img/Gariyu.jpg" value="img/Gariyu.jpg">Gariyu</option>
+            <option data-img-src="img/Guildna.jpg" value="img/Guildna.jpg">Guildna</option>
+            <option data-img-src="img/Helena.jpg" value="img/Helena.jpg">Helena</option>
+            <option data-img-src="img/Hismena.jpg" value="img/Hismena.jpg">Hismena</option>
+            <option data-img-src="img/Hozuki.jpg" value="img/Hozuki.jpg">Hozuki</option>
+            <option data-img-src="img/Ilulu.jpg" value="img/Ilulu.jpg">Ilulu</option>
+            <option data-img-src="img/Isuka.jpg" value="img/Isuka.jpg">Isuka</option>
+            <option data-img-src="img/Joker.jpg" value="img/Joker.jpg">Joker</option>
+            <option data-img-src="img/Laclair.jpg" value="img/Laclair.jpg">Laclair</option>
+            <option data-img-src="img/Levia.jpg" value="img/Levia.jpg">Levia</option>
+            <option data-img-src="img/Lokido.jpg" value="img/Lokido.jpg">Lokido</option>
+            <option data-img-src="img/Lovely.jpg" value="img/Lovely.jpg">Lovely</option>
+            <option data-img-src="img/Mana.jpg" value="img/Mana.jpg">Mana</option>
+            <option data-img-src="img/Mariel.jpg" value="img/Mariel.jpg">Mariel</option>
+            <option data-img-src="img/Melina.jpg" value="img/Melina.jpg">Melina</option>
+            <option data-img-src="img/Mighty.jpg" value="img/Mighty.jpg">Mighty</option>
+            <option data-img-src="img/Miyu.jpg" value="img/Miyu.jpg">Miyu</option>
+            <option data-img-src="img/Myrus.jpg" value="img/Myrus.jpg">Myrus</option>
+            <option data-img-src="img/Nagi.jpg" value="img/Nagi.jpg">Nagi</option>
+            <option data-img-src="img/Philo.jpg" value="img/Philo.jpg">Philo</option>
+            <option data-img-src="img/Premaya.jpg" value="img/Premaya.jpg">Premaya</option>
+            <option data-img-src="img/Radica.jpg" value="img/Radica.jpg">Radica</option>
+            <option data-img-src="img/Renri.jpg" value="img/Renri.jpg">Renri</option>
+            <option data-img-src="img/Riica.jpg" value="img/Riica.jpg">Riica</option>
+            <option data-img-src="img/Rosetta.jpg" value="img/Rosetta.jpg">Rosetta</option>
+            <option data-img-src="img/Ruina.jpg" value="img/Ruina.jpg">Ruina</option>
+            <option data-img-src="img/Saki.jpg" value="img/Saki.jpg">Saki</option>
+            <option data-img-src="img/Shanie.jpg" value="img/Shanie.jpg">Shanie</option>
+            <option data-img-src="img/Shannon.jpg" value="img/Shannon.jpg">Shannon</option>
+            <option data-img-src="img/Shigure.jpg" value="img/Shigure.jpg">Shigure</option>
+            <option data-img-src="img/Shion.jpg" value="img/Shion.jpg">Shion</option>
+            <option data-img-src="img/Suzette.jpg" value="img/Suzette.jpg">Suzette</option>
+            <option data-img-src="img/Toova.jpg" value="img/Toova.jpg">Toova</option>
+            <option data-img-src="img/Tsubame.jpg" value="img/Tsubame.jpg">Tsubame</option>
+            <option data-img-src="img/Tsukiha.jpg" value="img/Tsukiha.jpg">Tsukiha</option>
+            <option data-img-src="img/Veina.jpg" value="img/Veina.jpg">Veina</option>
+            <option data-img-src="img/Yuna.jpg" value="img/Yuna.jpg">Yuna</option>
+        </select>
+        
+        <h1>Step 3. Generate your team image, you can save it and post on Reddit of FB for health check</h1>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button type="button" class="btn-lg btn-success" id="generate">Generate!!</button>
+                <button type="button" class="btn-lg btn-danger" id="clear">Clear!!</button>
+            </div>
+            <div class="col-12 text-center">
+                <canvas id="team-canvas" style="background-color: whitesmoke;" width="1000" height="600"></canvas>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $("#5-star-picker").imagepicker({
+            hide_select: true,
+            show_label: true
+        });
+    $("#4-star-picker").imagepicker({
+            hide_select: true,
+            show_label: true
+        });
+    
+    $("#clear").click(function () {
+        var canvas = document.getElementById('team-canvas');
+        var context = canvas.getContext('2d');
+        
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = "#f5f5f5";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+    });
+
+    $("#generate").click(function(){
+        //check duplicated
+        var five_list = $("#5-star-picker").data("picker").selected_values();
+        var four_list = $("#4-star-picker").data("picker").selected_values();
+        var five_len = five_list.length;
+        var four_len = four_list.length;
+        var total = five_len + four_len;
+        var sqrt = Math.ceil(Math.sqrt(total));
+
+        var canvas = document.getElementById('team-canvas');
+        var context = canvas.getContext('2d');
+
+        var five_row = Math.ceil(five_len / 10) > 0 ? Math.ceil(five_len / 10) : 1;
+        var four_row = Math.ceil(four_len / 10) > 0 ? Math.ceil(four_len / 10) : 1;
+        canvas.height = five_row *100 + four_row * 100 +100;
+        context.fillStyle = "#f5f5f5";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        context.font = "30px Arial";
+        context.strokeStyle = "#f79646";
+        context.fillStyle = "#000000";
+        context.fillText("5-STAR", 10, 30);
+
+        var row = 0;
+        var col = 0;
+        for(var i = 0; i < five_len; i++){
+            var x = new Image();
+            x.src = five_list[i];
+            
+            context.drawImage(x, (col * 100) + 10, (row * 100) + 50, 80, 80);
+            
+            col += 1;
+
+            if ((i + 1) % 10 === 0) {
+                row += 1;
+                col = 0;
+            }
+        }
+        
+        col = 0;
+        if(five_len % 10 != 0) row +=1;  
+        context.font = "30px Arial";
+        context.strokeStyle = "#f79646";
+        context.fillStyle = "#000000";
+        context.fillText("4-STAR", 10, (row * 100) + 80);
+
+        for (var i = 0; i < four_len; i++) {
+            var x = new Image();
+            x.src = four_list[i];
+
+            context.drawImage(x, (col * 100) + 10, (row * 100) + 100, 80, 80);
+
+            col += 1;
+
+            if ((i + 1) % 10 === 0) {
+                row += 1;
+                col = 0;
+            }
+        }
+    });
+    
+</script>
+</body>
+</html>

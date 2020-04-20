@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>穿越時空的貓--角色健檢工具</title>
+    <meta name="description" content="穿越時空的貓，角色健檢工具">
+    <meta name="author" content="KoKo Mexcelsa, 大魔術熊貓工程師">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/image-picker.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="js/image-picker.js"></script>
+    
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>先介紹一下這個工具</h1>
+            <h4>穿越時空的貓這款遊戲的角色眾多，常常需要把自己的角色清單拿出來給大家參考與健檢。基於下列原因，自己開發了一個健檢工具：</h4>
+            <h4>1、雖然巴哈也有健檢工具，但是以文字為主，常常會角色和人物對不起來。這個工具以圖像選取為主。</h4>
+            <h4>2、有的玩家會拍遊戲的截圖，可是有沒有該角色的AS也不知道。這個工具把AS和原版列在一起。</h4>
+            <h4>3、角色多的話，遊戲的截圖也會很多張，因此這個工具可以把所有人物整理在一張，方便看圖。</h4>
+            <h4>4、只有能升五星的角色供選擇，但是這些角色就夠大家眼花了。</h4>
+            <h6>PS1. 有興趣一起讓這個工具更好的工程師朋友，歡迎在Github送PR。</h6>
+            <h6>PS2. 有bug歡迎回報，推荐使用 CHROME。</h6>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <img src="img/banner.png" alt="another picker" class="img-fluid mx-auto">
+        </div>
+    </div>
+    <div class="container">
+        <h1>第一步. 選擇你的 <span style="background-color: goldenrod;">五星角</span></h1>
+        <div class="row five-star">
+        <select id="5-star-picker" multiple="multiple" >
+            <option data-img-src="img/Akane_AS.jpg" value="img/Akane_AS.jpg">茜AS</option>
+            <option data-img-src="img/Aldo.jpg" value="img/Aldo.jpg">阿爾德</option>
+            <option data-img-src="img/Amy.jpg" value="img/Amy.jpg">艾米</option>
+            <option data-img-src="img/Anabel.jpg" value="img/Anabel.jpg">安娜貝爾</option>
+            <option data-img-src="img/Azami.jpg" value="img/Azami.jpg">阿佐美</option>
+            <option data-img-src="img/Bertrand.jpg" value="img/Bertrand.jpg">貝特朗</option>
+            <option data-img-src="img/Biaka.jpg" value="img/Biaka.jpg">維婭卡</option>
+            <option data-img-src="img/Cerrine.jpg" value="img/Cerrine.jpg">思琳</option>
+            <option data-img-src="img/Cetie.jpg" value="img/Cetie.jpg">謝提</option>
+            <option data-img-src="img/Ciel.jpg" value="img/Ciel.jpg">西雅爾</option>
+            <option data-img-src="img/Claude.jpg" value="img/Claude.jpg">克勞特</option>
+            <option data-img-src="img/Claude_AS.jpg" value="img/Claude_AS.jpg">克勞特AS</option>
+            <option data-img-src="img/Cyrus.jpg" value="img/Cyrus.jpg">賽勒斯</option>
+            <option data-img-src="img/Dewey.jpg" value="img/Dewey.jpg">杜伊</option>
+            <option data-img-src="img/Dunarith.jpg" value="img/Dunarith.jpg">杜拿利斯</option>
+            <option data-img-src="img/Elga.jpg" value="img/Elga.jpg">艾露嘉</option>
+            <option data-img-src="img/Ewan.jpg" value="img/Ewan.jpg">尤因</option>
+            <option data-img-src="img/Felmina.jpg" value="img/Felmina.jpg">菲露米娜</option>
+            <option data-img-src="img/Gariyu.jpg" value="img/Gariyu.jpg">伽琉</option>
+            <option data-img-src="img/Gariyu_AS.jpg" value="img/Gariyu_AS.jpg">伽琉AS</option>
+            <option data-img-src="img/Guildna.jpg" value="img/Guildna.jpg">基爾德那</option>
+            <option data-img-src="img/Helena.jpg" value="img/Helena.jpg">海蕾娜</option>
+            <option data-img-src="img/Hismena.jpg" value="img/Hismena.jpg">希斯梅娜</option>
+            <option data-img-src="img/Hozuki.jpg" value="img/Hozuki.jpg">皓月</option>
+            <option data-img-src="img/Ilulu.jpg" value="img/Ilulu.jpg">伊露露</option>
+            <option data-img-src="img/Isuka.jpg" value="img/Isuka.jpg">伊絲卡</option>
+            <option data-img-src="img/Isuka_AS.jpg" value="img/Isuka_AS.jpg">伊絲卡AS</option>
+            <option data-img-src="img/Joker.jpg" value="img/Joker.jpg">Joker</option>
+            <option data-img-src="img/Laclair.jpg" value="img/Laclair.jpg">拉克萊兒</option>
+            <option data-img-src="img/Laclair_AS.jpg" value="img/Laclair_AS.jpg">拉克萊兒AS</option>
+            <option data-img-src="img/Levia.jpg" value="img/Levia.jpg">莉維雅</option>
+            <option data-img-src="img/Lokido.jpg" value="img/Lokido.jpg">洛基德</option>
+            <option data-img-src="img/Lokido_AS.jpg" value="img/Lokido_AS.jpg">洛基德AS</option>
+            <option data-img-src="img/Lovely.jpg" value="img/Lovely.jpg">拉布莉</option>
+            <option data-img-src="img/Mana.jpg" value="img/Mana.jpg">瑪娜</option>
+            <option data-img-src="img/Mariel.jpg" value="img/Mariel.jpg">瑪莉艾爾</option>
+            <option data-img-src="img/Mariel_AS.jpg" value="img/Mariel_AS.jpg">瑪莉艾爾AS</option>
+            <option data-img-src="img/Melina.jpg" value="img/Melina.jpg">玫莉娜</option>
+            <option data-img-src="img/Melina_AS.jpg" value="img/Melina_AS.jpg">玫莉娜AS</option>
+            <option data-img-src="img/Mighty.jpg" value="img/Mighty.jpg">麥提</option>
+            <option data-img-src="img/Mighty_AS.jpg" value="img/Mighty_AS.jpg">麥提AS</option>
+            <option data-img-src="img/Miyu.jpg" value="img/Miyu.jpg">米悠</option>
+            <option data-img-src="img/Morgana.jpg" value="img/Morgana.jpg">摩爾加納</option>
+            <option data-img-src="img/Myrus.jpg" value="img/Myrus.jpg">繆露絲</option>
+            <option data-img-src="img/Nagi.jpg" value="img/Nagi.jpg">娜基</option>
+            <option data-img-src="img/Nagi_AS.jpg" value="img/Nagi_AS.jpg">娜基AS</option>
+            <option data-img-src="img/Philo.jpg" value="img/Philo.jpg">菲羅</option>
+            <option data-img-src="img/Premaya.jpg" value="img/Premaya.jpg">普蕾米婭</option>
+            <option data-img-src="img/Radica.jpg" value="img/Radica.jpg">拉蒂卡</option>
+            <option data-img-src="img/Renri.jpg" value="img/Renri.jpg">雷莉</option>
+            <option data-img-src="img/Riica.jpg" value="img/Riica.jpg">莉卡</option>
+            <option data-img-src="img/Rosetta.jpg" value="img/Rosetta.jpg">蘿潔塔</option>
+            <option data-img-src="img/Ruina_AS.jpg" value="img/Ruina_AS.jpg">路伊娜AS</option>
+            <option data-img-src="img/Saki_AS.jpg" value="img/Saki_AS.jpg">紗希AS</option>
+            <option data-img-src="img/Shanie.jpg" value="img/Shanie.jpg">謝奈</option>
+            <option data-img-src="img/Shanie_AS.jpg" value="img/Shanie_AS.jpg">謝奈AS</option>
+            <option data-img-src="img/Shannon.jpg" value="img/Shannon.jpg">夏儂</option>
+            <option data-img-src="img/Shigure.jpg" value="img/Shigure.jpg">時雨</option>
+            <option data-img-src="img/Shion.jpg" value="img/Shion.jpg">紫央</option>
+            <option data-img-src="img/Shion_AS.jpg" value="img/Shion_AS.jpg">紫央AS</option>
+            <option data-img-src="img/Suzette.jpg" value="img/Suzette.jpg">蘇賽特</option>
+            <option data-img-src="img/Suzette_AS.jpg" value="img/Suzette_AS.jpg">蘇賽特AS</option>
+            <option data-img-src="img/Toova.jpg" value="img/Toova.jpg">杜娃</option>
+            <option data-img-src="img/Toova_AS.jpg" value="img/Toova_AS.jpg">杜娃AS</option>
+            <option data-img-src="img/Tsubame.jpg" value="img/Tsubame.jpg">燕</option>
+            <option data-img-src="img/Tsukiha.jpg" value="img/Tsukiha.jpg">月華</option>
+            <option data-img-src="img/Veina.jpg" value="img/Veina.jpg">維娜</option>
+            <option data-img-src="img/Yuna.jpg" value="img/Yuna.jpg">由奈</option>
+            <option data-img-src="img/Yuna_AS.jpg" value="img/Yuna_AS.jpg">由奈AS</option>
+        </select>
+        </div>
+        <h1>第二步. 選擇你的 <span style="background-color: silver;">四星角</span></h1>
+        <select id="4-star-picker" multiple="multiple">
+            <option data-img-src="img/Akane.jpg" value="img/Akane.jpg">茜</option>
+            <option data-img-src="img/Aldo.jpg" value="img/Aldo.jpg">阿爾德</option>
+            <option data-img-src="img/Amy.jpg" value="img/Amy.jpg">艾米</option>
+            <option data-img-src="img/Anabel.jpg" value="img/Anabel.jpg">安娜貝爾</option>
+            <option data-img-src="img/Azami.jpg" value="img/Azami.jpg">阿佐美</option>
+            <option data-img-src="img/Bertrand.jpg" value="img/Bertrand.jpg">貝特朗</option>
+            <option data-img-src="img/Biaka.jpg" value="img/Biaka.jpg">維婭卡</option>
+            <option data-img-src="img/Cerrine.jpg" value="img/Cerrine.jpg">思琳</option>
+            <option data-img-src="img/Cetie.jpg" value="img/Cetie.jpg">謝提</option>
+            <option data-img-src="img/Ciel.jpg" value="img/Ciel.jpg">西雅爾</option>
+            <option data-img-src="img/Claude.jpg" value="img/Claude.jpg">克勞特</option>
+            <option data-img-src="img/Cyrus.jpg" value="img/Cyrus.jpg">賽勒斯</option>
+            <option data-img-src="img/Dewey.jpg" value="img/Dewey.jpg">杜伊</option>
+            <option data-img-src="img/Dunarith.jpg" value="img/Dunarith.jpg">杜拿利斯</option>
+            <option data-img-src="img/Elga.jpg" value="img/Elga.jpg">艾露嘉</option>
+            <option data-img-src="img/Ewan.jpg" value="img/Ewan.jpg">尤因</option>
+            <option data-img-src="img/Felmina.jpg" value="img/Felmina.jpg">菲露米娜</option>
+            <option data-img-src="img/Gariyu.jpg" value="img/Gariyu.jpg">伽琉</option>
+            <option data-img-src="img/Guildna.jpg" value="img/Guildna.jpg">基爾德那</option>
+            <option data-img-src="img/Helena.jpg" value="img/Helena.jpg">海蕾娜</option>
+            <option data-img-src="img/Hismena.jpg" value="img/Hismena.jpg">希斯梅娜</option>
+            <option data-img-src="img/Hozuki.jpg" value="img/Hozuki.jpg">皓月</option>
+            <option data-img-src="img/Ilulu.jpg" value="img/Ilulu.jpg">伊露露</option>
+            <option data-img-src="img/Isuka.jpg" value="img/Isuka.jpg">伊絲卡</option>
+            <option data-img-src="img/Joker.jpg" value="img/Joker.jpg">Joker</option>
+            <option data-img-src="img/Laclair.jpg" value="img/Laclair.jpg">拉克萊兒</option>
+            <option data-img-src="img/Lokido.jpg" value="img/Lokido.jpg">洛基德</option>
+            <option data-img-src="img/Lovely.jpg" value="img/Lovely.jpg">拉布莉</option>
+            <option data-img-src="img/Mana.jpg" value="img/Mana.jpg">瑪娜</option>
+            <option data-img-src="img/Mariel.jpg" value="img/Mariel.jpg">瑪莉艾爾</option>
+            <option data-img-src="img/Melina.jpg" value="img/Melina.jpg">玫莉娜</option>
+            <option data-img-src="img/Mighty.jpg" value="img/Mighty.jpg">麥提</option>
+            <option data-img-src="img/Miyu.jpg" value="img/Miyu.jpg">米悠</option>
+            <option data-img-src="img/Myrus.jpg" value="img/Myrus.jpg">繆露絲</option>
+            <option data-img-src="img/Nagi.jpg" value="img/Nagi.jpg">娜基</option>
+            <option data-img-src="img/Philo.jpg" value="img/Philo.jpg">菲羅</option>
+            <option data-img-src="img/Premaya.jpg" value="img/Premaya.jpg">普蕾米婭</option>
+            <option data-img-src="img/Radica.jpg" value="img/Radica.jpg">拉蒂卡</option>
+            <option data-img-src="img/Renri.jpg" value="img/Renri.jpg">雷莉</option>
+            <option data-img-src="img/Riica.jpg" value="img/Riica.jpg">莉卡</option>
+            <option data-img-src="img/Rosetta.jpg" value="img/Rosetta.jpg">蘿潔塔</option>
+            <option data-img-src="img/Ruina.jpg" value="img/Ruina.jpg">路伊娜</option>
+            <option data-img-src="img/Saki.jpg" value="img/Saki.jpg">紗希</option>
+            <option data-img-src="img/Shanie.jpg" value="img/Shanie.jpg">謝奈</option>
+            <option data-img-src="img/Shannon.jpg" value="img/Shannon.jpg">夏儂</option>
+            <option data-img-src="img/Shigure.jpg" value="img/Shigure.jpg">時雨</option>
+            <option data-img-src="img/Shion.jpg" value="img/Shion.jpg">紫央</option>
+            <option data-img-src="img/Suzette.jpg" value="img/Suzette.jpg">蘇賽特</option>
+            <option data-img-src="img/Toova.jpg" value="img/Toova.jpg">杜娃</option>
+            <option data-img-src="img/Tsubame.jpg" value="img/Tsubame.jpg">燕</option>
+            <option data-img-src="img/Tsukiha.jpg" value="img/Tsukiha.jpg">月華</option>
+            <option data-img-src="img/Veina.jpg" value="img/Veina.jpg">維娜</option>
+            <option data-img-src="img/Yuna.jpg" value="img/Yuna.jpg">由奈</option>
+        </select>
+        
+        <h1>第三步. 點擊「產生圖片」按鈕，產生你的角色圖片，就可以另存下來，放到巴哈或群組裡大家健檢啦！！</h1>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button type="button" class="btn-lg btn-success" id="generate">產生圖片</button>
+                <button type="button" class="btn-lg btn-danger" id="clear">清除圖片</button>
+            </div>
+            <div class="col-12 text-center">
+                <canvas id="team-canvas" style="background-color: whitesmoke;" width="1000" height="600"></canvas>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $("#5-star-picker").imagepicker({
+            hide_select: true,
+            show_label: true
+        });
+    $("#4-star-picker").imagepicker({
+            hide_select: true,
+            show_label: true
+        });
+    
+    $("#clear").click(function () {
+        var canvas = document.getElementById('team-canvas');
+        var context = canvas.getContext('2d');
+        
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.fillStyle = "#f5f5f5";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+    });
+
+    $("#generate").click(function(){
+        //check duplicated
+        var five_list = $("#5-star-picker").data("picker").selected_values();
+        var four_list = $("#4-star-picker").data("picker").selected_values();
+        var five_len = five_list.length;
+        var four_len = four_list.length;
+        var total = five_len + four_len;
+        var sqrt = Math.ceil(Math.sqrt(total));
+
+        var canvas = document.getElementById('team-canvas');
+        var context = canvas.getContext('2d');
+
+        var five_row = Math.ceil(five_len / 10) > 0 ? Math.ceil(five_len / 10) : 1;
+        var four_row = Math.ceil(four_len / 10) > 0 ? Math.ceil(four_len / 10) : 1;
+        canvas.height = five_row *100 + four_row * 100 +100;
+        context.fillStyle = "#f5f5f5";
+        context.fillRect(0, 0, canvas.width, canvas.height);
+
+        context.font = "30px Arial";
+        context.strokeStyle = "#f79646";
+        context.fillStyle = "#000000";
+        context.fillText("五星角", 10, 30);
+
+        var row = 0;
+        var col = 0;
+        for(var i = 0; i < five_len; i++){
+            var x = new Image();
+            x.src = five_list[i];
+            
+            context.drawImage(x, (col * 100) + 10, (row * 100) + 50, 80, 80);
+            
+            col += 1;
+
+            if ((i + 1) % 10 === 0) {
+                row += 1;
+                col = 0;
+            }
+        }
+        
+        col = 0;
+        if(five_len % 10 != 0) row +=1;  
+        context.font = "30px Arial";
+        context.strokeStyle = "#f79646";
+        context.fillStyle = "#000000";
+        context.fillText("四星角", 10, (row * 100) + 80);
+
+        for (var i = 0; i < four_len; i++) {
+            var x = new Image();
+            x.src = four_list[i];
+
+            context.drawImage(x, (col * 100) + 10, (row * 100) + 100, 80, 80);
+
+            col += 1;
+
+            if ((i + 1) % 10 === 0) {
+                row += 1;
+                col = 0;
+            }
+        }
+    });
+    
+</script>
+</body>
+</html>
