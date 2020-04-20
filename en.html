@@ -193,10 +193,9 @@
             <div class="col-12 text-center">
                 <button type="button" class="btn-lg btn-success" id="generate">Generate!!</button>
                 <button type="button" class="btn-lg btn-danger" id="clear">Clear!!</button>
-                <button type="button" class="btn-lg btn-light" id="download">Download!!</button>
             </div>
             <div class="col-12 text-center">
-                <canvas id="team-canvas" style="background-color: whitesmoke;" width="1000" height="600"></canvas>
+                <canvas id="team-canvas" style="background-color: whitesmoke;" width="0" height="0"></canvas>
             </div>
         </div>
     </div>
@@ -279,14 +278,10 @@
                 col = 0;
             }
         }
-    });
 
-    $("#download").click(function () {
-            var canvas = document.getElementById('team-canvas');
-            var dataURL = canvas.toDataURL('image/png', 1.0);
-            window.location.href = dataURL;
+        var img = canvas.toDataURL("image/png");
+        document.write('<img src="' + img + '"/>');
     });
-    
 
 </script>
 </body>

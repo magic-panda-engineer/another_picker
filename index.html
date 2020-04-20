@@ -192,10 +192,9 @@
             <div class="col-12 text-center">
                 <button type="button" class="btn-lg btn-success" id="generate">產生圖片</button>
                 <button type="button" class="btn-lg btn-danger" id="clear">清除圖片</button>
-                <button type="button" class="btn-lg btn-light" id="download">下載圖片</button>
             </div>
             <div class="col-12 text-center">
-                <canvas id="team-canvas" style="background-color: whitesmoke;" width="1000" height="600"></canvas>
+                <canvas id="team-canvas" style="background-color: whitesmoke;" width="0" height="0"></canvas>
             </div>
         </div>
     </div>
@@ -233,6 +232,7 @@
 
         var five_row = Math.ceil(five_len / 10) > 0 ? Math.ceil(five_len / 10) : 1;
         var four_row = Math.ceil(four_len / 10) > 0 ? Math.ceil(four_len / 10) : 1;
+        canvas.width = 1000;
         canvas.height = five_row *100 + four_row * 100 +100;
         context.fillStyle = "#f5f5f5";
         context.fillRect(0, 0, canvas.width, canvas.height);
@@ -278,14 +278,10 @@
                 col = 0;
             }
         }
-    });
 
-    $("#download").click(function () {
-        var canvas = document.getElementById('team-canvas');
-        var dataURL = canvas.toDataURL('image/png', 1.0);
-        window.location.href = dataURL;
+        var img = canvas.toDataURL("image/png");
+        document.write('<img src="' + img + '"/>');
     });
-
 
 </script>
 </body>
