@@ -1,0 +1,100 @@
+table#output img {
+	height: 120px;
+}
+
+table#charList img {
+	height: 32px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+th {
+	text-align: left;
+}
+
+input[type="number"] {
+	width: 100px;
+}
+
+table#charList th,
+table#charList td {
+	text-align: left;
+	border-top: 1px dotted black;
+	border-bottom: 1px dotted black;
+	vertical-align: middle;
+	padding-right: 12px;
+}
+
+input[type="radio"]:not(:first-child) {
+	margin-left: 10px;
+}
+
+table#charList th {
+	white-space: nowrap;
+	position: -webkit-sticky;
+	background-color: #f2f2f2;
+	/* Safari */
+	position: sticky;
+	top: 0;
+}
+
+table#charList {
+	border-spacing: 0;
+	border: 1px solid #ddd;
+}
+
+table#output {
+	display: none;
+	width: 1222px;
+}
+
+table#output tbody {
+	display: block;
+	width: 1222px;
+}
+
+table#output, {
+	border-spacing: 0px;
+}
+table#output td {
+	border-spacing: 0px;
+	border: 1px solid black;
+}
+
+.Light {
+	background-color: lightyellow;
+}
+
+.Shadow {
+	background-color: thistle;
+}
+
+.container {
+	position: relative;
+	text-align: left;
+	display: inline-block;
+	padding-right: 4px;
+}
+
+.outputLight,
+.outputShadow {
+	position: absolute;
+	bottom: 4px;
+	right: 12px;
+	color: white;
+	font-size: 24px;
+}
+
+.outputLight {
+	text-shadow: 0px 1px 0 rgb(204, 204, 0), 0px -1px 0 rgb(204, 204, 0), 1px 0px 0 rgb(204, 204, 0), -1px 0px 0 rgb(204, 204, 0), 1px 1px 0 rgb(204, 204, 0), 1px -1px 0 rgb(204, 204, 0), -1px 1px 0 rgb(204, 204, 0), -1px -1px 0 rgb(204, 204, 0), 0px 2px 0 rgb(204, 204, 0), 0px -2px 0 rgb(204, 204, 0), 2px 0px 0 rgb(204, 204, 0), -2px 0px 0 rgb(204, 204, 0), 2px 2px 0 rgb(204, 204, 0), 2px -2px 0 rgb(204, 204, 0), -2px 2px 0 rgb(204, 204, 0), -2px -2px 0 rgb(204, 204, 0);
+	-webkit-text-shadow: 0px 1px 0 rgb(204, 204, 0), 0px -1px 0 rgb(204, 204, 0), 1px 0px 0 rgb(204, 204, 0), -1px 0px 0 rgb(204, 204, 0), 1px 1px 0 rgb(204, 204, 0), 1px -1px 0 rgb(204, 204, 0), -1px 1px 0 rgb(204, 204, 0), -1px -1px 0 rgb(204, 204, 0), 0px 2px 0 rgb(204, 204, 0), 0px -2px 0 rgb(204, 204, 0), 2px 0px 0 rgb(204, 204, 0), -2px 0px 0 rgb(204, 204, 0), 2px 2px 0 rgb(204, 204, 0), 2px -2px 0 rgb(204, 204, 0), -2px 2px 0 rgb(204, 204, 0), -2px -2px 0 rgb(204, 204, 0);
+	-moz-text-shadow: 0px 1px 0 rgb(204, 204, 0), 0px -1px 0 rgb(204, 204, 0), 1px 0px 0 rgb(204, 204, 0), -1px 0px 0 rgb(204, 204, 0), 1px 1px 0 rgb(204, 204, 0), 1px -1px 0 rgb(204, 204, 0), -1px 1px 0 rgb(204, 204, 0), -1px -1px 0 rgb(204, 204, 0), 0px 2px 0 rgb(204, 204, 0), 0px -2px 0 rgb(204, 204, 0), 2px 0px 0 rgb(204, 204, 0), -2px 0px 0 rgb(204, 204, 0), 2px 2px 0 rgb(204, 204, 0), 2px -2px 0 rgb(204, 204, 0), -2px 2px 0 rgb(204, 204, 0), -2px -2px 0 rgb(204, 204, 0);
+	-webkit-text-shadow: 0px 1px 0 rgb(238, 232, 170), 0px -1px 0 rgb(238, 232, 170), 1px 0px 0 rgb(238, 232, 170), -1px 0px 0 rgb(238, 232, 170), 1px 1px 0 rgb(238, 232, 170), 1px -1px 0 rgb(238, 232, 170), -1px 1px 0 rgb(238, 232, 170), -1px -1px 0 rgb(238, 232, 170), 0px 2px 0 rgb(238, 232, 170), 0px -2px 0 rgb(238, 232, 170), 2px 0px 0 rgb(238, 232, 170), -2px 0px 0 rgb(238, 232, 170), 2px 2px 0 rgb(238, 232, 170), 2px -2px 0 rgb(238, 232, 170), -2px 2px 0 rgb(238, 232, 170), -2px -2px 0 rgb(238, 232, 170);
+	-moz-text-shadow: 0px 1px 0 rgb(238, 232, 170), 0px -1px 0 rgb(238, 232, 170), 1px 0px 0 rgb(238, 232, 170), -1px 0px 0 rgb(238, 232, 170), 1px 1px 0 rgb(238, 232, 170), 1px -1px 0 rgb(238, 232, 170), -1px 1px 0 rgb(238, 232, 170), -1px -1px 0 rgb(238, 232, 170), 0px 2px 0 rgb(238, 232, 170), 0px -2px 0 rgb(238, 232, 170), 2px 0px 0 rgb(238, 232, 170), -2px 0px 0 rgb(238, 232, 170), 2px 2px 0 rgb(238, 232, 170), 2px -2px 0 rgb(238, 232, 170), -2px 2px 0 rgb(238, 232, 170), -2px -2px 0 rgb(238, 232, 170);
+}
+
+.outputShadow {
+	text-shadow: 0px 1px 0 rgb(148, 0, 211), 0px -1px 0 rgb(148, 0, 211), 1px 0px 0 rgb(148, 0, 211), -1px 0px 0 rgb(148, 0, 211), 1px 1px 0 rgb(148, 0, 211), 1px -1px 0 rgb(148, 0, 211), -1px 1px 0 rgb(148, 0, 211), -1px -1px 0 rgb(148, 0, 211), 0px 2px 0 rgb(148, 0, 211), 0px -2px 0 rgb(148, 0, 211), 2px 0px 0 rgb(148, 0, 211), -2px 0px 0 rgb(148, 0, 211), 2px 2px 0 rgb(148, 0, 211), 2px -2px 0 rgb(148, 0, 211), -2px 2px 0 rgb(148, 0, 211), -2px -2px 0 rgb(148, 0, 211);
+	-webkit-text-shadow: 0px 1px 0 rgb(148, 0, 211), 0px -1px 0 rgb(148, 0, 211), 1px 0px 0 rgb(148, 0, 211), -1px 0px 0 rgb(148, 0, 211), 1px 1px 0 rgb(148, 0, 211), 1px -1px 0 rgb(148, 0, 211), -1px 1px 0 rgb(148, 0, 211), -1px -1px 0 rgb(148, 0, 211), 0px 2px 0 rgb(148, 0, 211), 0px -2px 0 rgb(148, 0, 211), 2px 0px 0 rgb(148, 0, 211), -2px 0px 0 rgb(148, 0, 211), 2px 2px 0 rgb(148, 0, 211), 2px -2px 0 rgb(148, 0, 211), -2px 2px 0 rgb(148, 0, 211), -2px -2px 0 rgb(148, 0, 211);
+	-moz-text-shadow: 0px 1px 0 rgb(148, 0, 211), 0px -1px 0 rgb(148, 0, 211), 1px 0px 0 rgb(148, 0, 211), -1px 0px 0 rgb(148, 0, 211), 1px 1px 0 rgb(148, 0, 211), 1px -1px 0 rgb(148, 0, 211), -1px 1px 0 rgb(148, 0, 211), -1px -1px 0 rgb(148, 0, 211), 0px 2px 0 rgb(148, 0, 211), 0px -2px 0 rgb(148, 0, 211), 2px 0px 0 rgb(148, 0, 211), -2px 0px 0 rgb(148, 0, 211), 2px 2px 0 rgb(148, 0, 211), 2px -2px 0 rgb(148, 0, 211), -2px 2px 0 rgb(148, 0, 211), -2px -2px 0 rgb(148, 0, 211);
+}
