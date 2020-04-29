@@ -330,7 +330,7 @@
         var five_row = Math.ceil(five_len / 10) > 0 ? Math.ceil(five_len / 10) : 1;
         var four_row = Math.ceil(four_len / 10) > 0 ? Math.ceil(four_len / 10) : 1;
         canvas.width = 1100;
-        canvas.height = (five_row  *100 + four_row * 100 +500) > 1200 ? (five_row * 100 + four_row * 100 + 500) : 1200;
+        canvas.height = (five_row  *100 + four_row * 100 +500) > 800 ? (five_row * 100 + four_row * 100 + 500) : 800;
         context.fillStyle = "#f5f5f5";
         context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -338,7 +338,7 @@
         context.font = "40px Arial";
         context.strokeStyle = "#f79646";
         context.fillStyle = "#000000";
-        context.fillText(img_title, 400, 40);
+        context.fillText(img_title, 300, 40);
 
         context.font = "30px Arial";
         context.strokeStyle = "#f79646";
@@ -375,7 +375,7 @@
         }
 
         //five wind
-        row += 1;
+        if (five_fire_len % 10 != 0) row += 1;
         col = 0;
         context.drawImage(wind_icon, 10, 100 * row +100, 40, 40);
         for (var i = 0; i < five_wind_len; i++) {
@@ -393,7 +393,7 @@
         }
 
         //five water
-        row += 1;
+        if (five_wind_len % 10 != 0) row += 1;
         col = 0;
         context.drawImage(water_icon, 10, 100 * row + 100, 40, 40);
         for (var i = 0; i < five_water_len; i++) {
@@ -411,7 +411,7 @@
         }
 
         //five earth
-        row += 1;
+        if (five_water_len % 10 != 0) row += 1;
         col = 0;
         context.drawImage(earth_icon, 10, 100 * row + 100, 40, 40);
         for (var i = 0; i < five_earth_len; i++) {
@@ -429,7 +429,7 @@
         }
 
         //five none
-        row += 1;
+        if (five_earth_len % 10 != 0) row += 1;
         col = 0;
         context.drawImage(none_icon, 10, 100 * row + 100, 40, 40);
         for (var i = 0; i < five_none_len; i++) {
@@ -453,13 +453,14 @@
         context.fillStyle = "#000000";
         context.fillText("四星角", 10, (row * 100) + 120);
 
-        //four fire
-        for (var i = 0; i < four_fire_len; i++) {
+        //four star
+        let four_combine = four_fire_list.concat(four_wind_list).concat(four_water_list).concat(four_earth_list).concat(four_none_list)
+        
+        for (var i = 0; i < four_combine.length; i++) {
             var x = new Image();
-            x.src = four_fire_list[i];
+            x.src = four_combine[i];
 
-            context.drawImage(x, (col * 100) + 30, (row * 100) + 140, 80, 80);
-            context.drawImage(fire_icon, (col * 100) + 25, (row * 100) + 200, 30, 30);
+            context.drawImage(x, (col * 100) + 60, (row * 100) + 140, 80, 80);
 
             col += 1;
 
@@ -468,81 +469,9 @@
                 col = 0;
             }
         }
-
-        //four wind
-        row += 1;
-        col = 0;
-        for (var i = 0; i < four_wind_len; i++) {
-            var x = new Image();
-            x.src = four_wind_list[i];
-
-            context.drawImage(x, (col * 100) + 30, (row * 100) + 140, 80, 80);
-            context.drawImage(wind_icon, (col * 100) + 25, (row * 100) + 200, 30, 30);
-
-            col += 1;
-
-            if ((i + 1) % 10 === 0) {
-                row += 1;
-                col = 0;
-            }
-        }
-
-        //four water
-        row += 1;
-        col = 0;
-        for (var i = 0; i < four_water_len; i++) {
-            var x = new Image();
-            x.src = four_water_list[i];
-
-            context.drawImage(x, (col * 100) + 30, (row * 100) + 140, 80, 80);
-            context.drawImage(water_icon, (col * 100) + 25, (row * 100) + 200, 30, 30);
-
-            col += 1;
-
-            if ((i + 1) % 10 === 0) {
-                row += 1;
-                col = 0;
-            }
-        }
-
-        //four earth
-        row += 1;
-        col = 0;
-        for (var i = 0; i < four_earth_len; i++) {
-            var x = new Image();
-            x.src = four_earth_list[i];
-
-            context.drawImage(x, (col * 100) + 30, (row * 100) + 140, 80, 80);
-            context.drawImage(earth_icon, (col * 100) + 25, (row * 100) + 200, 30, 30);
-
-            col += 1;
-
-            if ((i + 1) % 10 === 0) {
-                row += 1;
-                col = 0;
-            }
-        }
-
-        //four none
-        row += 1;
-        col = 0;
-        for (var i = 0; i < four_none_len; i++) {
-            var x = new Image();
-            x.src = four_none_list[i];
-
-            context.drawImage(x, (col * 100) + 30, (row * 100) + 140, 80, 80);
-            context.drawImage(none_icon, (col * 100) + 25, (row * 100) + 200, 30, 30);
-
-            col += 1;
-
-            if ((i + 1) % 10 === 0) {
-                row += 1;
-                col = 0;
-            }
-        }
-
-        // var img = canvas.toDataURL("image/png");
-        // document.write('<img src="' + img + '"/>');
+        
+        var img = canvas.toDataURL("image/png");
+        document.write('<img src="' + img + '"/>');
     });
 
 </script>
