@@ -71,12 +71,13 @@ function generate() {
 		var image = canvas.toDataURL("image/jpg");
 		document.getElementById("download").href = image;
 	});
-	document.getElementById("tableOutput").style.display = "none";	
+	document.getElementById("generate").style.display = "none";
+	document.getElementById("reset").style.display = "inline-block";
+	document.getElementById("tableOutput").style.display = "none";
 }
 
-
-function download() {
-	document.getElementsByTagName("canvas")[0].id = "canvas";
-	var image = canvas.toDataURL("image/jpg");
-	document.getElementById("download").href = image;
+function reset() {
+	document.getElementById("charList").style.display = "table";
+	document.getElementById("generate").style.display = "inline-block";
+	document.getElementById("reset").style.display = "none";
 }
