@@ -80,4 +80,5 @@ function reset() {
 	document.getElementById("charList").style.display = "table";
 	document.getElementById("generate").style.display = "inline-block";
 	document.getElementById("reset").style.display = "none";
+	document.getElementsByTagName("canvas")[0].remove();
 }
