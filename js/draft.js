@@ -65,7 +65,7 @@ function generate() {
 	copyImg(3);
 	
 	document.getElementById("charList").style.display = "none";
-	html2canvas(document.getElementById("tableOutput")).then(function(canvas) {
+	html2canvas(document.getElementById("tableOutput"), {scale: 1, y: 218}).then(function(canvas) {
 		document.getElementById("canvasOutput").appendChild(canvas);
 		document.getElementsByTagName("canvas")[0].id = "canvas";
 		var image = canvas.toDataURL("image/jpg");
@@ -73,7 +73,7 @@ function generate() {
 	});
 	document.getElementById("generate").style.display = "none";
 	document.getElementById("reset").style.display = "inline-block";
-	// document.getElementById("tableOutput").style.display = "none";
+	document.getElementById("tableOutput").style.display = "none";
 }
 
 function reset() {
