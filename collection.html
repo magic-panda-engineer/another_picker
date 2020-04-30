@@ -4,21 +4,22 @@
 <head>
 	<title>Another Eden Character Collection Generator (inspired by magic-panda-engineer's Another Picker)</title>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" href="css/draft.css">
+	<link rel="stylesheet" href="css/collection.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="js/html2canvas.js"></script>
-	<script src="js/draft.js"></script>
+	<script src="js/collection.js"></script>
 </head>
 
 
 <body>
 	<p>Last updated: 30/04/2020 by Snowdome
 	<ol>
-		<li>Folked/inspired by magic-panda-engineer's <a href="https://magic-panda-engineer.github.io/another_picker/index.html">Another Picker</a></li>
-		<li>不支援Internet Explorer</li>
+		<li>Forked / inspired by magic-panda-engineer's <a href="https://magic-panda-engineer.github.io/another_picker/index.html">Another Picker</a></li>
+		<li>不支援Internet Explorer。</li>
 		<li>強烈建議先將遊戲語言轉成英文，再跟名稱排序，最後才填寫資料。(不要問我為什麼遊戲中Bertrand排得比Benedict前)</li>
 		<li>點擊成品以下載圖片。</li>
-		<li>考慮增設匯出CSV的選項，但未解決到如何匯入的問題。</li>
+		<li>生成需要十數秒時間。</li>
+		<li>可以儲存最底的文字方塊內的CSV供日後使用。</li>
 		<li>如果成品想不包含三星角，可以選擇「N/A」。</li>
 	</ol>
 	<table id="charList">
@@ -1010,11 +1011,12 @@
 	</table>
 
 	<div id="additional">
-	<p><textarea id="csv" rows="5" cols="50"></textarea>
-	<p><button type="button" id="generate" onclick="generate()">生成</button><button type="button" id="revise" onclick="revise()">修改</button></p>
-	<p><button type="button" id="import" onclick="importCSV()">匯入</button></p>
+		<p><textarea id="csv" rows="5" cols="50"></textarea>
+		<p><button type="button" id="generate" onclick="generate()">生成</button><button type="button" id="revise" onclick="revise()">修改</button></p>
+		<p><button type="button" id="import" onclick="importCSV()">匯入</button></p>
+		<p><button type="button" id="downloadCSV" onclick="downloadCSV()">儲存</button></p>
 	</div>
-	
+
 	<div id="canvasHandler">
 		<table id="tableOutput">
 			<tr>
@@ -1031,7 +1033,7 @@
 			</tr>
 		</table>
 	</div>
-	
+
 	<a id="download" href="" download="charList.png" target="_blank">
 		<div id="canvasOutput"></div>
 	</a>
