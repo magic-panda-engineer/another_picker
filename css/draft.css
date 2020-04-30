@@ -61,8 +61,18 @@ table#tableOutput td {
 	border: 1px solid black;
 }
 
-button#reset {
+button#revise {
 	display: none;
+}
+
+textarea#csv {
+	font-family: sans-serif;
+    font-size: smaller;
+	float: left;
+}
+
+table#canvasHandler {
+	display: table;
 }
 
 .Light {

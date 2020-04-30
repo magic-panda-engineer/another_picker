@@ -23,7 +23,7 @@
 	</ol>
 	<table id="charList">
 		<tr>
-			<th colspan="3">Char</th>
+			<th colspan="3"><Input type="text" id="title" value="自定義文字"></th>
 			<th>Attack/Zone type</th>
 			<th>Light/Shadow</th>
 			<th>Rank</th>
@@ -1009,19 +1009,29 @@
 		<!-- Excel output ends here -->
 	</table>
 
-	<p><button type="button" id="generate" onclick="generate()">生成</button><button type="button" id="reset" onclick="reset()">重設</button></p>
+	<div id="additional">
+	<p><textarea id="csv" rows="5" cols="50"></textarea>
+	<p><button type="button" id="generate" onclick="generate()">生成</button><button type="button" id="revise" onclick="revise()">修改</button></p>
+	<p><button type="button" id="import" onclick="importCSV()">匯入</button></p>
+	</div>
+	
 	<div id="canvasHandler">
 		<table id="tableOutput">
+			<tr>
+				<th id="tableTitle"></th>
+			</tr>
 			<tr>
 				<td id="5-star">5★ + AS</td>
 			</tr>
 			<tr>
 				<td id="4-star">4★</td>
+			</tr>
 			<tr>
 				<td id="3-star">3★</td>
 			</tr>
 		</table>
 	</div>
+	
 	<a id="download" href="" download="charList.png" target="_blank">
 		<div id="canvasOutput"></div>
 	</a>
