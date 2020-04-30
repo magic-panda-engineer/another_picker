@@ -16,17 +16,9 @@ function refreshData(name) {
 	}
 }
 
-function wait(ms){
-	var start = new Date().getTime();
-	var end = start;
-	while(end < start + ms) {
-		end = new Date().getTime();
-	}
-}
-
 function generate() {
 	// Reset existing element, if any
-	document.getElementById("tableOutput").style.display = "block";
+	document.getElementById("tableOutput").style.display = "table";
 	var nodeBr = document.querySelectorAll("table#tableOutput br").forEach(e => e.parentNode.removeChild(e));
 	document.querySelectorAll("table#tableOutput div").forEach(e => e.parentNode.removeChild(e));
 	var charList = document.querySelectorAll('table#charList tr:not(:first-child)');
@@ -38,7 +30,7 @@ function generate() {
 	function copyImg(rank) {
 		var charNodeList = document.querySelectorAll('tr[data-rank = "' + rank + '"]'); // Returns a nodeList of characters with given rank
 		if (charNodeList.length > 0) {
-			document.getElementById(rank + "-star").style.display = "block";
+			document.getElementById(rank + "-star").style.display = "table-cell";
 			document.getElementById(rank + "-star").innerHTML += "<br>";
 		} else {
 			document.getElementById(rank + "-star").style.display = "none";
@@ -47,6 +39,7 @@ function generate() {
 			var rareType = document.querySelector('input[name =' + CSS.escape(charNodeList[i].id + "_rank") + ']:checked').value; // Returns 3, 4, 5, AS, Both
 			var LS_value = document.getElementById(charNodeList[i].id + "_LS").value; // Returns value between 0 and 255
 			var LS_type = document.getElementById(charNodeList[i].id).className; // Returns Light or Shadow
+			csv.innerHTML += '&#13;&#10' + charNodeList[i].id + ',' + LS_value + ',' + rareType;
 			switch (rareType) {
 				case "Both":
 					document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
@@ -60,26 +53,32 @@ function generate() {
 			}
 		}
 	}
+	
+	scroll(0,0);
+	// For 1st row in CSV field
+	csv.innerHTML = 'Id,LS_value,rareType';
 	copyImg(5);
 	copyImg(4);
 	copyImg(3);
 	
-	document.getElementById("charList").style.display = "none";
-	html2canvas(document.getElementById("tableOutput"), {y: tableOutput.getBoundingClientRect().y}).then(function(canvas) {
+	document.getElementById("tableTitle").innerHTML = document.getElementById("title").value;
+	html2canvas(document.getElementById("tableOutput")).then(function(canvas) {
+	// html2canvas(document.getElementById("tableOutput"), {y: tableOutput.getBoundingClientRect().y}).then(function(canvas) {
 		document.getElementById("canvasOutput").appendChild(canvas);
 		document.getElementsByTagName("canvas")[0].id = "canvas";
 		var image = canvas.toDataURL("image/jpg");
 		document.getElementById("download").href = image;
 	});
+	document.getElementById("charList").style.display = "none";
 	document.getElementById("generate").style.display = "none";
 	document.getElementById("reset").style.display = "inline-block";
 	document.getElementById("tableOutput").style.display = "none";
 }
 
-function reset() {
+function revise() {
 	document.getElementById("charList").style.display = "table";
 	document.getElementById("generate").style.display = "inline-block";
 	document.getElementById("reset").style.display = "none";
 	document.getElementsByTagName("canvas")[0].remove();
-	console.log("charList has been reset.")
+	console.log("charList display style has been undone.")
 }
