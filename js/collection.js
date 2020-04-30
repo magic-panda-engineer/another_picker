@@ -70,7 +70,7 @@ function generate() {
 	// html2canvas(document.getElementById("tableOutput"), {y: tableOutput.getBoundingClientRect().y}).then(function(canvas) {
 		document.getElementById("canvasOutput").appendChild(canvas);
 		document.getElementsByTagName("canvas")[0].id = "canvas";
-		var image = canvas.toDataURL("image/jpg", 0.5);
+		var image = canvas.toDataURL("image/jpg", 0.1);
 		document.getElementById("download").href = image;
 	});
 	document.getElementById("charList").style.display = "none";
