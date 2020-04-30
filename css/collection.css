@@ -1,28 +1,23 @@
-table#charList img {
-	height: 32px;
-	text-align: center;
-	vertical-align: middle;
-}
-
-th {
-	text-align: left;
+button#revise {
+	display: none;
 }
 
 input[type="number"] {
 	width: 100px;
 }
 
-table#charList th,
-table#charList td {
-	text-align: left;
-	border-top: 1px dotted black;
-	border-bottom: 1px dotted black;
-	vertical-align: middle;
-	padding-right: 12px;
-}
-
 input[type="radio"]:not(:first-child) {
 	margin-left: 10px;
+}
+
+table#canvasHandler {
+	display: table;
+}
+
+table#charList img {
+	height: 32px;
+	text-align: center;
+	vertical-align: middle;
 }
 
 table#charList th {
@@ -34,14 +29,18 @@ table#charList th {
 	top: 0;
 }
 
+table#charList th,
+table#charList td {
+	text-align: left;
+	border-top: 1px dotted black;
+	border-bottom: 1px dotted black;
+	vertical-align: middle;
+	padding-right: 12px;
+}
+
 table#charList {
 	border-spacing: 0;
 	border: 1px solid #ddd;
-}
-
-table#tableOutput {
-	display: none;
-	width: 1222px;
 }
 
 table#tableOutput img {
@@ -50,19 +49,21 @@ table#tableOutput img {
 
 table#tableOutput tbody {
 	display: block;
-	width: 1222px;
+	width: 1230px;
 }
 
-table#tableOutput, {
-	border-spacing: 0px;
-}
 table#tableOutput td {
 	border-spacing: 0px;
 	border: 1px solid black;
 }
 
-button#revise {
+table#tableOutput {
 	display: none;
+	width: 1230px;
+}
+
+table#tableOutput {
+	border-spacing: 0px;
 }
 
 textarea#csv {
@@ -71,8 +72,8 @@ textarea#csv {
 	float: left;
 }
 
-table#canvasHandler {
-	display: table;
+th {
+	text-align: left;
 }
 
 .Light {
