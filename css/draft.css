@@ -61,6 +61,10 @@ table#tableOutput td {
 	border: 1px solid black;
 }
 
+button#reset {
+	display: none;
+}
+
 .Light {
 	background-color: lightyellow;
 }
