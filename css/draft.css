@@ -43,20 +43,20 @@ table#charList {
 	border: 1px solid #ddd;
 }
 
-table#output {
+table#tableOutput {
 	display: none;
 	width: 1222px;
 }
 
-table#output tbody {
+table#tableOutput tbody {
 	display: block;
 	width: 1222px;
 }
 
-table#output, {
+table#tableOutput, {
 	border-spacing: 0px;
 }
-table#output td {
+table#tableOutput td {
 	border-spacing: 0px;
 	border: 1px solid black;
 }
