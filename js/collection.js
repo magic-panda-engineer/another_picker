@@ -18,6 +18,10 @@ function refreshData(name) {
 
 function generate() {
 	p = 0;
+	document.getElementById("revise").disabled = false;
+	if (document.getElementsByTagName("canvas")[0] != null) {
+		document.getElementsByTagName("canvas")[0].remove();
+	}
 	
 	// Reset existing element, if any
 	document.getElementById("tableOutput").style.display = "table";
@@ -31,7 +35,8 @@ function generate() {
 	// Generate images in the template table
 	function copyImg(rank) {
 		var charNodeList = document.querySelectorAll('tr[data-rank = "' + rank + '"]'); // Returns a nodeList of characters with given rank
-		if (charNodeList.length > 0) {
+		var displayCheck = document.getElementById("opt" + rank).checked;
+		if (charNodeList.length > 0 && displayCheck == true) {
 			document.getElementById(rank + "-star").style.display = "table-cell";
 			document.getElementById(rank + "-star").innerHTML += "<br>";
 		} else {
@@ -66,24 +71,27 @@ function generate() {
 	
 	document.getElementById("tableTitle").innerHTML = document.getElementById("title").value;
 	document.getElementById("tableTitle").innerHTML += " (" + p + ")";
-	html2canvas(document.getElementById("tableOutput")).then(function(canvas) {
-	// html2canvas(document.getElementById("tableOutput"), {y: tableOutput.getBoundingClientRect().y}).then(function(canvas) {
-		document.getElementById("canvasOutput").appendChild(canvas);
-		document.getElementsByTagName("canvas")[0].id = "canvas";
-		var image = canvas.toDataURL("image/jpg", 0.1);
-		document.getElementById("download").href = image;
-	});
-	document.getElementById("charList").style.display = "none";
-	document.getElementById("generate").style.display = "none";
-	document.getElementById("revise").style.display = "inline-block";
-	document.getElementById("tableOutput").style.display = "none";
+	if (document.getElementById("optPNG").checked == true) {
+		html2canvas(document.getElementById("tableOutput")).then(function(canvas) {
+		// html2canvas(document.getElementById("tableOutput"), {y: tableOutput.getBoundingClientRect().y}).then(function(canvas) {
+			document.getElementById("canvasOutput").appendChild(canvas);
+			document.getElementsByTagName("canvas")[0].id = "canvas";
+			var image = canvas.toDataURL("image/jpg", 0.5);
+			document.getElementById("download").href = image;
+		});
+		document.getElementById("charList").style.display = "none";
+		document.getElementById("tableOutput").style.display = "none";
+	} else {
+		document.getElementById("charList").style.display = "none";
+	}
 }
 
 function revise() {
 	document.getElementById("charList").style.display = "table";
-	document.getElementById("generate").style.display = "inline-block";
-	document.getElementById("revise").style.display = "none";
-	document.getElementsByTagName("canvas")[0].remove();
+	if (document.getElementsByTagName("canvas")[0] != null) {
+		document.getElementsByTagName("canvas")[0].remove();
+	}
+	document.getElementById("options").scrollIntoView(false);
 	console.log("charList display style has been undone.");
 }
 
