@@ -1,5 +1,6 @@
-button#revise {
-	display: none;
+div#endNotes > p,
+div#endNotes > div {
+	float: left;
 }
 
 input[type="number"] {

@@ -17,10 +17,9 @@
 		<li>Forked / inspired by magic-panda-engineer's <a href="https://magic-panda-engineer.github.io/another_picker/index.html">Another Picker</a></li>
 		<li>不支援Internet Explorer。</li>
 		<li>強烈建議先將遊戲語言轉成英文，再跟名稱排序，最後才填寫資料。(不要問我為什麼遊戲中Bertrand排得比Benedict前)</li>
-		<li>點擊成品以下載圖片。</li>
-		<li>生成需要十數秒時間。</li>
+		<li>直出PNG生成需要十數秒時間，點擊成品可以下載圖片。</li>
 		<li>可以儲存最底的文字方塊內的CSV供日後使用。</li>
-		<li>如果成品想不包含三星角，可以選擇「N/A」。</li>
+		<li>已知iOS有bug，直出PNG有機會截圖出問題。可以改用系統內建的截圖功能。</li>
 	</ol>
 	<table id="charList">
 		<tr>
@@ -1010,11 +1009,20 @@
 		<!-- Excel output ends here -->
 	</table>
 
-	<div id="additional">
+	<div id="endNotes">
 		<p><textarea id="csv" rows="5" cols="50"></textarea>
-		<p><button type="button" id="generate" onclick="generate()">生成</button><button type="button" id="revise" onclick="revise()">修改</button></p>
-		<p><button type="button" id="import" onclick="importCSV()">匯入</button></p>
-		<p><button type="button" id="downloadCSV" onclick="downloadCSV()">儲存</button></p>
+		<div id="buttons">
+			<p><button type="button" id="generate" onclick="generate()">生成</button><br>
+			<button type="button" id="revise" onclick="revise()" disabled>修改</button><br>
+			<button type="button" id="import" onclick="importCSV()">匯入</button><br>
+			<button type="button" id="downloadCSV" onclick="downloadCSV()">儲存</button></p>
+		</div>
+		<div id="options">
+			<p><input type="checkbox" id="opt5" name="toggle5" value="toggle5" checked>顯示5★ + AS<br>
+				<input type="checkbox" id="opt4" name="toggle4" value="toggle4" checked>顯示4★<br>
+				<input type="checkbox" id="opt3" name="toggle3" value="toggle3" checked>顯示3★<br>
+				<input type="checkbox" id="optPNG" name="toPNG" value="toPNG">直出PNG (Beta)<br></p>
+		</div>
 	</div>
 
 	<div id="canvasHandler">
