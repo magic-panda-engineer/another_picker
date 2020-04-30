@@ -2251,7 +2251,7 @@
         img.src = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'></svg>";
         try {
             ctx.drawImage(img, 0, 0);
-            canvas.toDataURL();
+            canvas.toDataURL("image/jpeg", 0.5);
         }
         catch (e) {
             return false;
@@ -2273,7 +2273,7 @@
         ctx.fillStyle = 'rgb(0, 255, 0)';
         ctx.fillRect(0, 0, size, size);
         var img = new Image();
-        var greenImageSrc = canvas.toDataURL();
+        var greenImageSrc = canvas.toDataURL("image/jpeg", 0.5);
         img.src = greenImageSrc;
         var svg = createForeignObjectSVG(size, size, 0, 0, img);
         ctx.fillStyle = 'red';
@@ -5118,7 +5118,7 @@
             if (this.options.inlineImages && canvas.ownerDocument) {
                 var img = canvas.ownerDocument.createElement('img');
                 try {
-                    img.src = canvas.toDataURL();
+                    img.src = canvas.toDataURL("image/jpeg", 0.5);
                     return img;
                 }
                 catch (e) {
