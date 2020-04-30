@@ -65,7 +65,7 @@ function generate() {
 	copyImg(3);
 	
 	document.getElementById("charList").style.display = "none";
-	html2canvas(document.getElementById("tableOutput"), {y: 218}).then(function(canvas) {
+	html2canvas(document.getElementById("tableOutput"), {y: tableOutput.getBoundingClientRect().y}).then(function(canvas) {
 		document.getElementById("canvasOutput").appendChild(canvas);
 		document.getElementsByTagName("canvas")[0].id = "canvas";
 		var image = canvas.toDataURL("image/jpg");
@@ -81,4 +81,5 @@ function reset() {
 	document.getElementById("generate").style.display = "inline-block";
 	document.getElementById("reset").style.display = "none";
 	document.getElementsByTagName("canvas")[0].remove();
+	console.log("charList has been reset.")
 }
