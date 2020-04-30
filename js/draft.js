@@ -73,7 +73,7 @@ function generate() {
 	});
 	document.getElementById("generate").style.display = "none";
 	document.getElementById("reset").style.display = "inline-block";
-	document.getElementById("tableOutput").style.display = "none";
+	// document.getElementById("tableOutput").style.display = "none";
 }
 
 function reset() {
