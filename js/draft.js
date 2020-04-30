@@ -16,11 +16,19 @@ function refreshData(name) {
 	}
 }
 
+function wait(ms){
+	var start = new Date().getTime();
+	var end = start;
+	while(end < start + ms) {
+		end = new Date().getTime();
+	}
+}
+
 function generate() {
 	// Reset existing element, if any
-	document.getElementById("output").style.display = "block";
-	var nodeBr = document.querySelectorAll("table#output br").forEach(e => e.parentNode.removeChild(e));
-	document.querySelectorAll("table#output div").forEach(e => e.parentNode.removeChild(e));
+	document.getElementById("tableOutput").style.display = "block";
+	var nodeBr = document.querySelectorAll("table#tableOutput br").forEach(e => e.parentNode.removeChild(e));
+	document.querySelectorAll("table#tableOutput div").forEach(e => e.parentNode.removeChild(e));
 	var charList = document.querySelectorAll('table#charList tr:not(:first-child)');
 	for (i = 0; i < charList.length; i++) {
 		refreshData(charList[i].id);
@@ -55,14 +63,20 @@ function generate() {
 	copyImg(5);
 	copyImg(4);
 	copyImg(3);
-}
 	
-function convert() {	
-	domtoimage.toJpeg(document.getElementById('output'), { quality: 0.95 })
-		.then(function (dataUrl) {
-			var link = document.createElement('a');
-			link.download = 'my-image-name.jpeg';
-			link.href = dataUrl;
-			link.click();
-		});
+	document.getElementById("charList").style.display = "none";
+	html2canvas(document.getElementById("tableOutput")).then(function(canvas) {
+		document.getElementById("canvasOutput").appendChild(canvas);
+		document.getElementsByTagName("canvas")[0].id = "canvas";
+		var image = canvas.toDataURL("image/jpg");
+		document.getElementById("download").href = image;
+	});
+	document.getElementById("tableOutput").style.display = "none";	
+}
+
+
+function download() {
+	document.getElementsByTagName("canvas")[0].id = "canvas";
+	var image = canvas.toDataURL("image/jpg");
+	document.getElementById("download").href = image;
 }
