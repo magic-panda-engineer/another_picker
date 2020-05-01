@@ -1,10 +1,9 @@
-if (!NodeList.prototype.forEach && Array.prototype.forEach) {
-	NodeList.prototype.forEach = Array.prototype.forEach;
-}
+
+
 
 function refreshData(name) {
 	var LS = name + "_LS";
-	var rank = document.querySelector('input[name =' + CSS.escape(name + "_rank") + ']:checked').value;
+	var rank = document.querySelector('input[name =' + escape(name + "_rank") + ']:checked').value;
 	switch (rank) {
 		case "AS":
 		case "Both":
@@ -25,8 +24,10 @@ function generate() {
 	
 	// Reset existing element, if any
 	document.getElementById("tableOutput").style.display = "table";
-	var nodeBr = document.querySelectorAll("table#tableOutput br").forEach(e => e.parentNode.removeChild(e));
-	document.querySelectorAll("table#tableOutput div").forEach(e => e.parentNode.removeChild(e));
+	var nodeDiv = document.querySelectorAll("table#tableOutput div");
+	for (e = 0; e < nodeDiv.length; e++) {
+		nodeDiv[e].remove();
+	}
 	var charList = document.querySelectorAll('table#charList tr:not(:first-child)');
 	for (i = 0; i < charList.length; i++) {
 		refreshData(charList[i].id);
@@ -38,27 +39,26 @@ function generate() {
 		var displayCheck = document.getElementById("opt" + rank).checked;
 		if (charNodeList.length > 0 && displayCheck == true) {
 			document.getElementById(rank + "-star").style.display = "table-cell";
-			document.getElementById(rank + "-star").innerHTML += "<br>";
+			for (i = 0; i < charNodeList.length; i++) {
+				var rareType = document.querySelector('input[name =' + escape(charNodeList[i].id + "_rank") + ']:checked').value; // Returns 3, 4, 5, AS, Both
+				var LS_value = document.getElementById(charNodeList[i].id + "_LS").value;	// Returns value between 0 and 255
+				var LS_type = document.getElementById(charNodeList[i].id).className;	// Returns Light or Shadow
+				csv.value += "\n" + charNodeList[i].id + ',' + LS_value + ',' + rareType;	// Push value to csv Textarea
+				switch (rareType) {
+					case "Both":
+						document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+						document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+						break;
+					case "AS":
+						document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+						break;
+					default:
+						document.getElementById(rank + "-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+				}
+			p++;
+			}
 		} else {
 			document.getElementById(rank + "-star").style.display = "none";
-		}
-		for (i = 0; i < charNodeList.length; i++) {
-			var rareType = document.querySelector('input[name =' + CSS.escape(charNodeList[i].id + "_rank") + ']:checked').value; // Returns 3, 4, 5, AS, Both
-			var LS_value = document.getElementById(charNodeList[i].id + "_LS").value;	// Returns value between 0 and 255
-			var LS_type = document.getElementById(charNodeList[i].id).className;	// Returns Light or Shadow
-			csv.value += "\n" + charNodeList[i].id + ',' + LS_value + ',' + rareType;	// Push value to csv Textarea
-			switch (rareType) {
-				case "Both":
-					document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
-					document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
-					break;
-				case "AS":
-					document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
-					break;
-				default:
-					document.getElementById(rank + "-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
-			}
-			p++;
 		}
 	}
 	
@@ -72,6 +72,8 @@ function generate() {
 	// Options
 	if (document.getElementById("title").value != "自定義文字") {
 		document.getElementById("tableTitle").innerHTML = document.getElementById("title").value;
+	} else {
+		document.getElementById("tableTitle").innerHTML = "";
 	}
 	if (document.getElementById("optIncNo").checked == true) {
 		document.getElementById("tableTitle").innerHTML += " (" + p + ")";
@@ -79,6 +81,7 @@ function generate() {
 	if (document.getElementById("optPNG").checked == true) {
 		html2canvas(document.getElementById("tableOutput")).then(function(canvas) {
 		// html2canvas(document.getElementById("tableOutput"), {y: tableOutput.getBoundingClientRect().y}).then(function(canvas) {
+		// Scroll up to top in order to avoid corrupted canvas
 			document.getElementById("canvasOutput").appendChild(canvas);
 			document.getElementsByTagName("canvas")[0].id = "canvas";
 			var image = canvas.toDataURL("image/jpg", 0.5);
@@ -120,7 +123,7 @@ function importCSV() {
 				
 				// Checck validity and set rareType
 				var id_rareType = document.getElementsByName(array[0] + "_rank");
-				if (!["0", "3", "4", "5", "AS", "Both"].includes(array[2])) {
+				if (["0", "3", "4", "5", "AS", "Both"].indexOf(array[2]) === -1) {
 					alert("Given data is corrupted: {"+ texts[i] + "} - invalid rank");
 				}
 				for (options = 0; options < id_rareType.length; options++) {
@@ -163,4 +166,10 @@ function downloadCSV() {
 	}
 
 	download(universalBOM + $('#csv').val(), 'collection.csv', 'text/csv;encoding:utf-8');
+}
+
+function newTab() {
+	prog_window = window.open();
+	prog_window.document.write("<html><body><div id='table'></div></body></html>")
+	prog_window.getElementById('table').innerHTML = document.getElementById('tableOutput').innerHTML;
 }
