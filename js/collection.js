@@ -17,7 +17,7 @@ function refreshData(name) {
 }
 
 function generate() {
-	p = 0;
+	var p = 0;
 	document.getElementById("revise").disabled = false;
 	if (document.getElementsByTagName("canvas")[0] != null) {
 		document.getElementsByTagName("canvas")[0].remove();
@@ -69,8 +69,13 @@ function generate() {
 	copyImg(4);
 	copyImg(3);
 	
-	document.getElementById("tableTitle").innerHTML = document.getElementById("title").value;
-	document.getElementById("tableTitle").innerHTML += " (" + p + ")";
+	// Options
+	if (document.getElementById("title").value != "自定義文字") {
+		document.getElementById("tableTitle").innerHTML = document.getElementById("title").value;
+	}
+	if (document.getElementById("optIncNo").checkedd == true) {
+		document.getElementById("tableTitle").innerHTML += " (" + p + ")";
+	}
 	if (document.getElementById("optPNG").checked == true) {
 		html2canvas(document.getElementById("tableOutput")).then(function(canvas) {
 		// html2canvas(document.getElementById("tableOutput"), {y: tableOutput.getBoundingClientRect().y}).then(function(canvas) {

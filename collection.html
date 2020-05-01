@@ -1013,15 +1013,20 @@
 		<p><textarea id="csv" rows="5" cols="50"></textarea>
 		<div id="buttons">
 			<p><button type="button" id="generate" onclick="generate()">生成</button><br>
-			<button type="button" id="revise" onclick="revise()" disabled>修改</button><br>
+			<button type="button" id="revise" onclick="revise()" autocomplete="off" disabled>修改</button><br>
 			<button type="button" id="import" onclick="importCSV()">匯入</button><br>
 			<button type="button" id="downloadCSV" onclick="downloadCSV()">儲存</button></p>
 		</div>
 		<div id="options">
+			<div id="optionsCol1">
 			<p><input type="checkbox" id="opt5" name="toggle5" value="toggle5" checked>顯示5★ + AS<br>
-				<input type="checkbox" id="opt4" name="toggle4" value="toggle4" checked>顯示4★<br>
-				<input type="checkbox" id="opt3" name="toggle3" value="toggle3" checked>顯示3★<br>
-				<input type="checkbox" id="optPNG" name="toPNG" value="toPNG">直出PNG (Beta)<br></p>
+			<input type="checkbox" id="opt4" name="toggle4" value="toggle4" checked>顯示4★<br>
+			<input type="checkbox" id="opt3" name="toggle3" value="toggle3" checked>顯示3★<br>
+			<input type="checkbox" id="optIncNo" name="optIncNo" value="optIncNo">標題包括角色數<br></p>
+			</div>
+			<div id="optionsCol2">
+			<p><input type="checkbox" id="optPNG" name="toPNG" value="toPNG">直出PNG (Beta)<br></p>
+			</div>				
 		</div>
 	</div>
 
