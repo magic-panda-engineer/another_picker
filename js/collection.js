@@ -73,7 +73,7 @@ function generate() {
 	if (document.getElementById("title").value != "自定義文字") {
 		document.getElementById("tableTitle").innerHTML = document.getElementById("title").value;
 	}
-	if (document.getElementById("optIncNo").checkedd == true) {
+	if (document.getElementById("optIncNo").checked == true) {
 		document.getElementById("tableTitle").innerHTML += " (" + p + ")";
 	}
 	if (document.getElementById("optPNG").checked == true) {
