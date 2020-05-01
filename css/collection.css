@@ -1,6 +1,11 @@
-div#endNotes > p,
-div#endNotes > div {
-	float: left;
+div#buttons,
+div#options {
+	display: flex;
+}
+
+div#endNotes {
+	display: flex;
+	flex-direction: row;
 }
 
 input[type="number"] {
@@ -71,6 +76,7 @@ textarea#csv {
 	font-family: sans-serif;
     font-size: smaller;
 	float: left;
+	resize: none;
 }
 
 th {
