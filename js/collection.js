@@ -118,7 +118,7 @@ function importCSV() {
 					alert("Given data is corrupted: {" + texts[i] + "} - invalid LS value");
 				}
 
-				// Checck validity and set rareType
+				// Check validity and set rareType
 				var id_rareType = document.getElementsByName(array[0] + "_rank");
 				if (["0", "3", "4", "5", "AS", "Both"].indexOf(array[2]) === -1) {
 					alert("Given data is corrupted: {" + texts[i] + "} - invalid rank");

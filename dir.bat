@@ -1,1 +1,1 @@
-dir img\ /o:N /b *.jpg | findstr /i /v "_AS.jpg" > charList.txt
+dir img\ /o:N /b | (findstr /i ".jpg" | findstr /i /v "_AS.jpg") > charList.txt

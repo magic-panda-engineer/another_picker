@@ -5,7 +5,6 @@ Amy.jpg
 Anabel.jpg
 Asia.jpg
 Azami.jpg
-banner.png
 Benedict.jpg
 Bertrand.jpg
 Biaka.jpg
@@ -36,7 +35,7 @@ Felmina.jpg
 Foran.jpg
 Galliard.jpg
 Gariyu.jpg
-Good Macky.jpg
+Good-Macky.jpg
 Guildna.jpg
 Helena.jpg
 Hismena.jpg
@@ -113,7 +112,6 @@ Toole.jpg
 Toova.jpg
 Tsubame.jpg
 Tsukiha.jpg
-type
 Urania.jpg
 Uuo.jpg
 Veina.jpg
