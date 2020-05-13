@@ -1,3 +1,11 @@
+button {
+	width: 50px;
+}
+
+button.en {
+	width: 75px;
+}
+
 div#buttons,
 div#options {
 	display: flex;
@@ -14,6 +22,30 @@ input[type="number"] {
 
 input[type="radio"]:not(:first-child) {
 	margin-left: 10px;
+}
+
+a#toZh,
+ol#note-en {
+	display: none;
+}
+
+span#sumLS,
+span#ratioLS {
+	display: none;
+	float: right;
+	padding-right: 12px;
+}
+
+span[id$=LS5] {
+	color: gold;
+}
+
+span[id$=LS4] {
+	color: silver;
+}
+
+span[id$=LS3] {
+	color: green;
 }
 
 table#canvasHandler {
@@ -74,7 +106,7 @@ table#tableOutput {
 
 textarea#csv {
 	font-family: sans-serif;
-    font-size: smaller;
+	font-size: smaller;
 	float: left;
 	resize: none;
 }
