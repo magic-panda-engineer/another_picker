@@ -93,15 +93,21 @@ function generate() {
 			if (AS == true) {
 				document.getElementById("5-star").style.display = "table-cell";
 				document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
-				csv.value += "\n" + charList[i].id + "," + LS_value + "," + "A" + rank; // Push value to csv Textarea | A0, A3, A4, A5 for AS characters
+				csv.value += "\n" + charList[i].id + "," + LS_value + "," + "A" + rank; // Push value to csv Textarea | A3, A4, A5 for AS characters
 			} else {
 				if (!(LS_value == "" && rank == "0")) { 
 					csv.value += "\n" + charList[i].id + "," + LS_value + "," + rank; // Push value to csv Textarea
+				} else if (LS_value > 0) {
+					console.log("Invalid input found: {" + charList[i].id + "," + LS_value + "," + rank + "} - Given L/S value without rank.");
 				}
 			}
-		} else if (LS_value > 0) {
-			console.log("Invalid input found: {" + charList[i].id + "," + LS_value + "," + rank + "} - Given L/S value without rank.");
+		} else if (AS == true) {
+			document.getElementById("5-star").style.display = "table-cell";
+			document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+			csv.value += "\n" + charList[i].id + "," + LS_value + "," + "A0"; // Push value to csv Textarea
+			p++;
 		}
+		
 	}
 	
 	// Update dreams' light/shadow values
