@@ -10,7 +10,8 @@ function toEn() {
 	document.getElementById("lab_opt5").lastChild.data = "Show 5★ + AS";
 	document.getElementById("lab_opt4").lastChild.data = "Show 4★";
 	document.getElementById("lab_opt3").lastChild.data = "Show 3★";
-	document.getElementById("lab_optIncNo").lastChild.data = "Title include number of characters";
+	document.getElementById("lab_optIncNo").lastChild.data = "Title includes number of characters";
+	document.getElementById("lab_optIncDate").lastChild.data = "Title includes generation date";
 	document.getElementById("lab_optSumLS").lastChild.data = "Calculate dreams' character light/shadow sum";
 	document.getElementById("lab_optRatioLS").lastChild.data = "Calculate dreams' character light/shadow ratio";
 	document.getElementById("lab_optPNG").lastChild.data = "Direct PNG output (Does not support iPhone)";
@@ -49,10 +50,10 @@ function generate() {
 	// Options and process
 	if (document.getElementById("title").value != "自定義文字") {
 		document.getElementById("tableTitle").innerHTML = document.getElementById("title").value;
-		csv.value = 'Id,LS_value,rarity,title:' + document.getElementById("title").value; // Header line in CSV Textarea w/ title
+		document.getElementById("csv").value = 'Id,LS_value,rarity,title:' + document.getElementById("tableTitle").innerHTML; // Header line in CSV Textarea w/ title
 	} else {
 		document.getElementById("tableTitle").innerHTML = "";
-		csv.value = 'Id,LS_value,rarity'; // Header line in CSV Textarea w/o
+		document.getElementById("csv").value = 'Id,LS_value,rarity'; // Header line in CSV Textarea w/o
 	}
 
 	scroll(0, 0); // Scroll to top to avoid html2canvas generating blank image
@@ -93,10 +94,10 @@ function generate() {
 			if (AS == true) {
 				document.getElementById("5-star").style.display = "table-cell";
 				document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
-				csv.value += "\n" + charList[i].id + "," + LS_value + "," + "A" + rank; // Push value to csv Textarea | A3, A4, A5 for AS characters
+				document.getElementById("csv").value += "\n" + charList[i].id + "," + LS_value + "," + "A" + rank; // Push value to csv Textarea | A3, A4, A5 for AS characters
 			} else {
 				if (!(LS_value == "" && rank == "0")) {
-					csv.value += "\n" + charList[i].id + "," + LS_value + "," + rank; // Push value to csv Textarea
+					document.getElementById("csv").value += "\n" + charList[i].id + "," + LS_value + "," + rank; // Push value to csv Textarea
 				} else if (LS_value > 0) {
 					console.log("Invalid input found: {" + charList[i].id + "," + LS_value + "," + rank + "} - Given L/S value without rank.");
 				}
@@ -104,7 +105,7 @@ function generate() {
 		} else if (AS == true) {
 			document.getElementById("5-star").style.display = "table-cell";
 			document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
-			csv.value += "\n" + charList[i].id + "," + LS_value + "," + "A0"; // Push value to csv Textarea
+			document.getElementById("csv").value += "\n" + charList[i].id + "," + LS_value + "," + "A0"; // Push value to csv Textarea
 			p++;
 		}
 
@@ -124,7 +125,12 @@ function generate() {
 
 	// Display population number per setting
 	if (document.getElementById("optIncNo").checked == true) {
-		document.getElementById("tableTitle").innerHTML += " (" + p + ")";
+		document.getElementById("tableTitle").innerHTML += " (&#128101; " + p + ")";
+	}
+
+	// Display input date per setting
+	if (document.getElementById("optIncDate").checked == true) {
+		document.getElementById("tableTitle").innerHTML += " (&#128197;" + new Date().toISOString().slice(0, 10) + ")";
 	}
 
 	// Convert sumLS to ratioLS
@@ -184,12 +190,19 @@ function importCSV() {
 		charAS[i].checked = false;
 	}
 
+	// Remove optIncNo and optIncDate if checked
+	// if (document.getElementById("optIncDate").checked == true) {
+	// if (substr(0, t.lastIndexOf("("));
+
 	// Legacy converter
 	var textArea = document.getElementById("csv").value;
 	if (textArea.indexOf("AS") > 0 || textArea.indexOf("Both") > 0) {
 		console.log("Legacy CSV format found.");
-		textArea = textArea.replace(/AS/g, "A0").replace(/Both/g, "A5");
-		document.getElementById("csv").value = textArea;
+		document.getElementById("csv").value = textArea.replace(/AS/g, "A0").replace(/Both/g, "A5");
+	}
+	if (textArea.indexOf("Nopaew") > 0) {
+		console.log("Legacy CSV Id found.");
+		document.getElementById("csv").value = textArea.replace(/Nopaew/g, "Poporo");
 	}
 
 	var lines = $('#csv').val().split(/\n/)
