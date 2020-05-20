@@ -14,6 +14,8 @@ function toEn() {
 	document.getElementById("lab_optSumLS").lastChild.data = "Calculate dreams' character light/shadow sum";
 	document.getElementById("lab_optRatioLS").lastChild.data = "Calculate dreams' character light/shadow ratio";
 	document.getElementById("lab_optPNG").lastChild.data = "Direct PNG output (Does not support iPhone)";
+	document.getElementById("ratioLS").firstChild.data = " Dreams' character L/S ratio [";
+	document.getElementById("sumLS").firstChild.data = " Dreams' character L/S sum [";
 	var buttonList = document.querySelectorAll("button");
 	for (i = 0; i < buttonList.length; i++) {
 		buttonList[i].style = "width: 75px";
@@ -22,21 +24,12 @@ function toEn() {
 
 function refreshData(name) {
 	var LS = name + "_LS";
-	console.log('input[name="' + name + "_rank" + '"]:checked');
-	var rank = document.querySelector('input[name="' + name + "_rank" + '"]:checked').value;
-	switch (rank) {
-		case "AS":
-		case "Both":
-		case "5":
-			document.getElementById(name).setAttribute("data-rank", "5");
-			break;
-		default:
-			document.getElementById(name).setAttribute("data-rank", rank);
-	}
+	var rank = document.querySelector('input[type="radio"][name="' + name + "_rank" + '"]:checked').value;
+	document.getElementById(name).setAttribute("data-rank", rank);
 }
 
 function generate() {
-	var p = 0;
+	var p = 0; // population
 	document.getElementById("revise").disabled = false;
 	if (document.getElementsByTagName("canvas")[0] != null) {
 		document.getElementsByTagName("canvas")[0].remove();
@@ -48,79 +41,107 @@ function generate() {
 	for (e = 0; e < nodeDiv.length; e++) {
 		nodeDiv[e].remove();
 	}
-	var charList = document.querySelectorAll('table#charList tr:not(:first-child)');
+	var charList = document.querySelectorAll('table#charList tbody tr');
 	for (i = 0; i < charList.length; i++) {
 		refreshData(charList[i].id);
 	}
 
+	// Options and process
+	if (document.getElementById("title").value != "自定義文字") {
+		document.getElementById("tableTitle").innerHTML = document.getElementById("title").value;
+		csv.value = 'Id,LS_value,rarity,title:'+document.getElementById("title").value; // Header line in CSV Textarea w/ title
+	} else {
+		document.getElementById("tableTitle").innerHTML = "";
+		csv.value = 'Id,LS_value,rarity'; // Header line in CSV Textarea w/o
+	}
+
+	scroll(0, 0); // Scroll to top to avoid html2canvas generating blank image
+	var sum5 = 0;
+	var sum4 = 0;
+	var sum3 = 0;
+	for (rank = 5; rank >= 3; rank--) {
+		document.getElementById(rank + "-star").style.display = "none";
+	}
+
 	// Generate images in the template table
-	function copyImg(rank) {
-		var charNodeList = document.querySelectorAll('tr[data-rank = "' + rank + '"]'); // Returns a nodeList of characters with given rank
-		var displayCheck = document.getElementById("opt" + rank).checked;
-		var sumLS = 0;
-		if (charNodeList.length > 0 && displayCheck == true) {
-			document.getElementById(rank + "-star").style.display = "table-cell";
-			for (i = 0; i < charNodeList.length; i++) {
-				var rareType = document.querySelector('input[name =' + escape(charNodeList[i].id + "_rank") + ']:checked').value; // Returns 3, 4, 5, AS, Both
-				var LS_value = document.getElementById(charNodeList[i].id + "_LS").value; // Returns value between 0 and 255
-				var LS_type = document.getElementById(charNodeList[i].id).classList[0]; // Returns Light or Shadow
-				csv.value += "\n" + charNodeList[i].id + ',' + LS_value + ',' + rareType; // Push value to csv Textarea
-				switch (rareType) {
-					case "Both":
-						document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
-						document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+	for (i = 0; i < charList.length; i++) {
+		var rank = charList[i].dataset.rank;
+		var AS = document.querySelector('input[type="checkbox"][name="' + escape(charList[i].id + "_rank") + '"]').checked;
+		var LS_value = parseInt(document.getElementById(charList[i].id + "_LS").value); // Returns value between 0 and 255
+		var LS_type = document.getElementById(charList[i].id).classList[0]; // Returns Light or Shadow
+		if (document.getElementById(charList[i].id).classList[1] == "Dream") {
+			if (AS == true) {
+				sum5 += parseInt(LS_value);
+			} else {
+				switch (rank) {
+					case "5":
+						sum5 += LS_value;
 						break;
-					case "AS":
-						document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+					case "4":
+						sum4 += LS_value;
 						break;
-					default:
-						document.getElementById(rank + "-star").innerHTML += '<div class="container"><img src="img/' + charNodeList[i].id + '.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+					case "3":
+						sum3 += LS_value;
+						break;
 				}
-				if (document.getElementById(charNodeList[i].id).classList[1] == "Dream") {
-					sumLS += parseInt(LS_value);
-				}
-				p++;
 			}
-			document.getElementById("sumLS" + rank).innerHTML = sumLS;
-		} else {
+		}
+		if (rank != "0") {
+			document.getElementById(rank + "-star").style.display = "table-cell";
+			document.getElementById(rank + "-star").innerHTML += '<div class="container"><img src="img/' + charList[i].id + '.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+			p++;
+			if (AS == true) {
+				document.getElementById("5-star").style.display = "table-cell";
+				document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+				csv.value += "\n" + charList[i].id + "," + LS_value + "," + "A" + rank; // Push value to csv Textarea | A3, A4, A5 for AS characters
+			} else {
+				if (!(LS_value == "" && rank == "0")) { 
+					csv.value += "\n" + charList[i].id + "," + LS_value + "," + rank; // Push value to csv Textarea
+				} else if (LS_value > 0) {
+					console.log("Invalid input found: {" + charList[i].id + "," + LS_value + "," + rank + "} - Given L/S value without rank.");
+				}
+			}
+		} else if (AS == true) {
+			document.getElementById("5-star").style.display = "table-cell";
+			document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
+			csv.value += "\n" + charList[i].id + "," + LS_value + "," + "A0"; // Push value to csv Textarea
+			p++;
+		}
+		
+	}
+	
+	// Update dreams' light/shadow values
+	document.getElementById("sumLS5").innerHTML = sum5;
+	document.getElementById("sumLS4").innerHTML = sum4;
+	document.getElementById("sumLS3").innerHTML = sum3;
+	
+	// Hide unwanted output
+	for (rank = 5; rank >= 3; rank--) {
+		if (document.getElementById("opt" + rank).checked == false) {
 			document.getElementById(rank + "-star").style.display = "none";
 		}
 	}
 
-	
-
-	// Options and process
-	if (document.getElementById("title").value != "自定義文字") {
-		document.getElementById("tableTitle").innerHTML = document.getElementById("title").value;
-		csv.value = 'Id,LS_value,rareType,title:'+document.getElementById("title").value; // Header line in CSV Textarea w/ title
-	} else {
-		document.getElementById("tableTitle").innerHTML = "";
-		csv.value = 'Id,LS_value,rareType'; // Header line in CSV Textarea w/o
-	}
-	
-	scroll(0, 0); // Scroll to top to avoid html2canvas generating blank image
-	copyImg(5);
-	copyImg(4);
-	copyImg(3);
-	
+	// Display population number per setting
 	if (document.getElementById("optIncNo").checked == true) {
 		document.getElementById("tableTitle").innerHTML += " (" + p + ")";
 	}
 	
 	// Convert sumLS to ratioLS
-	document.getElementById("ratioLS5").innerHTML = parseFloat(document.getElementById("sumLS5").innerHTML/document.getElementById("sumLS3").innerHTML).toFixed(2);
-	document.getElementById("ratioLS4").innerHTML = parseFloat(document.getElementById("sumLS4").innerHTML/document.getElementById("sumLS3").innerHTML).toFixed(2);
+	document.getElementById("ratioLS5").innerHTML = parseFloat(parseFloat(document.getElementById("sumLS5").innerHTML/document.getElementById("sumLS3").innerHTML).toFixed(2));
+	document.getElementById("ratioLS4").innerHTML = parseFloat(parseFloat(document.getElementById("sumLS4").innerHTML/document.getElementById("sumLS3").innerHTML).toFixed(2));
 	if (document.getElementById("optSumLS").checked == true) {
 		document.getElementById("sumLS").style.display = "block";
 	} else {
 		document.getElementById("sumLS").style.display = "none";
 	}
-	if (document.getElementById("optRatioLS").checked == true) {
-		document.getElementById("ratioLS").style.display = "block";
-	} else {
+	if (document.getElementById("optRatioLS").checked != true || document.getElementById("sumLS3").innerHTML == "0") { // also hide if no 3-star input
 		document.getElementById("ratioLS").style.display = "none";
+	} else {
+		document.getElementById("ratioLS").style.display = "block";
 	}
 	
+	// Convert HTML to PNG
 	if (document.getElementById("optPNG").checked == true) {
 		html2canvas(document.getElementById("tableOutput")).then(function(canvas) {
 			// html2canvas(document.getElementById("tableOutput"), {y: tableOutput.getBoundingClientRect().y}).then(function(canvas) {
@@ -147,7 +168,30 @@ function revise() {
 }
 
 function importCSV() {
-	var lines = $('#csv').val().split(/\n/);
+	// Wipe existing inputs
+	var charLS = document.querySelectorAll("tbody tr td input[type='number']");
+	for (i = 0; i < charLS.length; i++) {
+		charLS[i].value = "";
+	}
+	var charRarity = document.querySelectorAll("tbody tr td input[type='radio']")	;
+	for (i = 0; i < charRarity.length; i++) {
+		if (charRarity[i].value == "0") {
+			charRarity[i].checked = true;
+		}
+	}
+	var charAS = document.querySelectorAll("tbody tr td input[type='checkbox']");
+	for (i = 0; i < charAS.length; i++) {
+		charAS[i].checked = false;
+	}
+	
+	var textArea = document.getElementById("csv").value;
+	if (textArea.indexOf("AS") > 0 || textArea.indexOf("Both") > 0) {
+		console.log("Legacy CSV format found.");
+		textArea = textArea.replace(/AS/g, "A0").replace(/Both/g, "A5");
+		document.getElementById("csv").value = textArea;
+	}
+	
+	var lines = $('#csv').val().split(/\n/)
 	var texts = [];
 		
 	for (i = 0; i < lines.length; i++) {
@@ -181,19 +225,43 @@ function importCSV() {
 				alert("Given data is corrupted: {" + texts[i] + "} - invalid LS value");
 			}
 
-			// Check validity and set rareType
-			var id_rareType = document.getElementsByName(array[0] + "_rank");
-			if (["0", "3", "4", "5", "AS", "Both"].indexOf(array[2]) === -1) {
-				alert("Given data is corrupted: {" + texts[i] + "} - invalid rank");
+			// Check validity and set rarity
+			var id_rarity = document.querySelectorAll('input[type="radio"][name="' + escape(array[0] + "_rank") + '"]');
+			if (["3", "4", "5", "A0", "A3", "A4", "A5", "AS", "Both"].indexOf(array[2]) === -1) {
+				alert("Given data is corrupted: {" + texts[i] + "} - invalid rank"); // AS and Both for legacy compatibility
 			}
-			for (options = 0; options < id_rareType.length; options++) {
-				if (id_rareType[options].value == array[2]) {
-					if (id_rareType[options].disabled == false) {
-						id_rareType[options].checked = true;
+			for (options = 0; options < id_rarity.length; options++) {
+				
+				// Import AS info, then remove AS indicator in array
+				if (array[2].charAt(0) == "A") {
+					if (document.querySelector("input[type='checkbox'][name='" + escape(array[0] + "_rank") + "']").disabled == false) {
+						document.querySelector("input[type='checkbox'][name='" + escape(array[0] + "_rank") + "']").checked = true;
 					} else {
-						alert("Given data is corrupted: {" + texts[i] + "} - unavailable rank");
+						alert("Given data is corrupted: {" + texts[i] + "} - unavailable AS rank");
+						console.log("Given data is corrupted: {" + texts[i] + "} - unavailable AS rank");
+						console.log(document.querySelector("input[type='checkbox'][name='" + escape(array[0] + "_rank") + "']").disabled);
 					}
-				}
+					if (id_rarity[options].value == array[2].charAt(1)) {
+						if (id_rarity[options].disabled == false) {
+							id_rarity[options].checked = true;
+						} else {
+							alert("Given data is corrupted: {" + texts[i] + "} - unavailable rank");
+							console.log("Given data is corrupted: {" + texts[i] + "} - unavailable rank");
+							console.log(id_rarity[options].value == array[2].charAt(1));
+						}
+					}
+				} else {
+				// Import rarity info for non-AS characters
+					if (id_rarity[options].value == array[2]) {
+						if (id_rarity[options].disabled == false) {
+							id_rarity[options].checked = true;
+							} else {
+								alert("Given data is corrupted: {" + texts[i] + "} - unavailable rank");
+								console.log("Given data is corrupted: {" + texts[i] + "} - unavailable rank");
+								console.log((id_rarity[options].disabled == false));
+								}
+							}
+						}
 			}
 		} else {
 			j = 1; // Enable the above script after header line.

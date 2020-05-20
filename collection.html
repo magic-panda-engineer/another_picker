@@ -5,20 +5,18 @@
 	<title>Another Eden Character Collection Generator (inspired by magic-panda-engineer's Another Picker)</title>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="css/collection.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="js/html2canvas.js"></script>
 	<script src="js/collection.js"></script>
 </head>
 
-
 <body>
-	<p>Last updated: 13/05/2020 by Snowdome<br>
-		<a id="toEn" href=# onClick="toEn()">Switch to English</a><a id="toZh" href=# onClick="location.reload();">重設</a></p>
+	<p>Last updated: 18/05/2020 by Snowdome<br> <a id="toEn" href=# onClick="toEn()">Switch to English</a><a id="toZh" href=# onClick="location.reload();">重設</a></p>
 	<ol id="note-zh">
 		<li>Forked / inspired by magic-panda-engineer's <a href="https://magic-panda-engineer.github.io/another_picker/index.html">Another Picker</a></li>
 		<li>強烈建議先將遊戲語言轉成英文，再跟名稱排序，最後才填寫資料。(不要問我為什麼遊戲中Bertrand排得比Benedict前)</li>
 		<li>可以儲存最底的文字方塊內的CSV供日後使用。</li>
-		<li>如果以<a href="https://forum.gamer.com.tw/C.php?bsn=29220&snA=3676">普池的機率</a>計算天值比，<span id="zhaLS5">5星</span> : <span id="zhaLS4">4星</span> : <span id="zhaLS3a">3星</span>的比例大約為<span id="zhbLS5">2.77</span> : <span id="zhbLS4">6.35</span> : <span id="zhbLS3">1</span> (非洲人表示...)</li>
+		<li>如果以<a href="https://forum.gamer.com.tw/C.php?bsn=29220&snA=3676">普池的機率</a>計算天值比，<span id="zhaLS5">5星</span> : <span id="zhaLS4">4星</span> : <span id="zhaLS3">3星</span>的比例大約為<span id="zhbLS5">2.77</span> : <span id="zhbLS4">6.35</span> : <span id="zhbLS3">1</span> (非洲人表示...)</li>
 		<li>直出PNG生成需要十數秒時間，點擊成品可以下載圖片。</li>
 		<li>已知iPad有bug，直出PNG有機會截圖出問題。可以改用系統內建的截圖功能或不顯示3星角以減少截圖尺寸。</li>
 	</ol>
@@ -31,1025 +29,1019 @@
 		<li>It is known that direct output using iPad may generate corrupted canvas. You may use the system built-in screenshot or try to exclude 3-star characters to reduce image dimensions.</li>
 	</ol>
 	<table id="charList">
-		<tr>
-			<th colspan="3"><Input type="text" id="title" value="自定義文字"></th>
-			<th>Attack/Zone type</th>
-			<th>Light/Shadow</th>
-			<th>Rank</th>
-		</tr>
-		<!-- Insert Excel output here-->
-		<tr id='Akane' class='Light Dream'>
-			<td><img src='img/Akane.jpg'><img src='img/Akane_AS.jpg'></td>
-			<td>Akane</td>
-			<td>茜</td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
-			<td><input type='number' id='Akane_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Akane_rank' value='0' checked=''>N/A <input type='radio' name='Akane_rank' value='3'>3 <input type='radio' name='Akane_rank' value='4'>4 <input type='radio' name='Akane_rank' value='5' disabled=''>5 <input type='radio' name='Akane_rank' value='AS'>AS <input type='radio' name='Akane_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Aldo' class='Light Free'>
-			<td><img src='img/Aldo.jpg'></td>
-			<td>Aldo</td>
-			<td>阿爾德</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
-			<td><input type='number' id='Aldo_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Aldo_rank' value='0' checked=''>N/A <input type='radio' name='Aldo_rank' value='3'>3 <input type='radio' name='Aldo_rank' value='4'>4 <input type='radio' name='Aldo_rank' value='5'>5 <input type='radio' name='Aldo_rank' value='AS' disabled=''>AS <input type='radio' name='Aldo_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Altena' class='Shadow Free'>
-			<td><img src='img/Altena.jpg'></td>
-			<td>Altena</td>
-			<td>阿露緹娜</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/null_slash.png'></td>
-			<td><input type='number' id='Altena_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Altena_rank' value='0' checked=''>N/A <input type='radio' name='Altena_rank' value='3' disabled=''>3 <input type='radio' name='Altena_rank' value='4' disabled=''>4 <input type='radio' name='Altena_rank' value='5'>5 <input type='radio' name='Altena_rank' value='AS' disabled=''>AS <input type='radio' name='Altena_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Amy' class='Light Free'>
-			<td><img src='img/Amy.jpg'></td>
-			<td>Amy</td>
-			<td>艾米</td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/wind_blunt.png'></td>
-			<td><input type='number' id='Amy_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Amy_rank' value='0' checked=''>N/A <input type='radio' name='Amy_rank' value='3'>3 <input type='radio' name='Amy_rank' value='4'>4 <input type='radio' name='Amy_rank' value='5'>5 <input type='radio' name='Amy_rank' value='AS' disabled=''>AS <input type='radio' name='Amy_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Anabel' class='Light Dream'>
-			<td><img src='img/Anabel.jpg'></td>
-			<td>Anabel</td>
-			<td>安娜貝爾</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/water_slash.png'><img src='img/type/water_zone.png'></td>
-			<td><input type='number' id='Anabel_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Anabel_rank' value='0' checked=''>N/A <input type='radio' name='Anabel_rank' value='3' disabled=''>3 <input type='radio' name='Anabel_rank' value='4'>4 <input type='radio' name='Anabel_rank' value='5'>5 <input type='radio' name='Anabel_rank' value='AS' disabled=''>AS <input type='radio' name='Anabel_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Asia' class='Light Dream'>
-			<td><img src='img/Asia.jpg'></td>
-			<td>Asia</td>
-			<td>艾希雅</td>
-			<td><img src='img/type/null_pierce.png'></td>
-			<td><input type='number' id='Asia_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Asia_rank' value='0' checked=''>N/A <input type='radio' name='Asia_rank' value='3'>3 <input type='radio' name='Asia_rank' value='4' disabled=''>4 <input type='radio' name='Asia_rank' value='5' disabled=''>5 <input type='radio' name='Asia_rank' value='AS' disabled=''>AS <input type='radio' name='Asia_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Azami' class='Light Free'>
-			<td><img src='img/Azami.jpg'></td>
-			<td>Azami</td>
-			<td>阿佐美</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Azami_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Azami_rank' value='0' checked=''>N/A <input type='radio' name='Azami_rank' value='3' disabled=''>3 <input type='radio' name='Azami_rank' value='4'>4 <input type='radio' name='Azami_rank' value='5'>5 <input type='radio' name='Azami_rank' value='AS' disabled=''>AS <input type='radio' name='Azami_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Benedict' class='Shadow Dream'>
-			<td><img src='img/Benedict.jpg'></td>
-			<td>Benedict</td>
-			<td>貝內迪特</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Benedict_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Benedict_rank' value='0' checked=''>N/A <input type='radio' name='Benedict_rank' value='3'>3 <input type='radio' name='Benedict_rank' value='4'>4 <input type='radio' name='Benedict_rank' value='5' disabled=''>5 <input type='radio' name='Benedict_rank' value='AS' disabled=''>AS <input type='radio' name='Benedict_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Bertrand' class='Light Dream'>
-			<td><img src='img/Bertrand.jpg'></td>
-			<td>Bertrand</td>
-			<td>貝特朗 </td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'></td>
-			<td><input type='number' id='Bertrand_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Bertrand_rank' value='0' checked=''>N/A <input type='radio' name='Bertrand_rank' value='3' disabled=''>3 <input type='radio' name='Bertrand_rank' value='4'>4 <input type='radio' name='Bertrand_rank' value='5'>5 <input type='radio' name='Bertrand_rank' value='AS' disabled=''>AS <input type='radio' name='Bertrand_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Biaka' class='Shadow Dream'>
-			<td><img src='img/Biaka.jpg'></td>
-			<td>Biaka</td>
-			<td>維婭卡 </td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/wind_blunt.png'></td>
-			<td><input type='number' id='Biaka_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Biaka_rank' value='0' checked=''>N/A <input type='radio' name='Biaka_rank' value='3' disabled=''>3 <input type='radio' name='Biaka_rank' value='4'>4 <input type='radio' name='Biaka_rank' value='5'>5 <input type='radio' name='Biaka_rank' value='AS' disabled=''>AS <input type='radio' name='Biaka_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Bivette' class='Light Dream'>
-			<td><img src='img/Bivette.jpg'></td>
-			<td>Bivette</td>
-			<td>碧薇特</td>
-			<td><img src='img/type/fire_null.png'></td>
-			<td><input type='number' id='Bivette_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Bivette_rank' value='0' checked=''>N/A <input type='radio' name='Bivette_rank' value='3'>3 <input type='radio' name='Bivette_rank' value='4'>4 <input type='radio' name='Bivette_rank' value='5' disabled=''>5 <input type='radio' name='Bivette_rank' value='AS' disabled=''>AS <input type='radio' name='Bivette_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Breeno' class='Shadow Dream'>
-			<td><img src='img/Breeno.jpg'></td>
-			<td>Breeno</td>
-			<td>布里諾</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
-			<td><input type='number' id='Breeno_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Breeno_rank' value='0' checked=''>N/A <input type='radio' name='Breeno_rank' value='3'>3 <input type='radio' name='Breeno_rank' value='4'>4 <input type='radio' name='Breeno_rank' value='5' disabled=''>5 <input type='radio' name='Breeno_rank' value='AS' disabled=''>AS <input type='radio' name='Breeno_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Bria' class='Light Dream'>
-			<td><img src='img/Bria.jpg'></td>
-			<td>Bria</td>
-			<td>布利亞</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
-			<td><input type='number' id='Bria_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Bria_rank' value='0' checked=''>N/A <input type='radio' name='Bria_rank' value='3'>3 <input type='radio' name='Bria_rank' value='4' disabled=''>4 <input type='radio' name='Bria_rank' value='5' disabled=''>5 <input type='radio' name='Bria_rank' value='AS' disabled=''>AS <input type='radio' name='Bria_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Cerrine' class='Light Free'>
-			<td><img src='img/Cerrine.jpg'></td>
-			<td>Cerrine</td>
-			<td>思琳</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'><img src='img/type/earth_blunt.png'></td>
-			<td><input type='number' id='Cerrine_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Cerrine_rank' value='0' checked=''>N/A <input type='radio' name='Cerrine_rank' value='3' disabled=''>3 <input type='radio' name='Cerrine_rank' value='4'>4 <input type='radio' name='Cerrine_rank' value='5'>5 <input type='radio' name='Cerrine_rank' value='AS' disabled=''>AS <input type='radio' name='Cerrine_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Cetie' class='Light Dream'>
-			<td><img src='img/Cetie.jpg'><img src='img/Cetie_AS.jpg'></td>
-			<td>Cetie</td>
-			<td>謝提</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/fire_pierce.png'><img src='img/type/fire_blunt.png'></td>
-			<td><input type='number' id='Cetie_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Cetie_rank' value='0' checked=''>N/A <input type='radio' name='Cetie_rank' value='3' disabled=''>3 <input type='radio' name='Cetie_rank' value='4'>4 <input type='radio' name='Cetie_rank' value='5'>5 <input type='radio' name='Cetie_rank' value='AS'>AS <input type='radio' name='Cetie_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Chiyo' class='Light Dream'>
-			<td><img src='img/Chiyo.jpg'></td>
-			<td>Chiyo</td>
-			<td>千代</td>
-			<td><img src='img/type/earth_null.png'></td>
-			<td><input type='number' id='Chiyo_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Chiyo_rank' value='0' checked=''>N/A <input type='radio' name='Chiyo_rank' value='3'>3 <input type='radio' name='Chiyo_rank' value='4'>4 <input type='radio' name='Chiyo_rank' value='5' disabled=''>5 <input type='radio' name='Chiyo_rank' value='AS' disabled=''>AS <input type='radio' name='Chiyo_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Ciel' class='Light Dream'>
-			<td><img src='img/Ciel.jpg'></td>
-			<td>Ciel</td>
-			<td>西雅爾</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'></td>
-			<td><input type='number' id='Ciel_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Ciel_rank' value='0' checked=''>N/A <input type='radio' name='Ciel_rank' value='3'>3 <input type='radio' name='Ciel_rank' value='4'>4 <input type='radio' name='Ciel_rank' value='5'>5 <input type='radio' name='Ciel_rank' value='AS' disabled=''>AS <input type='radio' name='Ciel_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Claude' class='Light Dream'>
-			<td><img src='img/Claude.jpg'><img src='img/Claude_AS.jpg'></td>
-			<td>Claude</td>
-			<td>克勞特</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/wind_pierce.png'><img src='img/type/wind_zone.png'></td>
-			<td><input type='number' id='Claude_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Claude_rank' value='0' checked=''>N/A <input type='radio' name='Claude_rank' value='3' disabled=''>3 <input type='radio' name='Claude_rank' value='4'>4 <input type='radio' name='Claude_rank' value='5'>5 <input type='radio' name='Claude_rank' value='AS'>AS <input type='radio' name='Claude_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Ctos' class='Light Dream'>
-			<td><img src='img/Ctos.jpg'></td>
-			<td>Ctos</td>
-			<td>古拓斯</td>
-			<td><img src='img/type/null_blunt.png'></td>
-			<td><input type='number' id='Ctos_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Ctos_rank' value='0' checked=''>N/A <input type='radio' name='Ctos_rank' value='3'>3 <input type='radio' name='Ctos_rank' value='4' disabled=''>4 <input type='radio' name='Ctos_rank' value='5' disabled=''>5 <input type='radio' name='Ctos_rank' value='AS' disabled=''>AS <input type='radio' name='Ctos_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Cyrus' class='Light Free'>
-			<td><img src='img/Cyrus.jpg'></td>
-			<td>Cyrus</td>
-			<td>賽勒斯</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'><img src='img/type/water_slash.png'></td>
-			<td><input type='number' id='Cyrus_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Cyrus_rank' value='0' checked=''>N/A <input type='radio' name='Cyrus_rank' value='3'>3 <input type='radio' name='Cyrus_rank' value='4'>4 <input type='radio' name='Cyrus_rank' value='5'>5 <input type='radio' name='Cyrus_rank' value='AS' disabled=''>AS <input type='radio' name='Cyrus_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Cyuca' class='Light Dream'>
-			<td><img src='img/Cyuca.jpg'></td>
-			<td>Cyuca</td>
-			<td>喬卡</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Cyuca_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Cyuca_rank' value='0' checked=''>N/A <input type='radio' name='Cyuca_rank' value='3'>3 <input type='radio' name='Cyuca_rank' value='4'>4 <input type='radio' name='Cyuca_rank' value='5' disabled=''>5 <input type='radio' name='Cyuca_rank' value='AS' disabled=''>AS <input type='radio' name='Cyuca_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Darunis' class='Light Dream'>
-			<td><img src='img/Darunis.jpg'></td>
-			<td>Darunis</td>
-			<td>達爾尼思</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/wind_pierce.png'></td>
-			<td><input type='number' id='Darunis_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Darunis_rank' value='0' checked=''>N/A <input type='radio' name='Darunis_rank' value='3'>3 <input type='radio' name='Darunis_rank' value='4'>4 <input type='radio' name='Darunis_rank' value='5' disabled=''>5 <input type='radio' name='Darunis_rank' value='AS' disabled=''>AS <input type='radio' name='Darunis_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Deirdre' class='Shadow Free'>
-			<td><img src='img/Deirdre.jpg'></td>
-			<td>Deirdre</td>
-			<td>蒂亞朵拉 </td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
-			<td><input type='number' id='Deirdre_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Deirdre_rank' value='0' checked=''>N/A <input type='radio' name='Deirdre_rank' value='3'>3 <input type='radio' name='Deirdre_rank' value='4'>4 <input type='radio' name='Deirdre_rank' value='5' disabled=''>5 <input type='radio' name='Deirdre_rank' value='AS' disabled=''>AS <input type='radio' name='Deirdre_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Denny' class='Light Dream'>
-			<td><img src='img/Denny.jpg'></td>
-			<td>Denny</td>
-			<td>丹尼 </td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/water_slash.png'></td>
-			<td><input type='number' id='Denny_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Denny_rank' value='0' checked=''>N/A <input type='radio' name='Denny_rank' value='3'>3 <input type='radio' name='Denny_rank' value='4'>4 <input type='radio' name='Denny_rank' value='5' disabled=''>5 <input type='radio' name='Denny_rank' value='AS' disabled=''>AS <input type='radio' name='Denny_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Dewey' class='Light Dream'>
-			<td><img src='img/Dewey.jpg'></td>
-			<td>Dewey</td>
-			<td>杜伊</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/water_blunt.png'></td>
-			<td><input type='number' id='Dewey_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Dewey_rank' value='0' checked=''>N/A <input type='radio' name='Dewey_rank' value='3' disabled=''>3 <input type='radio' name='Dewey_rank' value='4'>4 <input type='radio' name='Dewey_rank' value='5'>5 <input type='radio' name='Dewey_rank' value='AS' disabled=''>AS <input type='radio' name='Dewey_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Dunarith' class='Shadow Dream'>
-			<td><img src='img/Dunarith.jpg'></td>
-			<td>Dunarith</td>
-			<td>杜拿利斯</td>
-			<td><img src='img/type/wind_null.png'><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Dunarith_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Dunarith_rank' value='0' checked=''>N/A <input type='radio' name='Dunarith_rank' value='3' disabled=''>3 <input type='radio' name='Dunarith_rank' value='4'>4 <input type='radio' name='Dunarith_rank' value='5'>5 <input type='radio' name='Dunarith_rank' value='AS' disabled=''>AS <input type='radio' name='Dunarith_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Een' class='Light Dream'>
-			<td><img src='img/Een.jpg'></td>
-			<td>Een</td>
-			<td>伊因</td>
-			<td><img src='img/type/null_pierce.png'></td>
-			<td><input type='number' id='Een_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Een_rank' value='0' checked=''>N/A <input type='radio' name='Een_rank' value='3'>3 <input type='radio' name='Een_rank' value='4'>4 <input type='radio' name='Een_rank' value='5' disabled=''>5 <input type='radio' name='Een_rank' value='AS' disabled=''>AS <input type='radio' name='Een_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Elga' class='Shadow Dream'>
-			<td><img src='img/Elga.jpg'></td>
-			<td>Elga</td>
-			<td>艾露嘉</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
-			<td><input type='number' id='Elga_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Elga_rank' value='0' checked=''>N/A <input type='radio' name='Elga_rank' value='3' disabled=''>3 <input type='radio' name='Elga_rank' value='4'>4 <input type='radio' name='Elga_rank' value='5'>5 <input type='radio' name='Elga_rank' value='AS' disabled=''>AS <input type='radio' name='Elga_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Emms' class='Light Dream'>
-			<td><img src='img/Emms.jpg'></td>
-			<td>Emms</td>
-			<td>艾姆斯</td>
-			<td><img src='img/type/null_blunt.png'></td>
-			<td><input type='number' id='Emms_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Emms_rank' value='0' checked=''>N/A <input type='radio' name='Emms_rank' value='3'>3 <input type='radio' name='Emms_rank' value='4' disabled=''>4 <input type='radio' name='Emms_rank' value='5' disabled=''>5 <input type='radio' name='Emms_rank' value='AS' disabled=''>AS <input type='radio' name='Emms_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Erina' class='Light Dream'>
-			<td><img src='img/Erina.jpg'></td>
-			<td>Erina</td>
-			<td>艾莉娜</td>
-			<td><img src='img/type/null_null.png'></td>
-			<td><input type='number' id='Erina_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Erina_rank' value='0' checked=''>N/A <input type='radio' name='Erina_rank' value='3'>3 <input type='radio' name='Erina_rank' value='4'>4 <input type='radio' name='Erina_rank' value='5' disabled=''>5 <input type='radio' name='Erina_rank' value='AS' disabled=''>AS <input type='radio' name='Erina_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Esta' class='Light Dream'>
-			<td><img src='img/Esta.jpg'></td>
-			<td>Esta</td>
-			<td>艾斯塔</td>
-			<td><img src='img/type/null_slash.png'></td>
-			<td><input type='number' id='Esta_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Esta_rank' value='0' checked=''>N/A <input type='radio' name='Esta_rank' value='3'>3 <input type='radio' name='Esta_rank' value='4' disabled=''>4 <input type='radio' name='Esta_rank' value='5' disabled=''>5 <input type='radio' name='Esta_rank' value='AS' disabled=''>AS <input type='radio' name='Esta_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Ewan' class='Shadow Dream'>
-			<td><img src='img/Ewan.jpg'></td>
-			<td>Ewan</td>
-			<td>尤因</td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/fire_blunt.png'></td>
-			<td><input type='number' id='Ewan_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Ewan_rank' value='0' checked=''>N/A <input type='radio' name='Ewan_rank' value='3' disabled=''>3 <input type='radio' name='Ewan_rank' value='4'>4 <input type='radio' name='Ewan_rank' value='5'>5 <input type='radio' name='Ewan_rank' value='AS' disabled=''>AS <input type='radio' name='Ewan_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Feinne' class='Shadow Free'>
-			<td><img src='img/Feinne.jpg'></td>
-			<td>Feinne</td>
-			<td>菲妮</td>
-			<td><img src='img/type/null_null.png'></td>
-			<td><input type='number' id='Feinne_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Feinne_rank' value='0' checked=''>N/A <input type='radio' name='Feinne_rank' value='3'>3 <input type='radio' name='Feinne_rank' value='4'>4 <input type='radio' name='Feinne_rank' value='5' disabled=''>5 <input type='radio' name='Feinne_rank' value='AS' disabled=''>AS <input type='radio' name='Feinne_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Felmina' class='Shadow Dream'>
-			<td><img src='img/Felmina.jpg'></td>
-			<td>Felmina</td>
-			<td>菲露米娜</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'><img src='img/type/wind_slash.png'><img src='img/type/wind_blunt.png'></td>
-			<td><input type='number' id='Felmina_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Felmina_rank' value='0' checked=''>N/A <input type='radio' name='Felmina_rank' value='3' disabled=''>3 <input type='radio' name='Felmina_rank' value='4'>4 <input type='radio' name='Felmina_rank' value='5'>5 <input type='radio' name='Felmina_rank' value='AS' disabled=''>AS <input type='radio' name='Felmina_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Foran' class='Light Dream'>
-			<td><img src='img/Foran.jpg'></td>
-			<td>Foran</td>
-			<td>芙朗</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
-			<td><input type='number' id='Foran_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Foran_rank' value='0' checked=''>N/A <input type='radio' name='Foran_rank' value='3'>3 <input type='radio' name='Foran_rank' value='4'>4 <input type='radio' name='Foran_rank' value='5' disabled=''>5 <input type='radio' name='Foran_rank' value='AS' disabled=''>AS <input type='radio' name='Foran_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Galliard' class='Shadow Free'>
-			<td><img src='img/Galliard.jpg'></td>
-			<td>Galliard</td>
-			<td>嘉里德</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'></td>
-			<td><input type='number' id='Galliard_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Galliard_rank' value='0' checked=''>N/A <input type='radio' name='Galliard_rank' value='3' disabled=''>3 <input type='radio' name='Galliard_rank' value='4'>4 <input type='radio' name='Galliard_rank' value='5' disabled=''>5 <input type='radio' name='Galliard_rank' value='AS' disabled=''>AS <input type='radio' name='Galliard_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Gariyu' class='Shadow Free'>
-			<td><img src='img/Gariyu.jpg'><img src='img/Gariyu_AS.jpg'></td>
-			<td>Gariyu</td>
-			<td>伽琉</td>
-			<td><img src='img/type/fire_null.png'><img src='img/type/fire_zone.png'></td>
-			<td><input type='number' id='Gariyu_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Gariyu_rank' value='0' checked=''>N/A <input type='radio' name='Gariyu_rank' value='3'>3 <input type='radio' name='Gariyu_rank' value='4'>4 <input type='radio' name='Gariyu_rank' value='5'>5 <input type='radio' name='Gariyu_rank' value='AS'>AS <input type='radio' name='Gariyu_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='GoodMacky' class='Light Free'>
-			<td><img src='img/GoodMacky.jpg'></td>
-			<td>Good Macky</td>
-			<td>善良的米可麥克</td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/wind_blunt.png'></td>
-			<td><input type='number' id='GoodMacky_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='GoodMacky_rank' value='0' checked=''>N/A <input type='radio' name='GoodMacky_rank' value='3' disabled=''>3 <input type='radio' name='GoodMacky_rank' value='4'>4 <input type='radio' name='GoodMacky_rank' value='5' disabled=''>5 <input type='radio' name='GoodMacky_rank' value='AS' disabled=''>AS <input type='radio' name='GoodMacky_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Guildna' class='Shadow Free'>
-			<td><img src='img/Guildna.jpg'></td>
-			<td>Guildna</td>
-			<td>基爾德那</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
-			<td><input type='number' id='Guildna_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Guildna_rank' value='0' checked=''>N/A <input type='radio' name='Guildna_rank' value='3' disabled=''>3 <input type='radio' name='Guildna_rank' value='4'>4 <input type='radio' name='Guildna_rank' value='5'>5 <input type='radio' name='Guildna_rank' value='AS' disabled=''>AS <input type='radio' name='Guildna_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Helena' class='Shadow Free'>
-			<td><img src='img/Helena.jpg'></td>
-			<td>Helena</td>
-			<td>海蕾娜</td>
-			<td><img src='img/type/null_null.png'><img src='img/type/earth_null.png'></td>
-			<td><input type='number' id='Helena_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Helena_rank' value='0' checked=''>N/A <input type='radio' name='Helena_rank' value='3'>3 <input type='radio' name='Helena_rank' value='4'>4 <input type='radio' name='Helena_rank' value='5'>5 <input type='radio' name='Helena_rank' value='AS' disabled=''>AS <input type='radio' name='Helena_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Hismena' class='Light Dream'>
-			<td><img src='img/Hismena.jpg'></td>
-			<td>Hismena</td>
-			<td>希斯梅娜</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
-			<td><input type='number' id='Hismena_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Hismena_rank' value='0' checked=''>N/A <input type='radio' name='Hismena_rank' value='3' disabled=''>3 <input type='radio' name='Hismena_rank' value='4'>4 <input type='radio' name='Hismena_rank' value='5'>5 <input type='radio' name='Hismena_rank' value='AS' disabled=''>AS <input type='radio' name='Hismena_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Hozuki' class='Light Dream'>
-			<td><img src='img/Hozuki.jpg'></td>
-			<td>Hozuki</td>
-			<td>皓月</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/fire_pierce.png'></td>
-			<td><input type='number' id='Hozuki_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Hozuki_rank' value='0' checked=''>N/A <input type='radio' name='Hozuki_rank' value='3' disabled=''>3 <input type='radio' name='Hozuki_rank' value='4'>4 <input type='radio' name='Hozuki_rank' value='5'>5 <input type='radio' name='Hozuki_rank' value='AS' disabled=''>AS <input type='radio' name='Hozuki_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Ilulu' class='Shadow Dream'>
-			<td><img src='img/Ilulu.jpg'></td>
-			<td>Ilulu</td>
-			<td>伊露露</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Ilulu_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Ilulu_rank' value='0' checked=''>N/A <input type='radio' name='Ilulu_rank' value='3' disabled=''>3 <input type='radio' name='Ilulu_rank' value='4'>4 <input type='radio' name='Ilulu_rank' value='5'>5 <input type='radio' name='Ilulu_rank' value='AS' disabled=''>AS <input type='radio' name='Ilulu_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Isuka' class='Light Dream'>
-			<td><img src='img/Isuka.jpg'><img src='img/Isuka_AS.jpg'></td>
-			<td>Isuka</td>
-			<td>伊絲卡 </td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Isuka_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Isuka_rank' value='0' checked=''>N/A <input type='radio' name='Isuka_rank' value='3' disabled=''>3 <input type='radio' name='Isuka_rank' value='4'>4 <input type='radio' name='Isuka_rank' value='5'>5 <input type='radio' name='Isuka_rank' value='AS'>AS <input type='radio' name='Isuka_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Jade' class='Shadow Free'>
-			<td><img src='img/Jade.jpg'></td>
-			<td>Jade</td>
-			<td>賈德</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/fire_pierce.png'></td>
-			<td><input type='number' id='Jade_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Jade_rank' value='0' checked=''>N/A <input type='radio' name='Jade_rank' value='3'>3 <input type='radio' name='Jade_rank' value='4'>4 <input type='radio' name='Jade_rank' value='5' disabled=''>5 <input type='radio' name='Jade_rank' value='AS' disabled=''>AS <input type='radio' name='Jade_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Joker' class='Shadow Dream'>
-			<td><img src='img/Joker.jpg'></td>
-			<td>Joker</td>
-			<td>JOKER</td>
-			<td><img src='img/type/null_null.png'><img src='img/type/null_pierce.png'><img src='img/type/fire_slash.png'></td>
-			<td><input type='number' id='Joker_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Joker_rank' value='0' checked=''>N/A <input type='radio' name='Joker_rank' value='3' disabled=''>3 <input type='radio' name='Joker_rank' value='4'>4 <input type='radio' name='Joker_rank' value='5'>5 <input type='radio' name='Joker_rank' value='AS' disabled=''>AS <input type='radio' name='Joker_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Kikyo' class='Light Dream'>
-			<td><img src='img/Kikyo.jpg'></td>
-			<td>Kikyo</td>
-			<td>桔梗</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Kikyo_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Kikyo_rank' value='0' checked=''>N/A <input type='radio' name='Kikyo_rank' value='3' disabled=''>3 <input type='radio' name='Kikyo_rank' value='4'>4 <input type='radio' name='Kikyo_rank' value='5'>5 <input type='radio' name='Kikyo_rank' value='AS' disabled=''>AS <input type='radio' name='Kikyo_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Kilqia' class='Shadow Dream'>
-			<td><img src='img/Kilqia.jpg'></td>
-			<td>Kilqia</td>
-			<td>基露琪亞</td>
-			<td><img src='img/type/null_null.png'></td>
-			<td><input type='number' id='Kilqia_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Kilqia_rank' value='0' checked=''>N/A <input type='radio' name='Kilqia_rank' value='3'>3 <input type='radio' name='Kilqia_rank' value='4' disabled=''>4 <input type='radio' name='Kilqia_rank' value='5' disabled=''>5 <input type='radio' name='Kilqia_rank' value='AS' disabled=''>AS <input type='radio' name='Kilqia_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Komachi' class='Light Dream'>
-			<td><img src='img/Komachi.jpg'></td>
-			<td>Komachi</td>
-			<td>小町</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'></td>
-			<td><input type='number' id='Komachi_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Komachi_rank' value='0' checked=''>N/A <input type='radio' name='Komachi_rank' value='3'>3 <input type='radio' name='Komachi_rank' value='4'>4 <input type='radio' name='Komachi_rank' value='5' disabled=''>5 <input type='radio' name='Komachi_rank' value='AS' disabled=''>AS <input type='radio' name='Komachi_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Koot' class='Light Dream'>
-			<td><img src='img/Koot.jpg'></td>
-			<td>Koot</td>
-			<td>庫托</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'></td>
-			<td><input type='number' id='Koot_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Koot_rank' value='0' checked=''>N/A <input type='radio' name='Koot_rank' value='3'>3 <input type='radio' name='Koot_rank' value='4' disabled=''>4 <input type='radio' name='Koot_rank' value='5' disabled=''>5 <input type='radio' name='Koot_rank' value='AS' disabled=''>AS <input type='radio' name='Koot_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Krervo' class='Light Dream'>
-			<td><img src='img/Krervo.jpg'></td>
-			<td>Krervo</td>
-			<td>克利霍</td>
-			<td><img src='img/type/null_null.png'></td>
-			<td><input type='number' id='Krervo_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Krervo_rank' value='0' checked=''>N/A <input type='radio' name='Krervo_rank' value='3'>3 <input type='radio' name='Krervo_rank' value='4'>4 <input type='radio' name='Krervo_rank' value='5' disabled=''>5 <input type='radio' name='Krervo_rank' value='AS' disabled=''>AS <input type='radio' name='Krervo_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Laclair' class='Light Dream'>
-			<td><img src='img/Laclair.jpg'><img src='img/Laclair_AS.jpg'></td>
-			<td>Laclair</td>
-			<td>拉克萊兒</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'><img src='img/type/water_slash.png'></td>
-			<td><input type='number' id='Laclair_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Laclair_rank' value='0' checked=''>N/A <input type='radio' name='Laclair_rank' value='3' disabled=''>3 <input type='radio' name='Laclair_rank' value='4'>4 <input type='radio' name='Laclair_rank' value='5'>5 <input type='radio' name='Laclair_rank' value='AS'>AS <input type='radio' name='Laclair_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Lele' class='Light Dream'>
-			<td><img src='img/Lele.jpg'></td>
-			<td>Lele</td>
-			<td>蕾蕾</td>
-			<td><img src='img/type/water_null.png'></td>
-			<td><input type='number' id='Lele_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Lele_rank' value='0' checked=''>N/A <input type='radio' name='Lele_rank' value='3'>3 <input type='radio' name='Lele_rank' value='4'>4 <input type='radio' name='Lele_rank' value='5' disabled=''>5 <input type='radio' name='Lele_rank' value='AS' disabled=''>AS <input type='radio' name='Lele_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Levia' class='Light Free'>
-			<td><img src='img/Levia.jpg'></td>
-			<td>Levia</td>
-			<td>莉維雅</td>
-			<td><img src='img/type/water_null.png'></td>
-			<td><input type='number' id='Levia_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Levia_rank' value='0' checked=''>N/A <input type='radio' name='Levia_rank' value='3' disabled=''>3 <input type='radio' name='Levia_rank' value='4' disabled=''>4 <input type='radio' name='Levia_rank' value='5'>5 <input type='radio' name='Levia_rank' value='AS' disabled=''>AS <input type='radio' name='Levia_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Lingli' class='Light Dream'>
-			<td><img src='img/Lingli.jpg'></td>
-			<td>Lingli</td>
-			<td>林麗</td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/fire_blunt.png'></td>
-			<td><input type='number' id='Lingli_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Lingli_rank' value='0' checked=''>N/A <input type='radio' name='Lingli_rank' value='3'>3 <input type='radio' name='Lingli_rank' value='4'>4 <input type='radio' name='Lingli_rank' value='5' disabled=''>5 <input type='radio' name='Lingli_rank' value='AS' disabled=''>AS <input type='radio' name='Lingli_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Lokido' class='Light Dream'>
-			<td><img src='img/Lokido.jpg'><img src='img/Lokido_AS.jpg'></td>
-			<td>Lokido</td>
-			<td>洛基德</td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/earth_blunt.png'></td>
-			<td><input type='number' id='Lokido_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Lokido_rank' value='0' checked=''>N/A <input type='radio' name='Lokido_rank' value='3' disabled=''>3 <input type='radio' name='Lokido_rank' value='4'>4 <input type='radio' name='Lokido_rank' value='5'>5 <input type='radio' name='Lokido_rank' value='AS'>AS <input type='radio' name='Lokido_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Lovely' class='Light Dream'>
-			<td><img src='img/Lovely.jpg'></td>
-			<td>Lovely</td>
-			<td>拉布莉</td>
-			<td><img src='img/type/fire_blunt.png'></td>
-			<td><input type='number' id='Lovely_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Lovely_rank' value='0' checked=''>N/A <input type='radio' name='Lovely_rank' value='3' disabled=''>3 <input type='radio' name='Lovely_rank' value='4'>4 <input type='radio' name='Lovely_rank' value='5'>5 <input type='radio' name='Lovely_rank' value='AS' disabled=''>AS <input type='radio' name='Lovely_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Lovinia' class='Light Dream'>
-			<td><img src='img/Lovinia.jpg'></td>
-			<td>Lovinia</td>
-			<td>羅維娜</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/wind_pierce.png'></td>
-			<td><input type='number' id='Lovinia_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Lovinia_rank' value='0' checked=''>N/A <input type='radio' name='Lovinia_rank' value='3'>3 <input type='radio' name='Lovinia_rank' value='4'>4 <input type='radio' name='Lovinia_rank' value='5' disabled=''>5 <input type='radio' name='Lovinia_rank' value='AS' disabled=''>AS <input type='radio' name='Lovinia_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Mana' class='Light Free'>
-			<td><img src='img/Mana.jpg'></td>
-			<td>Mana</td>
-			<td>瑪娜</td>
-			<td><img src='img/type/null_pierce.png'></td>
-			<td><input type='number' id='Mana_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Mana_rank' value='0' checked=''>N/A <input type='radio' name='Mana_rank' value='3' disabled=''>3 <input type='radio' name='Mana_rank' value='4' disabled=''>4 <input type='radio' name='Mana_rank' value='5'>5 <input type='radio' name='Mana_rank' value='AS' disabled=''>AS <input type='radio' name='Mana_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Mariel' class='Light Dream'>
-			<td><img src='img/Mariel.jpg'><img src='img/Mariel_AS.jpg'></td>
-			<td>Mariel</td>
-			<td>瑪莉艾爾</td>
-			<td><img src='img/type/null_null.png'></td>
-			<td><input type='number' id='Mariel_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Mariel_rank' value='0' checked=''>N/A <input type='radio' name='Mariel_rank' value='3' disabled=''>3 <input type='radio' name='Mariel_rank' value='4'>4 <input type='radio' name='Mariel_rank' value='5'>5 <input type='radio' name='Mariel_rank' value='AS'>AS <input type='radio' name='Mariel_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='May' class='Light Dream'>
-			<td><img src='img/May.jpg'></td>
-			<td>May</td>
-			<td>玫</td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/earth_blunt.png'></td>
-			<td><input type='number' id='May_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='May_rank' value='0' checked=''>N/A <input type='radio' name='May_rank' value='3'>3 <input type='radio' name='May_rank' value='4'>4 <input type='radio' name='May_rank' value='5' disabled=''>5 <input type='radio' name='May_rank' value='AS' disabled=''>AS <input type='radio' name='May_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Melina' class='Shadow Dream'>
-			<td><img src='img/Melina.jpg'><img src='img/Melina_AS.jpg'></td>
-			<td>Melina</td>
-			<td>玫莉娜</td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/water_null.png'><img src='img/type/water_blunt.png'></td>
-			<td><input type='number' id='Melina_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Melina_rank' value='0' checked=''>N/A <input type='radio' name='Melina_rank' value='3' disabled=''>3 <input type='radio' name='Melina_rank' value='4'>4 <input type='radio' name='Melina_rank' value='5'>5 <input type='radio' name='Melina_rank' value='AS'>AS <input type='radio' name='Melina_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Menesia' class='Shadow Dream'>
-			<td><img src='img/Menesia.jpg'></td>
-			<td>Menesia</td>
-			<td>梅尼西雅</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'></td>
-			<td><input type='number' id='Menesia_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Menesia_rank' value='0' checked=''>N/A <input type='radio' name='Menesia_rank' value='3'>3 <input type='radio' name='Menesia_rank' value='4' disabled=''>4 <input type='radio' name='Menesia_rank' value='5' disabled=''>5 <input type='radio' name='Menesia_rank' value='AS' disabled=''>AS <input type='radio' name='Menesia_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Mighty' class='Light Dream'>
-			<td><img src='img/Mighty.jpg'><img src='img/Mighty_AS.jpg'></td>
-			<td>Mighty</td>
-			<td>麥提</td>
-			<td><img src='img/type/water_null.png'></td>
-			<td><input type='number' id='Mighty_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Mighty_rank' value='0' checked=''>N/A <input type='radio' name='Mighty_rank' value='3' disabled=''>3 <input type='radio' name='Mighty_rank' value='4'>4 <input type='radio' name='Mighty_rank' value='5'>5 <input type='radio' name='Mighty_rank' value='AS'>AS <input type='radio' name='Mighty_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Miranda' class='Light Dream'>
-			<td><img src='img/Miranda.jpg'></td>
-			<td>Miranda</td>
-			<td>米蘭達</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
-			<td><input type='number' id='Miranda_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Miranda_rank' value='0' checked=''>N/A <input type='radio' name='Miranda_rank' value='3'>3 <input type='radio' name='Miranda_rank' value='4'>4 <input type='radio' name='Miranda_rank' value='5' disabled=''>5 <input type='radio' name='Miranda_rank' value='AS' disabled=''>AS <input type='radio' name='Miranda_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Miyu' class='Light Dream'>
-			<td><img src='img/Miyu.jpg'></td>
-			<td>Miyu</td>
-			<td>米悠</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
-			<td><input type='number' id='Miyu_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Miyu_rank' value='0' checked=''>N/A <input type='radio' name='Miyu_rank' value='3'>3 <input type='radio' name='Miyu_rank' value='4'>4 <input type='radio' name='Miyu_rank' value='5'>5 <input type='radio' name='Miyu_rank' value='AS' disabled=''>AS <input type='radio' name='Miyu_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Morgana' class='Shadow Free'>
-			<td><img src='img/Morgana.jpg'></td>
-			<td>Morgana</td>
-			<td>摩爾加納</td>
-			<td><img src='img/type/wind_null.png'><img src='img/type/wind_blunt.png'></td>
-			<td><input type='number' id='Morgana_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Morgana_rank' value='0' checked=''>N/A <input type='radio' name='Morgana_rank' value='3' disabled=''>3 <input type='radio' name='Morgana_rank' value='4' disabled=''>4 <input type='radio' name='Morgana_rank' value='5'>5 <input type='radio' name='Morgana_rank' value='AS' disabled=''>AS <input type='radio' name='Morgana_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Myron' class='Light Dream'>
-			<td><img src='img/Myron.jpg'></td>
-			<td>Myron</td>
-			<td>繆倫</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
-			<td><input type='number' id='Myron_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Myron_rank' value='0' checked=''>N/A <input type='radio' name='Myron_rank' value='3'>3 <input type='radio' name='Myron_rank' value='4'>4 <input type='radio' name='Myron_rank' value='5' disabled=''>5 <input type='radio' name='Myron_rank' value='AS' disabled=''>AS <input type='radio' name='Myron_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Myrus' class='Light Dream'>
-			<td><img src='img/Myrus.jpg'></td>
-			<td>Myrus</td>
-			<td>繆露絲</td>
-			<td><img src='img/type/earth_null.png'></td>
-			<td><input type='number' id='Myrus_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Myrus_rank' value='0' checked=''>N/A <input type='radio' name='Myrus_rank' value='3' disabled=''>3 <input type='radio' name='Myrus_rank' value='4'>4 <input type='radio' name='Myrus_rank' value='5'>5 <input type='radio' name='Myrus_rank' value='AS' disabled=''>AS <input type='radio' name='Myrus_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Nagi' class='Shadow Dream'>
-			<td><img src='img/Nagi.jpg'><img src='img/Nagi_AS.jpg'></td>
-			<td>Nagi</td>
-			<td>娜基</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
-			<td><input type='number' id='Nagi_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Nagi_rank' value='0' checked=''>N/A <input type='radio' name='Nagi_rank' value='3' disabled=''>3 <input type='radio' name='Nagi_rank' value='4'>4 <input type='radio' name='Nagi_rank' value='5'>5 <input type='radio' name='Nagi_rank' value='AS'>AS <input type='radio' name='Nagi_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Natore' class='Light Dream'>
-			<td><img src='img/Natore.jpg'></td>
-			<td>Natore</td>
-			<td>娜托雷</td>
-			<td><img src='img/type/null_slash.png'></td>
-			<td><input type='number' id='Natore_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Natore_rank' value='0' checked=''>N/A <input type='radio' name='Natore_rank' value='3'>3 <input type='radio' name='Natore_rank' value='4' disabled=''>4 <input type='radio' name='Natore_rank' value='5' disabled=''>5 <input type='radio' name='Natore_rank' value='AS' disabled=''>AS <input type='radio' name='Natore_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Naylia' class='Light Dream'>
-			<td><img src='img/Naylia.jpg'></td>
-			<td>Naylia</td>
-			<td>內莉雅</td>
-			<td><img src='img/type/null_slash.png'></td>
-			<td><input type='number' id='Naylia_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Naylia_rank' value='0' checked=''>N/A <input type='radio' name='Naylia_rank' value='3'>3 <input type='radio' name='Naylia_rank' value='4' disabled=''>4 <input type='radio' name='Naylia_rank' value='5' disabled=''>5 <input type='radio' name='Naylia_rank' value='AS' disabled=''>AS <input type='radio' name='Naylia_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Nero' class='Shadow Dream'>
-			<td><img src='img/Nero.jpg'></td>
-			<td>Nero</td>
-			<td>尼洛</td>
-			<td><img src='img/type/water_blunt.png'></td>
-			<td><input type='number' id='Nero_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Nero_rank' value='0' checked=''>N/A <input type='radio' name='Nero_rank' value='3'>3 <input type='radio' name='Nero_rank' value='4'>4 <input type='radio' name='Nero_rank' value='5' disabled=''>5 <input type='radio' name='Nero_rank' value='AS' disabled=''>AS <input type='radio' name='Nero_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Nikeh' class='Shadow Dream'>
-			<td><img src='img/Nikeh.jpg'><img src='img/Nikeh_AS.jpg'></td>
-			<td>Nikeh</td>
-			<td>尼姬</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/water_slash.png'></td>
-			<td><input type='number' id='Nikeh_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Nikeh_rank' value='0' checked=''>N/A <input type='radio' name='Nikeh_rank' value='3'>3 <input type='radio' name='Nikeh_rank' value='4'>4 <input type='radio' name='Nikeh_rank' value='5' disabled=''>5 <input type='radio' name='Nikeh_rank' value='AS'>AS <input type='radio' name='Nikeh_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Nixa' class='Light Dream'>
-			<td><img src='img/Nixa.jpg'></td>
-			<td>Nixa</td>
-			<td>妮克薩</td>
-			<td><img src='img/type/null_pierce.png'></td>
-			<td><input type='number' id='Nixa_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Nixa_rank' value='0' checked=''>N/A <input type='radio' name='Nixa_rank' value='3'>3 <input type='radio' name='Nixa_rank' value='4' disabled=''>4 <input type='radio' name='Nixa_rank' value='5' disabled=''>5 <input type='radio' name='Nixa_rank' value='AS' disabled=''>AS <input type='radio' name='Nixa_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Nomar' class='Light Dream'>
-			<td><img src='img/Nomar.jpg'></td>
-			<td>Nomar</td>
-			<td>諾馬爾</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
-			<td><input type='number' id='Nomar_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Nomar_rank' value='0' checked=''>N/A <input type='radio' name='Nomar_rank' value='3'>3 <input type='radio' name='Nomar_rank' value='4'>4 <input type='radio' name='Nomar_rank' value='5' disabled=''>5 <input type='radio' name='Nomar_rank' value='AS' disabled=''>AS <input type='radio' name='Nomar_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Nonold' class='Light Dream'>
-			<td><img src='img/Nonold.jpg'></td>
-			<td>Nonold</td>
-			<td>諾諾德</td>
-			<td><img src='img/type/null_null.png'></td>
-			<td><input type='number' id='Nonold_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Nonold_rank' value='0' checked=''>N/A <input type='radio' name='Nonold_rank' value='3'>3 <input type='radio' name='Nonold_rank' value='4'>4 <input type='radio' name='Nonold_rank' value='5' disabled=''>5 <input type='radio' name='Nonold_rank' value='AS' disabled=''>AS <input type='radio' name='Nonold_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Noome' class='Light Dream'>
-			<td><img src='img/Noome.jpg'></td>
-			<td>Noome</td>
-			<td>諾暮</td>
-			<td><img src='img/type/null_null.png'></td>
-			<td><input type='number' id='Noome_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Noome_rank' value='0' checked=''>N/A <input type='radio' name='Noome_rank' value='3'>3 <input type='radio' name='Noome_rank' value='4' disabled=''>4 <input type='radio' name='Noome_rank' value='5' disabled=''>5 <input type='radio' name='Noome_rank' value='AS' disabled=''>AS <input type='radio' name='Noome_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Nopaew' class='Light Free'>
-			<td><img src='img/Nopaew.jpg'></td>
-			<td>Nopaew</td>
-			<td>波波羅</td>
-			<td><img src='img/type/wind_null.png'></td>
-			<td><input type='number' id='Nopaew_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Nopaew_rank' value='0' checked=''>N/A <input type='radio' name='Nopaew_rank' value='3'>3 <input type='radio' name='Nopaew_rank' value='4'>4 <input type='radio' name='Nopaew_rank' value='5' disabled=''>5 <input type='radio' name='Nopaew_rank' value='AS' disabled=''>AS <input type='radio' name='Nopaew_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Oor' class='Light Dream'>
-			<td><img src='img/Oor.jpg'></td>
-			<td>Oor</td>
-			<td>歐爾</td>
-			<td><img src='img/type/null_slash.png'></td>
-			<td><input type='number' id='Oor_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Oor_rank' value='0' checked=''>N/A <input type='radio' name='Oor_rank' value='3'>3 <input type='radio' name='Oor_rank' value='4' disabled=''>4 <input type='radio' name='Oor_rank' value='5' disabled=''>5 <input type='radio' name='Oor_rank' value='AS' disabled=''>AS <input type='radio' name='Oor_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Otoha' class='Light Dream'>
-			<td><img src='img/Otoha.jpg'></td>
-			<td>Otoha</td>
-			<td>乙葉</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
-			<td><input type='number' id='Otoha_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Otoha_rank' value='0' checked=''>N/A <input type='radio' name='Otoha_rank' value='3'>3 <input type='radio' name='Otoha_rank' value='4'>4 <input type='radio' name='Otoha_rank' value='5' disabled=''>5 <input type='radio' name='Otoha_rank' value='AS' disabled=''>AS <input type='radio' name='Otoha_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Parisa' class='Shadow Dream'>
-			<td><img src='img/Parisa.jpg'></td>
-			<td>Parisa</td>
-			<td>帕莉莎</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/fire_pierce.png'></td>
-			<td><input type='number' id='Parisa_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Parisa_rank' value='0' checked=''>N/A <input type='radio' name='Parisa_rank' value='3'>3 <input type='radio' name='Parisa_rank' value='4'>4 <input type='radio' name='Parisa_rank' value='5' disabled=''>5 <input type='radio' name='Parisa_rank' value='AS' disabled=''>AS <input type='radio' name='Parisa_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Pasia' class='Light Dream'>
-			<td><img src='img/Pasia.jpg'></td>
-			<td>Pasia</td>
-			<td>帕希雅</td>
-			<td><img src='img/type/null_blunt.png'></td>
-			<td><input type='number' id='Pasia_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Pasia_rank' value='0' checked=''>N/A <input type='radio' name='Pasia_rank' value='3'>3 <input type='radio' name='Pasia_rank' value='4' disabled=''>4 <input type='radio' name='Pasia_rank' value='5' disabled=''>5 <input type='radio' name='Pasia_rank' value='AS' disabled=''>AS <input type='radio' name='Pasia_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Philo' class='Light Dream'>
-			<td><img src='img/Philo.jpg'></td>
-			<td>Philo</td>
-			<td>菲羅</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/water_slash.png'></td>
-			<td><input type='number' id='Philo_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Philo_rank' value='0' checked=''>N/A <input type='radio' name='Philo_rank' value='3' disabled=''>3 <input type='radio' name='Philo_rank' value='4'>4 <input type='radio' name='Philo_rank' value='5'>5 <input type='radio' name='Philo_rank' value='AS' disabled=''>AS <input type='radio' name='Philo_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Pom' class='Light Dream'>
-			<td><img src='img/Pom.jpg'></td>
-			<td>Pom</td>
-			<td>波姆</td>
-			<td><img src='img/type/null_null.png'></td>
-			<td><input type='number' id='Pom_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Pom_rank' value='0' checked=''>N/A <input type='radio' name='Pom_rank' value='3'>3 <input type='radio' name='Pom_rank' value='4'>4 <input type='radio' name='Pom_rank' value='5' disabled=''>5 <input type='radio' name='Pom_rank' value='AS' disabled=''>AS <input type='radio' name='Pom_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Prai' class='Shadow Dream'>
-			<td><img src='img/Prai.jpg'></td>
-			<td>Prai</td>
-			<td>普萊</td>
-			<td><img src='img/type/null_blunt.png'></td>
-			<td><input type='number' id='Prai_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Prai_rank' value='0' checked=''>N/A <input type='radio' name='Prai_rank' value='3'>3 <input type='radio' name='Prai_rank' value='4'>4 <input type='radio' name='Prai_rank' value='5' disabled=''>5 <input type='radio' name='Prai_rank' value='AS' disabled=''>AS <input type='radio' name='Prai_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Premaya' class='Light Dream'>
-			<td><img src='img/Premaya.jpg'></td>
-			<td>Premaya</td>
-			<td>普蕾米婭</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'></td>
-			<td><input type='number' id='Premaya_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Premaya_rank' value='0' checked=''>N/A <input type='radio' name='Premaya_rank' value='3' disabled=''>3 <input type='radio' name='Premaya_rank' value='4'>4 <input type='radio' name='Premaya_rank' value='5'>5 <input type='radio' name='Premaya_rank' value='AS' disabled=''>AS <input type='radio' name='Premaya_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Radica' class='Shadow Dream'>
-			<td><img src='img/Radica.jpg'></td>
-			<td>Radica</td>
-			<td>拉蒂卡</td>
-			<td><img src='img/type/null_null.png'><img src='img/type/null_slash.png'><img src='img/type/fire_null.png'></td>
-			<td><input type='number' id='Radica_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Radica_rank' value='0' checked=''>N/A <input type='radio' name='Radica_rank' value='3' disabled=''>3 <input type='radio' name='Radica_rank' value='4'>4 <input type='radio' name='Radica_rank' value='5'>5 <input type='radio' name='Radica_rank' value='AS' disabled=''>AS <input type='radio' name='Radica_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Raven' class='Shadow Dream'>
-			<td><img src='img/Raven.jpg'></td>
-			<td>Raven</td>
-			<td>雷文</td>
-			<td><img src='img/type/null_null.png'><img src='img/type/earth_null.png'></td>
-			<td><input type='number' id='Raven_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Raven_rank' value='0' checked=''>N/A <input type='radio' name='Raven_rank' value='3'>3 <input type='radio' name='Raven_rank' value='4'>4 <input type='radio' name='Raven_rank' value='5' disabled=''>5 <input type='radio' name='Raven_rank' value='AS' disabled=''>AS <input type='radio' name='Raven_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Renri' class='Light Dream'>
-			<td><img src='img/Renri.jpg'></td>
-			<td>Renri</td>
-			<td>雷莉</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
-			<td><input type='number' id='Renri_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Renri_rank' value='0' checked=''>N/A <input type='radio' name='Renri_rank' value='3' disabled=''>3 <input type='radio' name='Renri_rank' value='4'>4 <input type='radio' name='Renri_rank' value='5'>5 <input type='radio' name='Renri_rank' value='AS' disabled=''>AS <input type='radio' name='Renri_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Riica' class='Light Free'>
-			<td><img src='img/Riica.jpg'></td>
-			<td>Riica</td>
-			<td>莉卡</td>
-			<td><img src='img/type/null_null.png'><img src='img/type/null_blunt.png'><img src='img/type/earth_blunt.png'></td>
-			<td><input type='number' id='Riica_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Riica_rank' value='0' checked=''>N/A <input type='radio' name='Riica_rank' value='3'>3 <input type='radio' name='Riica_rank' value='4'>4 <input type='radio' name='Riica_rank' value='5'>5 <input type='radio' name='Riica_rank' value='AS' disabled=''>AS <input type='radio' name='Riica_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Rodeia' class='Light Dream'>
-			<td><img src='img/Rodeia.jpg'></td>
-			<td>Rodeia</td>
-			<td>羅蒂亞</td>
-			<td><img src='img/type/null_slash.png'></td>
-			<td><input type='number' id='Rodeia_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Rodeia_rank' value='0' checked=''>N/A <input type='radio' name='Rodeia_rank' value='3'>3 <input type='radio' name='Rodeia_rank' value='4' disabled=''>4 <input type='radio' name='Rodeia_rank' value='5' disabled=''>5 <input type='radio' name='Rodeia_rank' value='AS' disabled=''>AS <input type='radio' name='Rodeia_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Rosetta' class='Shadow Dream'>
-			<td><img src='img/Rosetta.jpg'></td>
-			<td>Rosetta</td>
-			<td>蘿潔塔</td>
-			<td><img src='img/type/null_null.png'><img src='img/type/fire_null.png'></td>
-			<td><input type='number' id='Rosetta_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Rosetta_rank' value='0' checked=''>N/A <input type='radio' name='Rosetta_rank' value='3' disabled=''>3 <input type='radio' name='Rosetta_rank' value='4'>4 <input type='radio' name='Rosetta_rank' value='5'>5 <input type='radio' name='Rosetta_rank' value='AS' disabled=''>AS <input type='radio' name='Rosetta_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Rovella' class='Shadow Dream'>
-			<td><img src='img/Rovella.jpg'></td>
-			<td>Rovella</td>
-			<td>羅貝拉</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
-			<td><input type='number' id='Rovella_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Rovella_rank' value='0' checked=''>N/A <input type='radio' name='Rovella_rank' value='3'>3 <input type='radio' name='Rovella_rank' value='4'>4 <input type='radio' name='Rovella_rank' value='5' disabled=''>5 <input type='radio' name='Rovella_rank' value='AS' disabled=''>AS <input type='radio' name='Rovella_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Rufus' class='Light Dream'>
-			<td><img src='img/Rufus.jpg'></td>
-			<td>Rufus</td>
-			<td>洛福斯</td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/fire_blunt.png'></td>
-			<td><input type='number' id='Rufus_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Rufus_rank' value='0' checked=''>N/A <input type='radio' name='Rufus_rank' value='3'>3 <input type='radio' name='Rufus_rank' value='4'>4 <input type='radio' name='Rufus_rank' value='5' disabled=''>5 <input type='radio' name='Rufus_rank' value='AS' disabled=''>AS <input type='radio' name='Rufus_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Ruina' class='Shadow Dream'>
-			<td><img src='img/Ruina.jpg'><img src='img/Ruina_AS.jpg'></td>
-			<td>Ruina</td>
-			<td>路伊娜</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Ruina_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Ruina_rank' value='0' checked=''>N/A <input type='radio' name='Ruina_rank' value='3'>3 <input type='radio' name='Ruina_rank' value='4'>4 <input type='radio' name='Ruina_rank' value='5' disabled=''>5 <input type='radio' name='Ruina_rank' value='AS'>AS <input type='radio' name='Ruina_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Saithe' class='Light Dream'>
-			<td><img src='img/Saithe.jpg'></td>
-			<td>Saithe</td>
-			<td>賽斯</td>
-			<td><img src='img/type/null_pierce.png'></td>
-			<td><input type='number' id='Saithe_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Saithe_rank' value='0' checked=''>N/A <input type='radio' name='Saithe_rank' value='3'>3 <input type='radio' name='Saithe_rank' value='4' disabled=''>4 <input type='radio' name='Saithe_rank' value='5' disabled=''>5 <input type='radio' name='Saithe_rank' value='AS' disabled=''>AS <input type='radio' name='Saithe_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Saki' class='Light Free'>
-			<td><img src='img/Saki.jpg'><img src='img/Saki_AS.jpg'></td>
-			<td>Saki</td>
-			<td>紗希</td>
-			<td><img src='img/type/water_null.png'></td>
-			<td><input type='number' id='Saki_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Saki_rank' value='0' checked=''>N/A <input type='radio' name='Saki_rank' value='3'>3 <input type='radio' name='Saki_rank' value='4'>4 <input type='radio' name='Saki_rank' value='5' disabled=''>5 <input type='radio' name='Saki_rank' value='AS'>AS <input type='radio' name='Saki_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Samora' class='Light Dream'>
-			<td><img src='img/Samora.jpg'></td>
-			<td>Samora</td>
-			<td>薩摩拉</td>
-			<td><img src='img/type/null_blunt.png'><img src='img/type/fire_blunt.png'></td>
-			<td><input type='number' id='Samora_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Samora_rank' value='0' checked=''>N/A <input type='radio' name='Samora_rank' value='3'>3 <input type='radio' name='Samora_rank' value='4'>4 <input type='radio' name='Samora_rank' value='5' disabled=''>5 <input type='radio' name='Samora_rank' value='AS' disabled=''>AS <input type='radio' name='Samora_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Sauria' class='Light Dream'>
-			<td><img src='img/Sauria.jpg'></td>
-			<td>Sauria</td>
-			<td>秀莉雅</td>
-			<td><img src='img/type/null_pierce.png'></td>
-			<td><input type='number' id='Sauria_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Sauria_rank' value='0' checked=''>N/A <input type='radio' name='Sauria_rank' value='3'>3 <input type='radio' name='Sauria_rank' value='4' disabled=''>4 <input type='radio' name='Sauria_rank' value='5' disabled=''>5 <input type='radio' name='Sauria_rank' value='AS' disabled=''>AS <input type='radio' name='Sauria_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Sevyn' class='Light Dream'>
-			<td><img src='img/Sevyn.jpg'></td>
-			<td>Sevyn</td>
-			<td>賽溫</td>
-			<td><img src='img/type/wind_null.png'><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Sevyn_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Sevyn_rank' value='0' checked=''>N/A <input type='radio' name='Sevyn_rank' value='3'>3 <input type='radio' name='Sevyn_rank' value='4'>4 <input type='radio' name='Sevyn_rank' value='5' disabled=''>5 <input type='radio' name='Sevyn_rank' value='AS' disabled=''>AS <input type='radio' name='Sevyn_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Shanie' class='Light Dream'>
-			<td><img src='img/Shanie.jpg'><img src='img/Shanie_AS.jpg'></td>
-			<td>Shanie</td>
-			<td>謝奈</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/water_slash.png'></td>
-			<td><input type='number' id='Shanie_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Shanie_rank' value='0' checked=''>N/A <input type='radio' name='Shanie_rank' value='3' disabled=''>3 <input type='radio' name='Shanie_rank' value='4'>4 <input type='radio' name='Shanie_rank' value='5'>5 <input type='radio' name='Shanie_rank' value='AS'>AS <input type='radio' name='Shanie_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Shannon' class='Light Dream'>
-			<td><img src='img/Shannon.jpg'></td>
-			<td>Shannon</td>
-			<td>夏濃</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Shannon_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Shannon_rank' value='0' checked=''>N/A <input type='radio' name='Shannon_rank' value='3' disabled=''>3 <input type='radio' name='Shannon_rank' value='4'>4 <input type='radio' name='Shannon_rank' value='5'>5 <input type='radio' name='Shannon_rank' value='AS' disabled=''>AS <input type='radio' name='Shannon_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Sheila' class='Light Free'>
-			<td><img src='img/Sheila.jpg'></td>
-			<td>Sheila</td>
-			<td>謝拉</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
-			<td><input type='number' id='Sheila_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Sheila_rank' value='0' checked=''>N/A <input type='radio' name='Sheila_rank' value='3'>3 <input type='radio' name='Sheila_rank' value='4'>4 <input type='radio' name='Sheila_rank' value='5' disabled=''>5 <input type='radio' name='Sheila_rank' value='AS' disabled=''>AS <input type='radio' name='Sheila_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Shigure' class='Light Dream'>
-			<td><img src='img/Shigure.jpg'></td>
-			<td>Shigure</td>
-			<td>時雨</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
-			<td><input type='number' id='Shigure_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Shigure_rank' value='0' checked=''>N/A <input type='radio' name='Shigure_rank' value='3' disabled=''>3 <input type='radio' name='Shigure_rank' value='4'>4 <input type='radio' name='Shigure_rank' value='5'>5 <input type='radio' name='Shigure_rank' value='AS' disabled=''>AS <input type='radio' name='Shigure_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Shion' class='Light Dream'>
-			<td><img src='img/Shion.jpg'><img src='img/Shion_AS.jpg'></td>
-			<td>Shion</td>
-			<td>紫央</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
-			<td><input type='number' id='Shion_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Shion_rank' value='0' checked=''>N/A <input type='radio' name='Shion_rank' value='3' disabled=''>3 <input type='radio' name='Shion_rank' value='4'>4 <input type='radio' name='Shion_rank' value='5'>5 <input type='radio' name='Shion_rank' value='AS'>AS <input type='radio' name='Shion_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Soira' class='Light Dream'>
-			<td><img src='img/Soira.jpg'></td>
-			<td>Soira</td>
-			<td>蘇依萊</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/wind_pierce.png'></td>
-			<td><input type='number' id='Soira_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Soira_rank' value='0' checked=''>N/A <input type='radio' name='Soira_rank' value='3'>3 <input type='radio' name='Soira_rank' value='4'>4 <input type='radio' name='Soira_rank' value='5' disabled=''>5 <input type='radio' name='Soira_rank' value='AS' disabled=''>AS <input type='radio' name='Soira_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Strawboy' class='Light Free'>
-			<td><img src='img/Strawboy.jpg'></td>
-			<td>Strawboy</td>
-			<td>草人小子 </td>
-			<td><img src='img/type/all_null.png'><img src='img/type/all_slash.png'><img src='img/type/all_pierce.png'><img src='img/type/all_blunt.png'></td>
-			<td><input type='number' id='Strawboy_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Strawboy_rank' value='0' checked=''>N/A <input type='radio' name='Strawboy_rank' value='3' disabled=''>3 <input type='radio' name='Strawboy_rank' value='4' disabled=''>4 <input type='radio' name='Strawboy_rank' value='5'>5 <input type='radio' name='Strawboy_rank' value='AS' disabled=''>AS <input type='radio' name='Strawboy_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Suzette' class='Light Dream'>
-			<td><img src='img/Suzette.jpg'><img src='img/Suzette_AS.jpg'></td>
-			<td>Suzette</td>
-			<td>蘇賽特</td>
-			<td><img src='img/type/null_pierce.png'><img src='img/type/wind_pierce.png'></td>
-			<td><input type='number' id='Suzette_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Suzette_rank' value='0' checked=''>N/A <input type='radio' name='Suzette_rank' value='3' disabled=''>3 <input type='radio' name='Suzette_rank' value='4'>4 <input type='radio' name='Suzette_rank' value='5'>5 <input type='radio' name='Suzette_rank' value='AS'>AS <input type='radio' name='Suzette_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Tayme' class='Light Dream'>
-			<td><img src='img/Tayme.jpg'></td>
-			<td>Tayme</td>
-			<td>提姆</td>
-			<td><img src='img/type/null_blunt.png'></td>
-			<td><input type='number' id='Tayme_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Tayme_rank' value='0' checked=''>N/A <input type='radio' name='Tayme_rank' value='3'>3 <input type='radio' name='Tayme_rank' value='4' disabled=''>4 <input type='radio' name='Tayme_rank' value='5' disabled=''>5 <input type='radio' name='Tayme_rank' value='AS' disabled=''>AS <input type='radio' name='Tayme_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Tohme' class='Shadow Dream'>
-			<td><img src='img/Tohme.jpg'></td>
-			<td>Tohme</td>
-			<td>托姆</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'></td>
-			<td><input type='number' id='Tohme_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Tohme_rank' value='0' checked=''>N/A <input type='radio' name='Tohme_rank' value='3'>3 <input type='radio' name='Tohme_rank' value='4' disabled=''>4 <input type='radio' name='Tohme_rank' value='5' disabled=''>5 <input type='radio' name='Tohme_rank' value='AS' disabled=''>AS <input type='radio' name='Tohme_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Toole' class='Light Dream'>
-			<td><img src='img/Toole.jpg'></td>
-			<td>Toole</td>
-			<td>托爾</td>
-			<td><img src='img/type/null_blunt.png'></td>
-			<td><input type='number' id='Toole_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Toole_rank' value='0' checked=''>N/A <input type='radio' name='Toole_rank' value='3'>3 <input type='radio' name='Toole_rank' value='4' disabled=''>4 <input type='radio' name='Toole_rank' value='5' disabled=''>5 <input type='radio' name='Toole_rank' value='AS' disabled=''>AS <input type='radio' name='Toole_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Toova' class='Shadow Dream'>
-			<td><img src='img/Toova.jpg'><img src='img/Toova_AS.jpg'></td>
-			<td>Toova</td>
-			<td>杜娃</td>
-			<td><img src='img/type/null_null.png'><img src='img/type/earth_null.png'></td>
-			<td><input type='number' id='Toova_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Toova_rank' value='0' checked=''>N/A <input type='radio' name='Toova_rank' value='3' disabled=''>3 <input type='radio' name='Toova_rank' value='4'>4 <input type='radio' name='Toova_rank' value='5'>5 <input type='radio' name='Toova_rank' value='AS'>AS <input type='radio' name='Toova_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Tsubame' class='Light Dream'>
-			<td><img src='img/Tsubame.jpg'></td>
-			<td>Tsubame</td>
-			<td>燕</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'><img src='img/type/earth_blunt.png'></td>
-			<td><input type='number' id='Tsubame_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Tsubame_rank' value='0' checked=''>N/A <input type='radio' name='Tsubame_rank' value='3' disabled=''>3 <input type='radio' name='Tsubame_rank' value='4'>4 <input type='radio' name='Tsubame_rank' value='5'>5 <input type='radio' name='Tsubame_rank' value='AS' disabled=''>AS <input type='radio' name='Tsubame_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Tsukiha' class='Shadow Dream'>
-			<td><img src='img/Tsukiha.jpg'></td>
-			<td>Tsukiha</td>
-			<td>月華</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
-			<td><input type='number' id='Tsukiha_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Tsukiha_rank' value='0' checked=''>N/A <input type='radio' name='Tsukiha_rank' value='3' disabled=''>3 <input type='radio' name='Tsukiha_rank' value='4'>4 <input type='radio' name='Tsukiha_rank' value='5'>5 <input type='radio' name='Tsukiha_rank' value='AS' disabled=''>AS <input type='radio' name='Tsukiha_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Urania' class='Light Dream'>
-			<td><img src='img/Urania.jpg'></td>
-			<td>Urania</td>
-			<td>烏拉尼雅</td>
-			<td><img src='img/type/null_blunt.png'></td>
-			<td><input type='number' id='Urania_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Urania_rank' value='0' checked=''>N/A <input type='radio' name='Urania_rank' value='3'>3 <input type='radio' name='Urania_rank' value='4' disabled=''>4 <input type='radio' name='Urania_rank' value='5' disabled=''>5 <input type='radio' name='Urania_rank' value='AS' disabled=''>AS <input type='radio' name='Urania_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Uuo' class='Light Dream'>
-			<td><img src='img/Uuo.jpg'></td>
-			<td>Uuo</td>
-			<td>烏奧</td>
-			<td><img src='img/type/null_slash.png'></td>
-			<td><input type='number' id='Uuo_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Uuo_rank' value='0' checked=''>N/A <input type='radio' name='Uuo_rank' value='3'>3 <input type='radio' name='Uuo_rank' value='4' disabled=''>4 <input type='radio' name='Uuo_rank' value='5' disabled=''>5 <input type='radio' name='Uuo_rank' value='AS' disabled=''>AS <input type='radio' name='Uuo_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Veina' class='Light Dream'>
-			<td><img src='img/Veina.jpg'></td>
-			<td>Veina</td>
-			<td>維娜</td>
-			<td><img src='img/type/wind_null.png'><img src='img/type/wind_zone.png'></td>
-			<td><input type='number' id='Veina_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Veina_rank' value='0' checked=''>N/A <input type='radio' name='Veina_rank' value='3' disabled=''>3 <input type='radio' name='Veina_rank' value='4'>4 <input type='radio' name='Veina_rank' value='5'>5 <input type='radio' name='Veina_rank' value='AS' disabled=''>AS <input type='radio' name='Veina_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Yazuki' class='Light Dream'>
-			<td><img src='img/Yazuki.jpg'></td>
-			<td>Yazuki</td>
-			<td>耶月</td>
-			<td><img src='img/type/wind_slash.png'></td>
-			<td><input type='number' id='Yazuki_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Yazuki_rank' value='0' checked=''>N/A <input type='radio' name='Yazuki_rank' value='3'>3 <input type='radio' name='Yazuki_rank' value='4'>4 <input type='radio' name='Yazuki_rank' value='5' disabled=''>5 <input type='radio' name='Yazuki_rank' value='AS' disabled=''>AS <input type='radio' name='Yazuki_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Yio' class='Light Dream'>
-			<td><img src='img/Yio.jpg'></td>
-			<td>Yio</td>
-			<td>伊俄</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
-			<td><input type='number' id='Yio_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Yio_rank' value='0' checked=''>N/A <input type='radio' name='Yio_rank' value='3'>3 <input type='radio' name='Yio_rank' value='4'>4 <input type='radio' name='Yio_rank' value='5' disabled=''>5 <input type='radio' name='Yio_rank' value='AS' disabled=''>AS <input type='radio' name='Yio_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Yssis' class='Light Dream'>
-			<td><img src='img/Yssis.jpg'></td>
-			<td>Yssis</td>
-			<td>伊西斯</td>
-			<td><img src='img/type/null_null.png'></td>
-			<td><input type='number' id='Yssis_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Yssis_rank' value='0' checked=''>N/A <input type='radio' name='Yssis_rank' value='3'>3 <input type='radio' name='Yssis_rank' value='4' disabled=''>4 <input type='radio' name='Yssis_rank' value='5' disabled=''>5 <input type='radio' name='Yssis_rank' value='AS' disabled=''>AS <input type='radio' name='Yssis_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
-		<tr id='Yuna' class='Light Dream'>
-			<td><img src='img/Yuna.jpg'><img src='img/Yuna_AS.jpg'></td>
-			<td>Yuna</td>
-			<td>由奈</td>
-			<td><img src='img/type/null_null.png'><img src='img/type/water_null.png'><img src='img/type/water_zone.png'></td>
-			<td><input type='number' id='Yuna_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Yuna_rank' value='0' checked=''>N/A <input type='radio' name='Yuna_rank' value='3' disabled=''>3 <input type='radio' name='Yuna_rank' value='4'>4 <input type='radio' name='Yuna_rank' value='5'>5 <input type='radio' name='Yuna_rank' value='AS'>AS <input type='radio' name='Yuna_rank' value='Both'>5 & AS</td>
-		</tr>
-		<tr id='Zilva' class='Shadow Dream'>
-			<td><img src='img/Zilva.jpg'></td>
-			<td>Zilva</td>
-			<td>茲爾巴</td>
-			<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
-			<td><input type='number' id='Zilva_LS' min='0' max='255' value=''></td>
-			<td><input type='radio' name='Zilva_rank' value='0' checked=''>N/A <input type='radio' name='Zilva_rank' value='3'>3 <input type='radio' name='Zilva_rank' value='4'>4 <input type='radio' name='Zilva_rank' value='5' disabled=''>5 <input type='radio' name='Zilva_rank' value='AS' disabled=''>AS <input type='radio' name='Zilva_rank' value='Both' disabled=''>5 & AS</td>
-		</tr>
+		<thead>
+			<tr>
+				<th colspan="3"><Input type="text" id="title" value="自定義文字"></th>
+				<th>Attack/Zone type</th>
+				<th>Light/Shadow</th>
+				<th>Rank</th>
+			</tr>
+		</thead>
+		<tbody>
+			<!-- Insert Excel output here-->
+			<tr id='Akane' class='Light Dream'>
+				<td><img src='img/Akane.jpg'><img src='img/Akane_AS.jpg'></td>
+				<td>Akane</td>
+				<td>茜</td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
+				<td><input type='number' id='Akane_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Akane_rank' value='0' checked=''>N/A <input type='radio' name='Akane_rank' value='3'>3 <input type='radio' name='Akane_rank' value='4'>4 <input type='radio' name='Akane_rank' value='5' disabled=''>5 <input type='checkbox' name='Akane_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Aldo' class='Light Free'>
+				<td><img src='img/Aldo.jpg'></td>
+				<td>Aldo</td>
+				<td>阿爾德</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
+				<td><input type='number' id='Aldo_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Aldo_rank' value='0' checked=''>N/A <input type='radio' name='Aldo_rank' value='3'>3 <input type='radio' name='Aldo_rank' value='4'>4 <input type='radio' name='Aldo_rank' value='5'>5 <input type='checkbox' name='Aldo_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Altena' class='Shadow Free'>
+				<td><img src='img/Altena.jpg'></td>
+				<td>Altena</td>
+				<td>阿露緹娜</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/null_slash.png'></td>
+				<td><input type='number' id='Altena_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Altena_rank' value='0' checked=''>N/A <input type='radio' name='Altena_rank' value='3' disabled=''>3 <input type='radio' name='Altena_rank' value='4' disabled=''>4 <input type='radio' name='Altena_rank' value='5'>5 <input type='checkbox' name='Altena_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Amy' class='Light Free'>
+				<td><img src='img/Amy.jpg'></td>
+				<td>Amy</td>
+				<td>艾米</td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/wind_blunt.png'></td>
+				<td><input type='number' id='Amy_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Amy_rank' value='0' checked=''>N/A <input type='radio' name='Amy_rank' value='3'>3 <input type='radio' name='Amy_rank' value='4'>4 <input type='radio' name='Amy_rank' value='5'>5 <input type='checkbox' name='Amy_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Anabel' class='Light Dream'>
+				<td><img src='img/Anabel.jpg'></td>
+				<td>Anabel</td>
+				<td>安娜貝爾</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/water_slash.png'><img src='img/type/water_zone.png'></td>
+				<td><input type='number' id='Anabel_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Anabel_rank' value='0' checked=''>N/A <input type='radio' name='Anabel_rank' value='3' disabled=''>3 <input type='radio' name='Anabel_rank' value='4'>4 <input type='radio' name='Anabel_rank' value='5'>5 <input type='checkbox' name='Anabel_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Asia' class='Light Dream'>
+				<td><img src='img/Asia.jpg'></td>
+				<td>Asia</td>
+				<td>艾希雅</td>
+				<td><img src='img/type/null_pierce.png'></td>
+				<td><input type='number' id='Asia_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Asia_rank' value='0' checked=''>N/A <input type='radio' name='Asia_rank' value='3'>3 <input type='radio' name='Asia_rank' value='4' disabled=''>4 <input type='radio' name='Asia_rank' value='5' disabled=''>5 <input type='checkbox' name='Asia_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Azami' class='Light Free'>
+				<td><img src='img/Azami.jpg'></td>
+				<td>Azami</td>
+				<td>阿佐美</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Azami_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Azami_rank' value='0' checked=''>N/A <input type='radio' name='Azami_rank' value='3' disabled=''>3 <input type='radio' name='Azami_rank' value='4'>4 <input type='radio' name='Azami_rank' value='5'>5 <input type='checkbox' name='Azami_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Benedict' class='Shadow Dream'>
+				<td><img src='img/Benedict.jpg'></td>
+				<td>Benedict</td>
+				<td>貝內迪特</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Benedict_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Benedict_rank' value='0' checked=''>N/A <input type='radio' name='Benedict_rank' value='3'>3 <input type='radio' name='Benedict_rank' value='4'>4 <input type='radio' name='Benedict_rank' value='5' disabled=''>5 <input type='checkbox' name='Benedict_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Bertrand' class='Light Dream'>
+				<td><img src='img/Bertrand.jpg'></td>
+				<td>Bertrand</td>
+				<td>貝特朗 </td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'></td>
+				<td><input type='number' id='Bertrand_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Bertrand_rank' value='0' checked=''>N/A <input type='radio' name='Bertrand_rank' value='3' disabled=''>3 <input type='radio' name='Bertrand_rank' value='4'>4 <input type='radio' name='Bertrand_rank' value='5'>5 <input type='checkbox' name='Bertrand_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Biaka' class='Shadow Dream'>
+				<td><img src='img/Biaka.jpg'></td>
+				<td>Biaka</td>
+				<td>維婭卡 </td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/wind_blunt.png'></td>
+				<td><input type='number' id='Biaka_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Biaka_rank' value='0' checked=''>N/A <input type='radio' name='Biaka_rank' value='3' disabled=''>3 <input type='radio' name='Biaka_rank' value='4'>4 <input type='radio' name='Biaka_rank' value='5'>5 <input type='checkbox' name='Biaka_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Bivette' class='Light Dream'>
+				<td><img src='img/Bivette.jpg'></td>
+				<td>Bivette</td>
+				<td>碧薇特</td>
+				<td><img src='img/type/fire_null.png'></td>
+				<td><input type='number' id='Bivette_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Bivette_rank' value='0' checked=''>N/A <input type='radio' name='Bivette_rank' value='3'>3 <input type='radio' name='Bivette_rank' value='4'>4 <input type='radio' name='Bivette_rank' value='5' disabled=''>5 <input type='checkbox' name='Bivette_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Breeno' class='Shadow Dream'>
+				<td><img src='img/Breeno.jpg'></td>
+				<td>Breeno</td>
+				<td>布里諾</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
+				<td><input type='number' id='Breeno_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Breeno_rank' value='0' checked=''>N/A <input type='radio' name='Breeno_rank' value='3'>3 <input type='radio' name='Breeno_rank' value='4'>4 <input type='radio' name='Breeno_rank' value='5' disabled=''>5 <input type='checkbox' name='Breeno_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Bria' class='Light Dream'>
+				<td><img src='img/Bria.jpg'></td>
+				<td>Bria</td>
+				<td>布利亞</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
+				<td><input type='number' id='Bria_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Bria_rank' value='0' checked=''>N/A <input type='radio' name='Bria_rank' value='3'>3 <input type='radio' name='Bria_rank' value='4' disabled=''>4 <input type='radio' name='Bria_rank' value='5' disabled=''>5 <input type='checkbox' name='Bria_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Cerrine' class='Light Free'>
+				<td><img src='img/Cerrine.jpg'></td>
+				<td>Cerrine</td>
+				<td>思琳</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'><img src='img/type/earth_blunt.png'></td>
+				<td><input type='number' id='Cerrine_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Cerrine_rank' value='0' checked=''>N/A <input type='radio' name='Cerrine_rank' value='3' disabled=''>3 <input type='radio' name='Cerrine_rank' value='4'>4 <input type='radio' name='Cerrine_rank' value='5'>5 <input type='checkbox' name='Cerrine_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Cetie' class='Light Dream'>
+				<td><img src='img/Cetie.jpg'><img src='img/Cetie_AS.jpg'></td>
+				<td>Cetie</td>
+				<td>謝提</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/fire_pierce.png'><img src='img/type/fire_blunt.png'></td>
+				<td><input type='number' id='Cetie_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Cetie_rank' value='0' checked=''>N/A <input type='radio' name='Cetie_rank' value='3' disabled=''>3 <input type='radio' name='Cetie_rank' value='4'>4 <input type='radio' name='Cetie_rank' value='5'>5 <input type='checkbox' name='Cetie_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Chiyo' class='Light Dream'>
+				<td><img src='img/Chiyo.jpg'></td>
+				<td>Chiyo</td>
+				<td>千代</td>
+				<td><img src='img/type/earth_null.png'></td>
+				<td><input type='number' id='Chiyo_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Chiyo_rank' value='0' checked=''>N/A <input type='radio' name='Chiyo_rank' value='3'>3 <input type='radio' name='Chiyo_rank' value='4'>4 <input type='radio' name='Chiyo_rank' value='5' disabled=''>5 <input type='checkbox' name='Chiyo_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Ciel' class='Light Dream'>
+				<td><img src='img/Ciel.jpg'></td>
+				<td>Ciel</td>
+				<td>西雅爾</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'></td>
+				<td><input type='number' id='Ciel_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Ciel_rank' value='0' checked=''>N/A <input type='radio' name='Ciel_rank' value='3'>3 <input type='radio' name='Ciel_rank' value='4'>4 <input type='radio' name='Ciel_rank' value='5'>5 <input type='checkbox' name='Ciel_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Claude' class='Light Dream'>
+				<td><img src='img/Claude.jpg'><img src='img/Claude_AS.jpg'></td>
+				<td>Claude</td>
+				<td>克勞特</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/wind_pierce.png'><img src='img/type/wind_zone.png'></td>
+				<td><input type='number' id='Claude_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Claude_rank' value='0' checked=''>N/A <input type='radio' name='Claude_rank' value='3' disabled=''>3 <input type='radio' name='Claude_rank' value='4'>4 <input type='radio' name='Claude_rank' value='5'>5 <input type='checkbox' name='Claude_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Ctos' class='Light Dream'>
+				<td><img src='img/Ctos.jpg'></td>
+				<td>Ctos</td>
+				<td>古拓斯</td>
+				<td><img src='img/type/null_blunt.png'></td>
+				<td><input type='number' id='Ctos_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Ctos_rank' value='0' checked=''>N/A <input type='radio' name='Ctos_rank' value='3'>3 <input type='radio' name='Ctos_rank' value='4' disabled=''>4 <input type='radio' name='Ctos_rank' value='5' disabled=''>5 <input type='checkbox' name='Ctos_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Cyrus' class='Light Free'>
+				<td><img src='img/Cyrus.jpg'></td>
+				<td>Cyrus</td>
+				<td>賽勒斯</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'><img src='img/type/water_slash.png'></td>
+				<td><input type='number' id='Cyrus_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Cyrus_rank' value='0' checked=''>N/A <input type='radio' name='Cyrus_rank' value='3'>3 <input type='radio' name='Cyrus_rank' value='4'>4 <input type='radio' name='Cyrus_rank' value='5'>5 <input type='checkbox' name='Cyrus_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Cyuca' class='Light Dream'>
+				<td><img src='img/Cyuca.jpg'></td>
+				<td>Cyuca</td>
+				<td>喬卡</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Cyuca_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Cyuca_rank' value='0' checked=''>N/A <input type='radio' name='Cyuca_rank' value='3'>3 <input type='radio' name='Cyuca_rank' value='4'>4 <input type='radio' name='Cyuca_rank' value='5' disabled=''>5 <input type='checkbox' name='Cyuca_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Darunis' class='Light Dream'>
+				<td><img src='img/Darunis.jpg'></td>
+				<td>Darunis</td>
+				<td>達爾尼思</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/wind_pierce.png'></td>
+				<td><input type='number' id='Darunis_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Darunis_rank' value='0' checked=''>N/A <input type='radio' name='Darunis_rank' value='3'>3 <input type='radio' name='Darunis_rank' value='4'>4 <input type='radio' name='Darunis_rank' value='5' disabled=''>5 <input type='checkbox' name='Darunis_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Deirdre' class='Shadow Free'>
+				<td><img src='img/Deirdre.jpg'></td>
+				<td>Deirdre</td>
+				<td>蒂亞朵拉 </td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
+				<td><input type='number' id='Deirdre_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Deirdre_rank' value='0' checked=''>N/A <input type='radio' name='Deirdre_rank' value='3'>3 <input type='radio' name='Deirdre_rank' value='4'>4 <input type='radio' name='Deirdre_rank' value='5' disabled=''>5 <input type='checkbox' name='Deirdre_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Denny' class='Light Dream'>
+				<td><img src='img/Denny.jpg'></td>
+				<td>Denny</td>
+				<td>丹尼 </td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/water_slash.png'></td>
+				<td><input type='number' id='Denny_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Denny_rank' value='0' checked=''>N/A <input type='radio' name='Denny_rank' value='3'>3 <input type='radio' name='Denny_rank' value='4'>4 <input type='radio' name='Denny_rank' value='5' disabled=''>5 <input type='checkbox' name='Denny_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Dewey' class='Light Dream'>
+				<td><img src='img/Dewey.jpg'></td>
+				<td>Dewey</td>
+				<td>杜伊</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/water_blunt.png'></td>
+				<td><input type='number' id='Dewey_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Dewey_rank' value='0' checked=''>N/A <input type='radio' name='Dewey_rank' value='3' disabled=''>3 <input type='radio' name='Dewey_rank' value='4'>4 <input type='radio' name='Dewey_rank' value='5'>5 <input type='checkbox' name='Dewey_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Dunarith' class='Shadow Dream'>
+				<td><img src='img/Dunarith.jpg'></td>
+				<td>Dunarith</td>
+				<td>杜拿利斯</td>
+				<td><img src='img/type/wind_null.png'><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Dunarith_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Dunarith_rank' value='0' checked=''>N/A <input type='radio' name='Dunarith_rank' value='3' disabled=''>3 <input type='radio' name='Dunarith_rank' value='4'>4 <input type='radio' name='Dunarith_rank' value='5'>5 <input type='checkbox' name='Dunarith_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Een' class='Light Dream'>
+				<td><img src='img/Een.jpg'></td>
+				<td>Een</td>
+				<td>伊因</td>
+				<td><img src='img/type/null_pierce.png'></td>
+				<td><input type='number' id='Een_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Een_rank' value='0' checked=''>N/A <input type='radio' name='Een_rank' value='3'>3 <input type='radio' name='Een_rank' value='4'>4 <input type='radio' name='Een_rank' value='5' disabled=''>5 <input type='checkbox' name='Een_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Elga' class='Shadow Dream'>
+				<td><img src='img/Elga.jpg'></td>
+				<td>Elga</td>
+				<td>艾露嘉</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
+				<td><input type='number' id='Elga_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Elga_rank' value='0' checked=''>N/A <input type='radio' name='Elga_rank' value='3' disabled=''>3 <input type='radio' name='Elga_rank' value='4'>4 <input type='radio' name='Elga_rank' value='5'>5 <input type='checkbox' name='Elga_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Emms' class='Light Dream'>
+				<td><img src='img/Emms.jpg'></td>
+				<td>Emms</td>
+				<td>艾姆斯</td>
+				<td><img src='img/type/null_blunt.png'></td>
+				<td><input type='number' id='Emms_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Emms_rank' value='0' checked=''>N/A <input type='radio' name='Emms_rank' value='3'>3 <input type='radio' name='Emms_rank' value='4' disabled=''>4 <input type='radio' name='Emms_rank' value='5' disabled=''>5 <input type='checkbox' name='Emms_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Erina' class='Light Dream'>
+				<td><img src='img/Erina.jpg'></td>
+				<td>Erina</td>
+				<td>艾莉娜</td>
+				<td><img src='img/type/null_null.png'></td>
+				<td><input type='number' id='Erina_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Erina_rank' value='0' checked=''>N/A <input type='radio' name='Erina_rank' value='3'>3 <input type='radio' name='Erina_rank' value='4'>4 <input type='radio' name='Erina_rank' value='5' disabled=''>5 <input type='checkbox' name='Erina_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Esta' class='Light Dream'>
+				<td><img src='img/Esta.jpg'></td>
+				<td>Esta</td>
+				<td>艾斯塔</td>
+				<td><img src='img/type/null_slash.png'></td>
+				<td><input type='number' id='Esta_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Esta_rank' value='0' checked=''>N/A <input type='radio' name='Esta_rank' value='3'>3 <input type='radio' name='Esta_rank' value='4' disabled=''>4 <input type='radio' name='Esta_rank' value='5' disabled=''>5 <input type='checkbox' name='Esta_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Ewan' class='Shadow Dream'>
+				<td><img src='img/Ewan.jpg'></td>
+				<td>Ewan</td>
+				<td>尤因</td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/fire_blunt.png'></td>
+				<td><input type='number' id='Ewan_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Ewan_rank' value='0' checked=''>N/A <input type='radio' name='Ewan_rank' value='3' disabled=''>3 <input type='radio' name='Ewan_rank' value='4'>4 <input type='radio' name='Ewan_rank' value='5'>5 <input type='checkbox' name='Ewan_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Feinne' class='Shadow Free'>
+				<td><img src='img/Feinne.jpg'></td>
+				<td>Feinne</td>
+				<td>菲妮</td>
+				<td><img src='img/type/null_null.png'></td>
+				<td><input type='number' id='Feinne_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Feinne_rank' value='0' checked=''>N/A <input type='radio' name='Feinne_rank' value='3'>3 <input type='radio' name='Feinne_rank' value='4'>4 <input type='radio' name='Feinne_rank' value='5' disabled=''>5 <input type='checkbox' name='Feinne_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Felmina' class='Shadow Dream'>
+				<td><img src='img/Felmina.jpg'></td>
+				<td>Felmina</td>
+				<td>菲露米娜</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'><img src='img/type/wind_slash.png'><img src='img/type/wind_blunt.png'></td>
+				<td><input type='number' id='Felmina_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Felmina_rank' value='0' checked=''>N/A <input type='radio' name='Felmina_rank' value='3' disabled=''>3 <input type='radio' name='Felmina_rank' value='4'>4 <input type='radio' name='Felmina_rank' value='5'>5 <input type='checkbox' name='Felmina_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Foran' class='Light Dream'>
+				<td><img src='img/Foran.jpg'></td>
+				<td>Foran</td>
+				<td>芙朗</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
+				<td><input type='number' id='Foran_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Foran_rank' value='0' checked=''>N/A <input type='radio' name='Foran_rank' value='3'>3 <input type='radio' name='Foran_rank' value='4'>4 <input type='radio' name='Foran_rank' value='5' disabled=''>5 <input type='checkbox' name='Foran_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Galliard' class='Shadow Free'>
+				<td><img src='img/Galliard.jpg'></td>
+				<td>Galliard</td>
+				<td>嘉里德</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'></td>
+				<td><input type='number' id='Galliard_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Galliard_rank' value='0' checked=''>N/A <input type='radio' name='Galliard_rank' value='3' disabled=''>3 <input type='radio' name='Galliard_rank' value='4'>4 <input type='radio' name='Galliard_rank' value='5' disabled=''>5 <input type='checkbox' name='Galliard_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Gariyu' class='Shadow Free'>
+				<td><img src='img/Gariyu.jpg'><img src='img/Gariyu_AS.jpg'></td>
+				<td>Gariyu</td>
+				<td>伽琉</td>
+				<td><img src='img/type/fire_null.png'><img src='img/type/fire_zone.png'></td>
+				<td><input type='number' id='Gariyu_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Gariyu_rank' value='0' checked=''>N/A <input type='radio' name='Gariyu_rank' value='3'>3 <input type='radio' name='Gariyu_rank' value='4'>4 <input type='radio' name='Gariyu_rank' value='5'>5 <input type='checkbox' name='Gariyu_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='GoodMacky' class='Light Free'>
+				<td><img src='img/GoodMacky.jpg'></td>
+				<td>GoodMacky</td>
+				<td>善良的米可麥克</td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/wind_blunt.png'></td>
+				<td><input type='number' id='GoodMacky_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='GoodMacky_rank' value='0' checked=''>N/A <input type='radio' name='GoodMacky_rank' value='3' disabled=''>3 <input type='radio' name='GoodMacky_rank' value='4'>4 <input type='radio' name='GoodMacky_rank' value='5' disabled=''>5 <input type='checkbox' name='GoodMacky_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Guildna' class='Shadow Free'>
+				<td><img src='img/Guildna.jpg'></td>
+				<td>Guildna</td>
+				<td>基爾德那</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
+				<td><input type='number' id='Guildna_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Guildna_rank' value='0' checked=''>N/A <input type='radio' name='Guildna_rank' value='3' disabled=''>3 <input type='radio' name='Guildna_rank' value='4'>4 <input type='radio' name='Guildna_rank' value='5'>5 <input type='checkbox' name='Guildna_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Helena' class='Shadow Free'>
+				<td><img src='img/Helena.jpg'></td>
+				<td>Helena</td>
+				<td>海蕾娜</td>
+				<td><img src='img/type/null_null.png'><img src='img/type/earth_null.png'></td>
+				<td><input type='number' id='Helena_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Helena_rank' value='0' checked=''>N/A <input type='radio' name='Helena_rank' value='3'>3 <input type='radio' name='Helena_rank' value='4'>4 <input type='radio' name='Helena_rank' value='5'>5 <input type='checkbox' name='Helena_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Hismena' class='Light Dream'>
+				<td><img src='img/Hismena.jpg'></td>
+				<td>Hismena</td>
+				<td>希斯梅娜</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
+				<td><input type='number' id='Hismena_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Hismena_rank' value='0' checked=''>N/A <input type='radio' name='Hismena_rank' value='3' disabled=''>3 <input type='radio' name='Hismena_rank' value='4'>4 <input type='radio' name='Hismena_rank' value='5'>5 <input type='checkbox' name='Hismena_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Hozuki' class='Light Dream'>
+				<td><img src='img/Hozuki.jpg'></td>
+				<td>Hozuki</td>
+				<td>皓月</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/fire_pierce.png'></td>
+				<td><input type='number' id='Hozuki_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Hozuki_rank' value='0' checked=''>N/A <input type='radio' name='Hozuki_rank' value='3' disabled=''>3 <input type='radio' name='Hozuki_rank' value='4'>4 <input type='radio' name='Hozuki_rank' value='5'>5 <input type='checkbox' name='Hozuki_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Ilulu' class='Shadow Dream'>
+				<td><img src='img/Ilulu.jpg'></td>
+				<td>Ilulu</td>
+				<td>伊露露</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Ilulu_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Ilulu_rank' value='0' checked=''>N/A <input type='radio' name='Ilulu_rank' value='3' disabled=''>3 <input type='radio' name='Ilulu_rank' value='4'>4 <input type='radio' name='Ilulu_rank' value='5'>5 <input type='checkbox' name='Ilulu_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Isuka' class='Light Dream'>
+				<td><img src='img/Isuka.jpg'><img src='img/Isuka_AS.jpg'></td>
+				<td>Isuka</td>
+				<td>伊絲卡 </td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Isuka_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Isuka_rank' value='0' checked=''>N/A <input type='radio' name='Isuka_rank' value='3' disabled=''>3 <input type='radio' name='Isuka_rank' value='4'>4 <input type='radio' name='Isuka_rank' value='5'>5 <input type='checkbox' name='Isuka_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Jade' class='Shadow Free'>
+				<td><img src='img/Jade.jpg'></td>
+				<td>Jade</td>
+				<td>賈德</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/fire_pierce.png'></td>
+				<td><input type='number' id='Jade_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Jade_rank' value='0' checked=''>N/A <input type='radio' name='Jade_rank' value='3'>3 <input type='radio' name='Jade_rank' value='4'>4 <input type='radio' name='Jade_rank' value='5' disabled=''>5 <input type='checkbox' name='Jade_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Joker' class='Shadow Free'>
+				<td><img src='img/Joker.jpg'></td>
+				<td>Joker</td>
+				<td>JOKER</td>
+				<td><img src='img/type/null_null.png'><img src='img/type/null_pierce.png'><img src='img/type/fire_slash.png'></td>
+				<td><input type='number' id='Joker_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Joker_rank' value='0' checked=''>N/A <input type='radio' name='Joker_rank' value='3' disabled=''>3 <input type='radio' name='Joker_rank' value='4'>4 <input type='radio' name='Joker_rank' value='5'>5 <input type='checkbox' name='Joker_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Kikyo' class='Light Dream'>
+				<td><img src='img/Kikyo.jpg'></td>
+				<td>Kikyo</td>
+				<td>桔梗</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Kikyo_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Kikyo_rank' value='0' checked=''>N/A <input type='radio' name='Kikyo_rank' value='3' disabled=''>3 <input type='radio' name='Kikyo_rank' value='4'>4 <input type='radio' name='Kikyo_rank' value='5'>5 <input type='checkbox' name='Kikyo_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Kilqia' class='Shadow Dream'>
+				<td><img src='img/Kilqia.jpg'></td>
+				<td>Kilqia</td>
+				<td>基露琪亞</td>
+				<td><img src='img/type/null_null.png'></td>
+				<td><input type='number' id='Kilqia_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Kilqia_rank' value='0' checked=''>N/A <input type='radio' name='Kilqia_rank' value='3'>3 <input type='radio' name='Kilqia_rank' value='4' disabled=''>4 <input type='radio' name='Kilqia_rank' value='5' disabled=''>5 <input type='checkbox' name='Kilqia_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Komachi' class='Light Dream'>
+				<td><img src='img/Komachi.jpg'></td>
+				<td>Komachi</td>
+				<td>小町</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'></td>
+				<td><input type='number' id='Komachi_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Komachi_rank' value='0' checked=''>N/A <input type='radio' name='Komachi_rank' value='3'>3 <input type='radio' name='Komachi_rank' value='4'>4 <input type='radio' name='Komachi_rank' value='5' disabled=''>5 <input type='checkbox' name='Komachi_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Koot' class='Light Dream'>
+				<td><img src='img/Koot.jpg'></td>
+				<td>Koot</td>
+				<td>庫托</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'></td>
+				<td><input type='number' id='Koot_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Koot_rank' value='0' checked=''>N/A <input type='radio' name='Koot_rank' value='3'>3 <input type='radio' name='Koot_rank' value='4' disabled=''>4 <input type='radio' name='Koot_rank' value='5' disabled=''>5 <input type='checkbox' name='Koot_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Krervo' class='Light Dream'>
+				<td><img src='img/Krervo.jpg'></td>
+				<td>Krervo</td>
+				<td>克利霍</td>
+				<td><img src='img/type/null_null.png'></td>
+				<td><input type='number' id='Krervo_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Krervo_rank' value='0' checked=''>N/A <input type='radio' name='Krervo_rank' value='3'>3 <input type='radio' name='Krervo_rank' value='4'>4 <input type='radio' name='Krervo_rank' value='5' disabled=''>5 <input type='checkbox' name='Krervo_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Laclair' class='Light Dream'>
+				<td><img src='img/Laclair.jpg'><img src='img/Laclair_AS.jpg'></td>
+				<td>Laclair</td>
+				<td>拉克萊兒</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'><img src='img/type/water_slash.png'></td>
+				<td><input type='number' id='Laclair_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Laclair_rank' value='0' checked=''>N/A <input type='radio' name='Laclair_rank' value='3' disabled=''>3 <input type='radio' name='Laclair_rank' value='4'>4 <input type='radio' name='Laclair_rank' value='5'>5 <input type='checkbox' name='Laclair_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Lele' class='Light Dream'>
+				<td><img src='img/Lele.jpg'></td>
+				<td>Lele</td>
+				<td>蕾蕾</td>
+				<td><img src='img/type/water_null.png'></td>
+				<td><input type='number' id='Lele_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Lele_rank' value='0' checked=''>N/A <input type='radio' name='Lele_rank' value='3'>3 <input type='radio' name='Lele_rank' value='4'>4 <input type='radio' name='Lele_rank' value='5' disabled=''>5 <input type='checkbox' name='Lele_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Levia' class='Light Free'>
+				<td><img src='img/Levia.jpg'></td>
+				<td>Levia</td>
+				<td>莉維雅</td>
+				<td><img src='img/type/water_null.png'></td>
+				<td><input type='number' id='Levia_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Levia_rank' value='0' checked=''>N/A <input type='radio' name='Levia_rank' value='3' disabled=''>3 <input type='radio' name='Levia_rank' value='4' disabled=''>4 <input type='radio' name='Levia_rank' value='5'>5 <input type='checkbox' name='Levia_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Lingli' class='Light Dream'>
+				<td><img src='img/Lingli.jpg'></td>
+				<td>Lingli</td>
+				<td>林麗</td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/fire_blunt.png'></td>
+				<td><input type='number' id='Lingli_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Lingli_rank' value='0' checked=''>N/A <input type='radio' name='Lingli_rank' value='3'>3 <input type='radio' name='Lingli_rank' value='4'>4 <input type='radio' name='Lingli_rank' value='5' disabled=''>5 <input type='checkbox' name='Lingli_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Lokido' class='Light Dream'>
+				<td><img src='img/Lokido.jpg'><img src='img/Lokido_AS.jpg'></td>
+				<td>Lokido</td>
+				<td>洛基德</td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/earth_blunt.png'></td>
+				<td><input type='number' id='Lokido_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Lokido_rank' value='0' checked=''>N/A <input type='radio' name='Lokido_rank' value='3' disabled=''>3 <input type='radio' name='Lokido_rank' value='4'>4 <input type='radio' name='Lokido_rank' value='5'>5 <input type='checkbox' name='Lokido_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Lovely' class='Light Dream'>
+				<td><img src='img/Lovely.jpg'></td>
+				<td>Lovely</td>
+				<td>拉布莉</td>
+				<td><img src='img/type/fire_blunt.png'></td>
+				<td><input type='number' id='Lovely_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Lovely_rank' value='0' checked=''>N/A <input type='radio' name='Lovely_rank' value='3' disabled=''>3 <input type='radio' name='Lovely_rank' value='4'>4 <input type='radio' name='Lovely_rank' value='5'>5 <input type='checkbox' name='Lovely_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Lovinia' class='Light Dream'>
+				<td><img src='img/Lovinia.jpg'></td>
+				<td>Lovinia</td>
+				<td>羅維娜</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/wind_pierce.png'></td>
+				<td><input type='number' id='Lovinia_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Lovinia_rank' value='0' checked=''>N/A <input type='radio' name='Lovinia_rank' value='3'>3 <input type='radio' name='Lovinia_rank' value='4'>4 <input type='radio' name='Lovinia_rank' value='5' disabled=''>5 <input type='checkbox' name='Lovinia_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Mana' class='Light Free'>
+				<td><img src='img/Mana.jpg'></td>
+				<td>Mana</td>
+				<td>瑪娜</td>
+				<td><img src='img/type/null_pierce.png'></td>
+				<td><input type='number' id='Mana_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Mana_rank' value='0' checked=''>N/A <input type='radio' name='Mana_rank' value='3' disabled=''>3 <input type='radio' name='Mana_rank' value='4' disabled=''>4 <input type='radio' name='Mana_rank' value='5'>5 <input type='checkbox' name='Mana_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Mariel' class='Light Dream'>
+				<td><img src='img/Mariel.jpg'><img src='img/Mariel_AS.jpg'></td>
+				<td>Mariel</td>
+				<td>瑪莉艾爾</td>
+				<td><img src='img/type/null_null.png'></td>
+				<td><input type='number' id='Mariel_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Mariel_rank' value='0' checked=''>N/A <input type='radio' name='Mariel_rank' value='3' disabled=''>3 <input type='radio' name='Mariel_rank' value='4'>4 <input type='radio' name='Mariel_rank' value='5'>5 <input type='checkbox' name='Mariel_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='May' class='Light Dream'>
+				<td><img src='img/May.jpg'></td>
+				<td>May</td>
+				<td>玫</td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/earth_blunt.png'></td>
+				<td><input type='number' id='May_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='May_rank' value='0' checked=''>N/A <input type='radio' name='May_rank' value='3'>3 <input type='radio' name='May_rank' value='4'>4 <input type='radio' name='May_rank' value='5' disabled=''>5 <input type='checkbox' name='May_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Melina' class='Shadow Dream'>
+				<td><img src='img/Melina.jpg'><img src='img/Melina_AS.jpg'></td>
+				<td>Melina</td>
+				<td>玫莉娜</td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/water_null.png'><img src='img/type/water_blunt.png'></td>
+				<td><input type='number' id='Melina_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Melina_rank' value='0' checked=''>N/A <input type='radio' name='Melina_rank' value='3' disabled=''>3 <input type='radio' name='Melina_rank' value='4'>4 <input type='radio' name='Melina_rank' value='5'>5 <input type='checkbox' name='Melina_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Menesia' class='Shadow Dream'>
+				<td><img src='img/Menesia.jpg'></td>
+				<td>Menesia</td>
+				<td>梅尼西雅</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'></td>
+				<td><input type='number' id='Menesia_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Menesia_rank' value='0' checked=''>N/A <input type='radio' name='Menesia_rank' value='3'>3 <input type='radio' name='Menesia_rank' value='4' disabled=''>4 <input type='radio' name='Menesia_rank' value='5' disabled=''>5 <input type='checkbox' name='Menesia_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Mighty' class='Light Dream'>
+				<td><img src='img/Mighty.jpg'><img src='img/Mighty_AS.jpg'></td>
+				<td>Mighty</td>
+				<td>麥提</td>
+				<td><img src='img/type/water_null.png'></td>
+				<td><input type='number' id='Mighty_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Mighty_rank' value='0' checked=''>N/A <input type='radio' name='Mighty_rank' value='3' disabled=''>3 <input type='radio' name='Mighty_rank' value='4'>4 <input type='radio' name='Mighty_rank' value='5'>5 <input type='checkbox' name='Mighty_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Miranda' class='Light Dream'>
+				<td><img src='img/Miranda.jpg'></td>
+				<td>Miranda</td>
+				<td>米蘭達</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
+				<td><input type='number' id='Miranda_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Miranda_rank' value='0' checked=''>N/A <input type='radio' name='Miranda_rank' value='3'>3 <input type='radio' name='Miranda_rank' value='4'>4 <input type='radio' name='Miranda_rank' value='5' disabled=''>5 <input type='checkbox' name='Miranda_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Miyu' class='Light Dream'>
+				<td><img src='img/Miyu.jpg'></td>
+				<td>Miyu</td>
+				<td>米悠</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
+				<td><input type='number' id='Miyu_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Miyu_rank' value='0' checked=''>N/A <input type='radio' name='Miyu_rank' value='3'>3 <input type='radio' name='Miyu_rank' value='4'>4 <input type='radio' name='Miyu_rank' value='5'>5 <input type='checkbox' name='Miyu_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Morgana' class='Shadow Free'>
+				<td><img src='img/Morgana.jpg'></td>
+				<td>Morgana</td>
+				<td>摩爾加納</td>
+				<td><img src='img/type/wind_null.png'><img src='img/type/wind_blunt.png'></td>
+				<td><input type='number' id='Morgana_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Morgana_rank' value='0' checked=''>N/A <input type='radio' name='Morgana_rank' value='3' disabled=''>3 <input type='radio' name='Morgana_rank' value='4' disabled=''>4 <input type='radio' name='Morgana_rank' value='5'>5 <input type='checkbox' name='Morgana_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Myron' class='Light Dream'>
+				<td><img src='img/Myron.jpg'></td>
+				<td>Myron</td>
+				<td>繆倫</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
+				<td><input type='number' id='Myron_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Myron_rank' value='0' checked=''>N/A <input type='radio' name='Myron_rank' value='3'>3 <input type='radio' name='Myron_rank' value='4'>4 <input type='radio' name='Myron_rank' value='5' disabled=''>5 <input type='checkbox' name='Myron_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Myrus' class='Light Dream'>
+				<td><img src='img/Myrus.jpg'></td>
+				<td>Myrus</td>
+				<td>繆露絲</td>
+				<td><img src='img/type/earth_null.png'></td>
+				<td><input type='number' id='Myrus_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Myrus_rank' value='0' checked=''>N/A <input type='radio' name='Myrus_rank' value='3' disabled=''>3 <input type='radio' name='Myrus_rank' value='4'>4 <input type='radio' name='Myrus_rank' value='5'>5 <input type='checkbox' name='Myrus_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Nagi' class='Shadow Dream'>
+				<td><img src='img/Nagi.jpg'><img src='img/Nagi_AS.jpg'></td>
+				<td>Nagi</td>
+				<td>娜基</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
+				<td><input type='number' id='Nagi_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Nagi_rank' value='0' checked=''>N/A <input type='radio' name='Nagi_rank' value='3' disabled=''>3 <input type='radio' name='Nagi_rank' value='4'>4 <input type='radio' name='Nagi_rank' value='5'>5 <input type='checkbox' name='Nagi_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Natore' class='Light Dream'>
+				<td><img src='img/Natore.jpg'></td>
+				<td>Natore</td>
+				<td>娜托雷</td>
+				<td><img src='img/type/null_slash.png'></td>
+				<td><input type='number' id='Natore_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Natore_rank' value='0' checked=''>N/A <input type='radio' name='Natore_rank' value='3'>3 <input type='radio' name='Natore_rank' value='4' disabled=''>4 <input type='radio' name='Natore_rank' value='5' disabled=''>5 <input type='checkbox' name='Natore_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Naylia' class='Light Dream'>
+				<td><img src='img/Naylia.jpg'></td>
+				<td>Naylia</td>
+				<td>內莉雅</td>
+				<td><img src='img/type/null_slash.png'></td>
+				<td><input type='number' id='Naylia_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Naylia_rank' value='0' checked=''>N/A <input type='radio' name='Naylia_rank' value='3'>3 <input type='radio' name='Naylia_rank' value='4' disabled=''>4 <input type='radio' name='Naylia_rank' value='5' disabled=''>5 <input type='checkbox' name='Naylia_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Nero' class='Shadow Dream'>
+				<td><img src='img/Nero.jpg'></td>
+				<td>Nero</td>
+				<td>尼洛</td>
+				<td><img src='img/type/water_blunt.png'></td>
+				<td><input type='number' id='Nero_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Nero_rank' value='0' checked=''>N/A <input type='radio' name='Nero_rank' value='3'>3 <input type='radio' name='Nero_rank' value='4'>4 <input type='radio' name='Nero_rank' value='5' disabled=''>5 <input type='checkbox' name='Nero_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Nikeh' class='Shadow Dream'>
+				<td><img src='img/Nikeh.jpg'><img src='img/Nikeh_AS.jpg'></td>
+				<td>Nikeh</td>
+				<td>尼姬</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/water_slash.png'></td>
+				<td><input type='number' id='Nikeh_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Nikeh_rank' value='0' checked=''>N/A <input type='radio' name='Nikeh_rank' value='3'>3 <input type='radio' name='Nikeh_rank' value='4'>4 <input type='radio' name='Nikeh_rank' value='5' disabled=''>5 <input type='checkbox' name='Nikeh_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Nixa' class='Light Dream'>
+				<td><img src='img/Nixa.jpg'></td>
+				<td>Nixa</td>
+				<td>妮克薩</td>
+				<td><img src='img/type/null_pierce.png'></td>
+				<td><input type='number' id='Nixa_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Nixa_rank' value='0' checked=''>N/A <input type='radio' name='Nixa_rank' value='3'>3 <input type='radio' name='Nixa_rank' value='4' disabled=''>4 <input type='radio' name='Nixa_rank' value='5' disabled=''>5 <input type='checkbox' name='Nixa_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Nomar' class='Light Dream'>
+				<td><img src='img/Nomar.jpg'></td>
+				<td>Nomar</td>
+				<td>諾馬爾</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
+				<td><input type='number' id='Nomar_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Nomar_rank' value='0' checked=''>N/A <input type='radio' name='Nomar_rank' value='3'>3 <input type='radio' name='Nomar_rank' value='4'>4 <input type='radio' name='Nomar_rank' value='5' disabled=''>5 <input type='checkbox' name='Nomar_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Nonold' class='Light Dream'>
+				<td><img src='img/Nonold.jpg'></td>
+				<td>Nonold</td>
+				<td>諾諾德</td>
+				<td><img src='img/type/null_null.png'></td>
+				<td><input type='number' id='Nonold_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Nonold_rank' value='0' checked=''>N/A <input type='radio' name='Nonold_rank' value='3'>3 <input type='radio' name='Nonold_rank' value='4'>4 <input type='radio' name='Nonold_rank' value='5' disabled=''>5 <input type='checkbox' name='Nonold_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Noome' class='Light Dream'>
+				<td><img src='img/Noome.jpg'></td>
+				<td>Noome</td>
+				<td>諾暮</td>
+				<td><img src='img/type/null_null.png'></td>
+				<td><input type='number' id='Noome_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Noome_rank' value='0' checked=''>N/A <input type='radio' name='Noome_rank' value='3'>3 <input type='radio' name='Noome_rank' value='4' disabled=''>4 <input type='radio' name='Noome_rank' value='5' disabled=''>5 <input type='checkbox' name='Noome_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Nopaew' class='Light Free'>
+				<td><img src='img/Nopaew.jpg'></td>
+				<td>Nopaew</td>
+				<td>波波羅</td>
+				<td><img src='img/type/wind_null.png'></td>
+				<td><input type='number' id='Nopaew_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Nopaew_rank' value='0' checked=''>N/A <input type='radio' name='Nopaew_rank' value='3'>3 <input type='radio' name='Nopaew_rank' value='4'>4 <input type='radio' name='Nopaew_rank' value='5' disabled=''>5 <input type='checkbox' name='Nopaew_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Oor' class='Light Dream'>
+				<td><img src='img/Oor.jpg'></td>
+				<td>Oor</td>
+				<td>歐爾</td>
+				<td><img src='img/type/null_slash.png'></td>
+				<td><input type='number' id='Oor_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Oor_rank' value='0' checked=''>N/A <input type='radio' name='Oor_rank' value='3'>3 <input type='radio' name='Oor_rank' value='4' disabled=''>4 <input type='radio' name='Oor_rank' value='5' disabled=''>5 <input type='checkbox' name='Oor_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Otoha' class='Light Dream'>
+				<td><img src='img/Otoha.jpg'></td>
+				<td>Otoha</td>
+				<td>乙葉</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
+				<td><input type='number' id='Otoha_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Otoha_rank' value='0' checked=''>N/A <input type='radio' name='Otoha_rank' value='3'>3 <input type='radio' name='Otoha_rank' value='4'>4 <input type='radio' name='Otoha_rank' value='5' disabled=''>5 <input type='checkbox' name='Otoha_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Parisa' class='Shadow Dream'>
+				<td><img src='img/Parisa.jpg'></td>
+				<td>Parisa</td>
+				<td>帕莉莎</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/fire_pierce.png'></td>
+				<td><input type='number' id='Parisa_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Parisa_rank' value='0' checked=''>N/A <input type='radio' name='Parisa_rank' value='3'>3 <input type='radio' name='Parisa_rank' value='4'>4 <input type='radio' name='Parisa_rank' value='5' disabled=''>5 <input type='checkbox' name='Parisa_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Pasia' class='Light Dream'>
+				<td><img src='img/Pasia.jpg'></td>
+				<td>Pasia</td>
+				<td>帕希雅</td>
+				<td><img src='img/type/null_blunt.png'></td>
+				<td><input type='number' id='Pasia_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Pasia_rank' value='0' checked=''>N/A <input type='radio' name='Pasia_rank' value='3'>3 <input type='radio' name='Pasia_rank' value='4' disabled=''>4 <input type='radio' name='Pasia_rank' value='5' disabled=''>5 <input type='checkbox' name='Pasia_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Philo' class='Light Dream'>
+				<td><img src='img/Philo.jpg'></td>
+				<td>Philo</td>
+				<td>菲羅</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/water_slash.png'></td>
+				<td><input type='number' id='Philo_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Philo_rank' value='0' checked=''>N/A <input type='radio' name='Philo_rank' value='3' disabled=''>3 <input type='radio' name='Philo_rank' value='4'>4 <input type='radio' name='Philo_rank' value='5'>5 <input type='checkbox' name='Philo_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Pom' class='Light Dream'>
+				<td><img src='img/Pom.jpg'></td>
+				<td>Pom</td>
+				<td>波姆</td>
+				<td><img src='img/type/null_null.png'></td>
+				<td><input type='number' id='Pom_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Pom_rank' value='0' checked=''>N/A <input type='radio' name='Pom_rank' value='3'>3 <input type='radio' name='Pom_rank' value='4'>4 <input type='radio' name='Pom_rank' value='5' disabled=''>5 <input type='checkbox' name='Pom_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Prai' class='Shadow Dream'>
+				<td><img src='img/Prai.jpg'></td>
+				<td>Prai</td>
+				<td>普萊</td>
+				<td><img src='img/type/null_blunt.png'></td>
+				<td><input type='number' id='Prai_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Prai_rank' value='0' checked=''>N/A <input type='radio' name='Prai_rank' value='3'>3 <input type='radio' name='Prai_rank' value='4'>4 <input type='radio' name='Prai_rank' value='5' disabled=''>5 <input type='checkbox' name='Prai_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Premaya' class='Light Dream'>
+				<td><img src='img/Premaya.jpg'></td>
+				<td>Premaya</td>
+				<td>普蕾米婭</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/earth_pierce.png'></td>
+				<td><input type='number' id='Premaya_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Premaya_rank' value='0' checked=''>N/A <input type='radio' name='Premaya_rank' value='3' disabled=''>3 <input type='radio' name='Premaya_rank' value='4'>4 <input type='radio' name='Premaya_rank' value='5'>5 <input type='checkbox' name='Premaya_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Radica' class='Shadow Dream'>
+				<td><img src='img/Radica.jpg'></td>
+				<td>Radica</td>
+				<td>拉蒂卡</td>
+				<td><img src='img/type/null_null.png'><img src='img/type/null_slash.png'><img src='img/type/fire_null.png'></td>
+				<td><input type='number' id='Radica_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Radica_rank' value='0' checked=''>N/A <input type='radio' name='Radica_rank' value='3' disabled=''>3 <input type='radio' name='Radica_rank' value='4'>4 <input type='radio' name='Radica_rank' value='5'>5 <input type='checkbox' name='Radica_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Raven' class='Shadow Dream'>
+				<td><img src='img/Raven.jpg'></td>
+				<td>Raven</td>
+				<td>雷文</td>
+				<td><img src='img/type/null_null.png'><img src='img/type/earth_null.png'></td>
+				<td><input type='number' id='Raven_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Raven_rank' value='0' checked=''>N/A <input type='radio' name='Raven_rank' value='3'>3 <input type='radio' name='Raven_rank' value='4'>4 <input type='radio' name='Raven_rank' value='5' disabled=''>5 <input type='checkbox' name='Raven_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Renri' class='Light Dream'>
+				<td><img src='img/Renri.jpg'></td>
+				<td>Renri</td>
+				<td>雷莉</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
+				<td><input type='number' id='Renri_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Renri_rank' value='0' checked=''>N/A <input type='radio' name='Renri_rank' value='3' disabled=''>3 <input type='radio' name='Renri_rank' value='4'>4 <input type='radio' name='Renri_rank' value='5'>5 <input type='checkbox' name='Renri_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Riica' class='Light Free'>
+				<td><img src='img/Riica.jpg'></td>
+				<td>Riica</td>
+				<td>莉卡</td>
+				<td><img src='img/type/null_null.png'><img src='img/type/null_blunt.png'><img src='img/type/earth_blunt.png'></td>
+				<td><input type='number' id='Riica_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Riica_rank' value='0' checked=''>N/A <input type='radio' name='Riica_rank' value='3'>3 <input type='radio' name='Riica_rank' value='4'>4 <input type='radio' name='Riica_rank' value='5'>5 <input type='checkbox' name='Riica_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Rodeia' class='Light Dream'>
+				<td><img src='img/Rodeia.jpg'></td>
+				<td>Rodeia</td>
+				<td>羅蒂亞</td>
+				<td><img src='img/type/null_slash.png'></td>
+				<td><input type='number' id='Rodeia_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Rodeia_rank' value='0' checked=''>N/A <input type='radio' name='Rodeia_rank' value='3'>3 <input type='radio' name='Rodeia_rank' value='4' disabled=''>4 <input type='radio' name='Rodeia_rank' value='5' disabled=''>5 <input type='checkbox' name='Rodeia_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Rosetta' class='Shadow Dream'>
+				<td><img src='img/Rosetta.jpg'></td>
+				<td>Rosetta</td>
+				<td>蘿潔塔</td>
+				<td><img src='img/type/null_null.png'><img src='img/type/fire_null.png'></td>
+				<td><input type='number' id='Rosetta_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Rosetta_rank' value='0' checked=''>N/A <input type='radio' name='Rosetta_rank' value='3' disabled=''>3 <input type='radio' name='Rosetta_rank' value='4'>4 <input type='radio' name='Rosetta_rank' value='5'>5 <input type='checkbox' name='Rosetta_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Rovella' class='Shadow Dream'>
+				<td><img src='img/Rovella.jpg'></td>
+				<td>Rovella</td>
+				<td>羅貝拉</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
+				<td><input type='number' id='Rovella_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Rovella_rank' value='0' checked=''>N/A <input type='radio' name='Rovella_rank' value='3'>3 <input type='radio' name='Rovella_rank' value='4'>4 <input type='radio' name='Rovella_rank' value='5' disabled=''>5 <input type='checkbox' name='Rovella_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Rufus' class='Light Dream'>
+				<td><img src='img/Rufus.jpg'></td>
+				<td>Rufus</td>
+				<td>洛福斯</td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/fire_blunt.png'></td>
+				<td><input type='number' id='Rufus_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Rufus_rank' value='0' checked=''>N/A <input type='radio' name='Rufus_rank' value='3'>3 <input type='radio' name='Rufus_rank' value='4'>4 <input type='radio' name='Rufus_rank' value='5' disabled=''>5 <input type='checkbox' name='Rufus_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Ruina' class='Shadow Dream'>
+				<td><img src='img/Ruina.jpg'><img src='img/Ruina_AS.jpg'></td>
+				<td>Ruina</td>
+				<td>路伊娜</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Ruina_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Ruina_rank' value='0' checked=''>N/A <input type='radio' name='Ruina_rank' value='3'>3 <input type='radio' name='Ruina_rank' value='4'>4 <input type='radio' name='Ruina_rank' value='5' disabled=''>5 <input type='checkbox' name='Ruina_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Saithe' class='Light Dream'>
+				<td><img src='img/Saithe.jpg'></td>
+				<td>Saithe</td>
+				<td>賽斯</td>
+				<td><img src='img/type/null_pierce.png'></td>
+				<td><input type='number' id='Saithe_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Saithe_rank' value='0' checked=''>N/A <input type='radio' name='Saithe_rank' value='3'>3 <input type='radio' name='Saithe_rank' value='4' disabled=''>4 <input type='radio' name='Saithe_rank' value='5' disabled=''>5 <input type='checkbox' name='Saithe_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Saki' class='Light Free'>
+				<td><img src='img/Saki.jpg'><img src='img/Saki_AS.jpg'></td>
+				<td>Saki</td>
+				<td>紗希</td>
+				<td><img src='img/type/water_null.png'></td>
+				<td><input type='number' id='Saki_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Saki_rank' value='0' checked=''>N/A <input type='radio' name='Saki_rank' value='3'>3 <input type='radio' name='Saki_rank' value='4'>4 <input type='radio' name='Saki_rank' value='5' disabled=''>5 <input type='checkbox' name='Saki_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Samora' class='Light Dream'>
+				<td><img src='img/Samora.jpg'></td>
+				<td>Samora</td>
+				<td>薩摩拉</td>
+				<td><img src='img/type/null_blunt.png'><img src='img/type/fire_blunt.png'></td>
+				<td><input type='number' id='Samora_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Samora_rank' value='0' checked=''>N/A <input type='radio' name='Samora_rank' value='3'>3 <input type='radio' name='Samora_rank' value='4'>4 <input type='radio' name='Samora_rank' value='5' disabled=''>5 <input type='checkbox' name='Samora_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Sauria' class='Light Dream'>
+				<td><img src='img/Sauria.jpg'></td>
+				<td>Sauria</td>
+				<td>秀莉雅</td>
+				<td><img src='img/type/null_pierce.png'></td>
+				<td><input type='number' id='Sauria_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Sauria_rank' value='0' checked=''>N/A <input type='radio' name='Sauria_rank' value='3'>3 <input type='radio' name='Sauria_rank' value='4' disabled=''>4 <input type='radio' name='Sauria_rank' value='5' disabled=''>5 <input type='checkbox' name='Sauria_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Sevyn' class='Light Dream'>
+				<td><img src='img/Sevyn.jpg'></td>
+				<td>Sevyn</td>
+				<td>賽溫</td>
+				<td><img src='img/type/wind_null.png'><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Sevyn_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Sevyn_rank' value='0' checked=''>N/A <input type='radio' name='Sevyn_rank' value='3'>3 <input type='radio' name='Sevyn_rank' value='4'>4 <input type='radio' name='Sevyn_rank' value='5' disabled=''>5 <input type='checkbox' name='Sevyn_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Shanie' class='Light Dream'>
+				<td><img src='img/Shanie.jpg'><img src='img/Shanie_AS.jpg'></td>
+				<td>Shanie</td>
+				<td>謝奈</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/water_slash.png'></td>
+				<td><input type='number' id='Shanie_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Shanie_rank' value='0' checked=''>N/A <input type='radio' name='Shanie_rank' value='3' disabled=''>3 <input type='radio' name='Shanie_rank' value='4'>4 <input type='radio' name='Shanie_rank' value='5'>5 <input type='checkbox' name='Shanie_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Shannon' class='Light Dream'>
+				<td><img src='img/Shannon.jpg'></td>
+				<td>Shannon</td>
+				<td>夏濃</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Shannon_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Shannon_rank' value='0' checked=''>N/A <input type='radio' name='Shannon_rank' value='3' disabled=''>3 <input type='radio' name='Shannon_rank' value='4'>4 <input type='radio' name='Shannon_rank' value='5'>5 <input type='checkbox' name='Shannon_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Sheila' class='Light Free'>
+				<td><img src='img/Sheila.jpg'></td>
+				<td>Sheila</td>
+				<td>謝拉</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
+				<td><input type='number' id='Sheila_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Sheila_rank' value='0' checked=''>N/A <input type='radio' name='Sheila_rank' value='3'>3 <input type='radio' name='Sheila_rank' value='4'>4 <input type='radio' name='Sheila_rank' value='5' disabled=''>5 <input type='checkbox' name='Sheila_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Shigure' class='Light Dream'>
+				<td><img src='img/Shigure.jpg'></td>
+				<td>Shigure</td>
+				<td>時雨</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/water_pierce.png'></td>
+				<td><input type='number' id='Shigure_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Shigure_rank' value='0' checked=''>N/A <input type='radio' name='Shigure_rank' value='3' disabled=''>3 <input type='radio' name='Shigure_rank' value='4'>4 <input type='radio' name='Shigure_rank' value='5'>5 <input type='checkbox' name='Shigure_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Shion' class='Light Dream'>
+				<td><img src='img/Shion.jpg'><img src='img/Shion_AS.jpg'></td>
+				<td>Shion</td>
+				<td>紫央</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
+				<td><input type='number' id='Shion_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Shion_rank' value='0' checked=''>N/A <input type='radio' name='Shion_rank' value='3' disabled=''>3 <input type='radio' name='Shion_rank' value='4'>4 <input type='radio' name='Shion_rank' value='5'>5 <input type='checkbox' name='Shion_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Soira' class='Light Dream'>
+				<td><img src='img/Soira.jpg'></td>
+				<td>Soira</td>
+				<td>蘇依萊</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/wind_pierce.png'></td>
+				<td><input type='number' id='Soira_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Soira_rank' value='0' checked=''>N/A <input type='radio' name='Soira_rank' value='3'>3 <input type='radio' name='Soira_rank' value='4'>4 <input type='radio' name='Soira_rank' value='5' disabled=''>5 <input type='checkbox' name='Soira_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Strawboy' class='Light Free'>
+				<td><img src='img/Strawboy.jpg'></td>
+				<td>Strawboy</td>
+				<td>草人小子 </td>
+				<td><img src='img/type/all_null.png'><img src='img/type/all_slash.png'><img src='img/type/all_pierce.png'><img src='img/type/all_blunt.png'></td>
+				<td><input type='number' id='Strawboy_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Strawboy_rank' value='0' checked=''>N/A <input type='radio' name='Strawboy_rank' value='3' disabled=''>3 <input type='radio' name='Strawboy_rank' value='4' disabled=''>4 <input type='radio' name='Strawboy_rank' value='5'>5 <input type='checkbox' name='Strawboy_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Suzette' class='Light Dream'>
+				<td><img src='img/Suzette.jpg'><img src='img/Suzette_AS.jpg'></td>
+				<td>Suzette</td>
+				<td>蘇賽特</td>
+				<td><img src='img/type/null_pierce.png'><img src='img/type/wind_pierce.png'></td>
+				<td><input type='number' id='Suzette_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Suzette_rank' value='0' checked=''>N/A <input type='radio' name='Suzette_rank' value='3' disabled=''>3 <input type='radio' name='Suzette_rank' value='4'>4 <input type='radio' name='Suzette_rank' value='5'>5 <input type='checkbox' name='Suzette_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Tayme' class='Light Dream'>
+				<td><img src='img/Tayme.jpg'></td>
+				<td>Tayme</td>
+				<td>提姆</td>
+				<td><img src='img/type/null_blunt.png'></td>
+				<td><input type='number' id='Tayme_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Tayme_rank' value='0' checked=''>N/A <input type='radio' name='Tayme_rank' value='3'>3 <input type='radio' name='Tayme_rank' value='4' disabled=''>4 <input type='radio' name='Tayme_rank' value='5' disabled=''>5 <input type='checkbox' name='Tayme_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Tohme' class='Shadow Dream'>
+				<td><img src='img/Tohme.jpg'></td>
+				<td>Tohme</td>
+				<td>托姆</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'></td>
+				<td><input type='number' id='Tohme_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Tohme_rank' value='0' checked=''>N/A <input type='radio' name='Tohme_rank' value='3'>3 <input type='radio' name='Tohme_rank' value='4' disabled=''>4 <input type='radio' name='Tohme_rank' value='5' disabled=''>5 <input type='checkbox' name='Tohme_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Toole' class='Light Dream'>
+				<td><img src='img/Toole.jpg'></td>
+				<td>Toole</td>
+				<td>托爾</td>
+				<td><img src='img/type/null_blunt.png'></td>
+				<td><input type='number' id='Toole_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Toole_rank' value='0' checked=''>N/A <input type='radio' name='Toole_rank' value='3'>3 <input type='radio' name='Toole_rank' value='4' disabled=''>4 <input type='radio' name='Toole_rank' value='5' disabled=''>5 <input type='checkbox' name='Toole_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Toova' class='Shadow Dream'>
+				<td><img src='img/Toova.jpg'><img src='img/Toova_AS.jpg'></td>
+				<td>Toova</td>
+				<td>杜娃</td>
+				<td><img src='img/type/null_null.png'><img src='img/type/earth_null.png'></td>
+				<td><input type='number' id='Toova_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Toova_rank' value='0' checked=''>N/A <input type='radio' name='Toova_rank' value='3' disabled=''>3 <input type='radio' name='Toova_rank' value='4'>4 <input type='radio' name='Toova_rank' value='5'>5 <input type='checkbox' name='Toova_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Tsubame' class='Light Dream'>
+				<td><img src='img/Tsubame.jpg'></td>
+				<td>Tsubame</td>
+				<td>燕</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'><img src='img/type/earth_blunt.png'></td>
+				<td><input type='number' id='Tsubame_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Tsubame_rank' value='0' checked=''>N/A <input type='radio' name='Tsubame_rank' value='3' disabled=''>3 <input type='radio' name='Tsubame_rank' value='4'>4 <input type='radio' name='Tsubame_rank' value='5'>5 <input type='checkbox' name='Tsubame_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Tsukiha' class='Shadow Dream'>
+				<td><img src='img/Tsukiha.jpg'></td>
+				<td>Tsukiha</td>
+				<td>月華</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/fire_slash.png'></td>
+				<td><input type='number' id='Tsukiha_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Tsukiha_rank' value='0' checked=''>N/A <input type='radio' name='Tsukiha_rank' value='3' disabled=''>3 <input type='radio' name='Tsukiha_rank' value='4'>4 <input type='radio' name='Tsukiha_rank' value='5'>5 <input type='checkbox' name='Tsukiha_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Urania' class='Light Dream'>
+				<td><img src='img/Urania.jpg'></td>
+				<td>Urania</td>
+				<td>烏拉尼雅</td>
+				<td><img src='img/type/null_blunt.png'></td>
+				<td><input type='number' id='Urania_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Urania_rank' value='0' checked=''>N/A <input type='radio' name='Urania_rank' value='3'>3 <input type='radio' name='Urania_rank' value='4' disabled=''>4 <input type='radio' name='Urania_rank' value='5' disabled=''>5 <input type='checkbox' name='Urania_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Uuo' class='Light Dream'>
+				<td><img src='img/Uuo.jpg'></td>
+				<td>Uuo</td>
+				<td>烏奧</td>
+				<td><img src='img/type/null_slash.png'></td>
+				<td><input type='number' id='Uuo_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Uuo_rank' value='0' checked=''>N/A <input type='radio' name='Uuo_rank' value='3'>3 <input type='radio' name='Uuo_rank' value='4' disabled=''>4 <input type='radio' name='Uuo_rank' value='5' disabled=''>5 <input type='checkbox' name='Uuo_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Veina' class='Light Dream'>
+				<td><img src='img/Veina.jpg'></td>
+				<td>Veina</td>
+				<td>維娜</td>
+				<td><img src='img/type/wind_null.png'><img src='img/type/wind_zone.png'></td>
+				<td><input type='number' id='Veina_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Veina_rank' value='0' checked=''>N/A <input type='radio' name='Veina_rank' value='3' disabled=''>3 <input type='radio' name='Veina_rank' value='4'>4 <input type='radio' name='Veina_rank' value='5'>5 <input type='checkbox' name='Veina_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Yazuki' class='Light Dream'>
+				<td><img src='img/Yazuki.jpg'></td>
+				<td>Yazuki</td>
+				<td>耶月</td>
+				<td><img src='img/type/wind_slash.png'></td>
+				<td><input type='number' id='Yazuki_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Yazuki_rank' value='0' checked=''>N/A <input type='radio' name='Yazuki_rank' value='3'>3 <input type='radio' name='Yazuki_rank' value='4'>4 <input type='radio' name='Yazuki_rank' value='5' disabled=''>5 <input type='checkbox' name='Yazuki_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Yio' class='Light Dream'>
+				<td><img src='img/Yio.jpg'></td>
+				<td>Yio</td>
+				<td>伊俄</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
+				<td><input type='number' id='Yio_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Yio_rank' value='0' checked=''>N/A <input type='radio' name='Yio_rank' value='3'>3 <input type='radio' name='Yio_rank' value='4'>4 <input type='radio' name='Yio_rank' value='5' disabled=''>5 <input type='checkbox' name='Yio_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Yssis' class='Light Dream'>
+				<td><img src='img/Yssis.jpg'></td>
+				<td>Yssis</td>
+				<td>伊西斯</td>
+				<td><img src='img/type/null_null.png'></td>
+				<td><input type='number' id='Yssis_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Yssis_rank' value='0' checked=''>N/A <input type='radio' name='Yssis_rank' value='3'>3 <input type='radio' name='Yssis_rank' value='4' disabled=''>4 <input type='radio' name='Yssis_rank' value='5' disabled=''>5 <input type='checkbox' name='Yssis_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Yuna' class='Light Dream'>
+				<td><img src='img/Yuna.jpg'><img src='img/Yuna_AS.jpg'></td>
+				<td>Yuna</td>
+				<td>由奈</td>
+				<td><img src='img/type/null_null.png'><img src='img/type/water_null.png'><img src='img/type/water_zone.png'></td>
+				<td><input type='number' id='Yuna_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Yuna_rank' value='0' checked=''>N/A <input type='radio' name='Yuna_rank' value='3' disabled=''>3 <input type='radio' name='Yuna_rank' value='4'>4 <input type='radio' name='Yuna_rank' value='5'>5 <input type='checkbox' name='Yuna_rank' value='AS'>AS</td>
+			</tr>
+			<tr id='Zilva' class='Shadow Dream'>
+				<td><img src='img/Zilva.jpg'></td>
+				<td>Zilva</td>
+				<td>茲爾巴</td>
+				<td><img src='img/type/null_slash.png'><img src='img/type/earth_slash.png'></td>
+				<td><input type='number' id='Zilva_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Zilva_rank' value='0' checked=''>N/A <input type='radio' name='Zilva_rank' value='3'>3 <input type='radio' name='Zilva_rank' value='4'>4 <input type='radio' name='Zilva_rank' value='5' disabled=''>5 <input type='checkbox' name='Zilva_rank' value='AS' disabled=''>AS</td>
+			</tr>
 
 
-		<!-- Excel output ends here -->
+			<!-- Excel output ends here -->
+		</tbody>
 	</table>
-
 	<div id="endNotes">
 		<p><textarea id="csv" rows="5" cols="50"></textarea>
 		<div id="buttons">
-			<p><button type="button" id="generate" onclick="generate()">生成</button><br>
-				<button type="button" id="revise" onclick="revise()" autocomplete="off" disabled>修改</button><br>
-				<button type="button" id="import" onclick="importCSV()">匯入</button><br>
-				<button type="button" id="downloadCSV" onclick="downloadCSV()">儲存</button></p>
+			<p><button type="button" id="generate" onclick="generate()">生成</button><br> <button type="button" id="revise" onclick="revise()" autocomplete="off" disabled>修改</button><br> <button type="button" id="import" onclick="importCSV()">匯入</button><br> <button type="button" id="downloadCSV" onclick="downloadCSV()">儲存</button></p>
 		</div>
 		<div id="options">
 			<div id="optionsCol1">
-				<p><label id="lab_opt5"><input type="checkbox" id="opt5" name="toggle5" value="toggle5" checked>顯示5★ + AS</label><br>
-					<label id="lab_opt4"><input type="checkbox" id="opt4" name="toggle4" value="toggle4" checked>顯示4★</label><br>
-					<label id="lab_opt3"><input type="checkbox" id="opt3" name="toggle3" value="toggle3" checked>顯示3★</label><br>
-					<label id="lab_optIncNo"><input type="checkbox" id="optIncNo" name="optIncNo" value="optIncNo">標題包括角色數</label><br></p>
+				<p><label id="lab_opt5"><input type="checkbox" id="opt5" name="toggle5" value="toggle5" checked>顯示5★ + AS</label><br> <label id="lab_opt4"><input type="checkbox" id="opt4" name="toggle4" value="toggle4" checked>顯示4★</label><br> <label id="lab_opt3"><input type="checkbox" id="opt3" name="toggle3" value="toggle3" checked>顯示3★</label><br> <label id="lab_optIncNo"><input type="checkbox" id="optIncNo" name="optIncNo" value="optIncNo">標題包括角色數</label><br></p>
 			</div>
 			<div id="optionsCol2">
-				<p><label id="lab_optSumLS"><input type="checkbox" id="optSumLS" name="showSumLS" value="showSumLS">計算夢見角天冥總值</label><br>
-					<label id="lab_optRatioLS"><input type="checkbox" id="optRatioLS" name="showRatioLS" value="showRatioLS" checked>計算夢見角天冥比例</label><br>
-					<label id="lab_optPNG"><input type="checkbox" id="optPNG" name="toPNG" value="toPNG">直出PNG (Beta，不支援iPhone)</label><br></p>
+				<p><label id="lab_optSumLS"><input type="checkbox" id="optSumLS" name="showSumLS" value="showSumLS" checked>計算夢見角天冥總值</label><br> <label id="lab_optRatioLS"><input type="checkbox" id="optRatioLS" name="showRatioLS" value="showRatioLS" checked>計算夢見角天冥比例</label><br> <label id="lab_optPNG"><input type="checkbox" id="optPNG" name="toPNG" value="toPNG">直出PNG (Beta，不支援iPhone)</label><br></p>
 			</div>
 		</div>
 	</div>
-
 	<div id="canvasHandler">
 		<table id="tableOutput">
 			<tr>
@@ -1065,9 +1057,7 @@
 				<td id="3-star">3★<br></td>
 			</tr>
 		</table>
-	</div>
-
-	<a id="download" href="" download="charList.png" target="_blank">
+	</div> <a id="download" href="" download="charList.png" target="_blank">
 		<div id="canvasOutput"></div>
 	</a>
 </body>
