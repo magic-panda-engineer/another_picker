@@ -184,6 +184,10 @@ function importCSV() {
 		charAS[i].checked = false;
 	}
 	
+<<<<<<< Updated upstream
+=======
+	// Legacy converter
+>>>>>>> Stashed changes
 	var textArea = document.getElementById("csv").value;
 	if (textArea.indexOf("AS") > 0 || textArea.indexOf("Both") > 0) {
 		console.log("Legacy CSV format found.");
