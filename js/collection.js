@@ -10,7 +10,8 @@ function toEn() {
 	document.getElementById("lab_opt5").lastChild.data = "Show 5★ + AS";
 	document.getElementById("lab_opt4").lastChild.data = "Show 4★";
 	document.getElementById("lab_opt3").lastChild.data = "Show 3★";
-	document.getElementById("lab_optIncNo").lastChild.data = "Title include number of characters";
+	document.getElementById("lab_optIncNo").lastChild.data = "Title includes number of characters";
+	document.getElementById("lab_optIncDate").lastChild.data = "Title includes generation date";
 	document.getElementById("lab_optSumLS").lastChild.data = "Calculate dreams' character light/shadow sum";
 	document.getElementById("lab_optRatioLS").lastChild.data = "Calculate dreams' character light/shadow ratio";
 	document.getElementById("lab_optPNG").lastChild.data = "Direct PNG output (Does not support iPhone)";
@@ -49,10 +50,10 @@ function generate() {
 	// Options and process
 	if (document.getElementById("title").value != "自定義文字") {
 		document.getElementById("tableTitle").innerHTML = document.getElementById("title").value;
-		csv.value = 'Id,LS_value,rarity,title:'+document.getElementById("title").value; // Header line in CSV Textarea w/ title
+		document.getElementById("csv").value = 'Id,LS_value,rarity,title:' + document.getElementById("tableTitle").innerHTML; // Header line in CSV Textarea w/ title
 	} else {
 		document.getElementById("tableTitle").innerHTML = "";
-		csv.value = 'Id,LS_value,rarity'; // Header line in CSV Textarea w/o
+		document.getElementById("csv").value = 'Id,LS_value,rarity'; // Header line in CSV Textarea w/o
 	}
 
 	scroll(0, 0); // Scroll to top to avoid html2canvas generating blank image
@@ -93,10 +94,10 @@ function generate() {
 			if (AS == true) {
 				document.getElementById("5-star").style.display = "table-cell";
 				document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
-				csv.value += "\n" + charList[i].id + "," + LS_value + "," + "A" + rank; // Push value to csv Textarea | A3, A4, A5 for AS characters
+				document.getElementById("csv").value += "\n" + charList[i].id + "," + LS_value + "," + "A" + rank; // Push value to csv Textarea | A3, A4, A5 for AS characters
 			} else {
-				if (!(LS_value == "" && rank == "0")) { 
-					csv.value += "\n" + charList[i].id + "," + LS_value + "," + rank; // Push value to csv Textarea
+				if (!(LS_value == "" && rank == "0")) {
+					document.getElementById("csv").value += "\n" + charList[i].id + "," + LS_value + "," + rank; // Push value to csv Textarea
 				} else if (LS_value > 0) {
 					console.log("Invalid input found: {" + charList[i].id + "," + LS_value + "," + rank + "} - Given L/S value without rank.");
 				}
@@ -104,17 +105,17 @@ function generate() {
 		} else if (AS == true) {
 			document.getElementById("5-star").style.display = "table-cell";
 			document.getElementById("5-star").innerHTML += '<div class="container"><img src="img/' + charList[i].id + '_AS.jpg"><div class="output' + LS_type + '">' + LS_value + '</div></div>';
-			csv.value += "\n" + charList[i].id + "," + LS_value + "," + "A0"; // Push value to csv Textarea
+			document.getElementById("csv").value += "\n" + charList[i].id + "," + LS_value + "," + "A0"; // Push value to csv Textarea
 			p++;
 		}
-		
+
 	}
-	
+
 	// Update dreams' light/shadow values
 	document.getElementById("sumLS5").innerHTML = sum5;
 	document.getElementById("sumLS4").innerHTML = sum4;
 	document.getElementById("sumLS3").innerHTML = sum3;
-	
+
 	// Hide unwanted output
 	for (rank = 5; rank >= 3; rank--) {
 		if (document.getElementById("opt" + rank).checked == false) {
@@ -124,12 +125,17 @@ function generate() {
 
 	// Display population number per setting
 	if (document.getElementById("optIncNo").checked == true) {
-		document.getElementById("tableTitle").innerHTML += " (" + p + ")";
+		document.getElementById("tableTitle").innerHTML += " (&#128101; " + p + ")";
 	}
-	
+
+	// Display input date per setting
+	if (document.getElementById("optIncDate").checked == true) {
+		document.getElementById("tableTitle").innerHTML += " (&#128197;" + new Date().toISOString().slice(0, 10) + ")";
+	}
+
 	// Convert sumLS to ratioLS
-	document.getElementById("ratioLS5").innerHTML = parseFloat(parseFloat(document.getElementById("sumLS5").innerHTML/document.getElementById("sumLS3").innerHTML).toFixed(2));
-	document.getElementById("ratioLS4").innerHTML = parseFloat(parseFloat(document.getElementById("sumLS4").innerHTML/document.getElementById("sumLS3").innerHTML).toFixed(2));
+	document.getElementById("ratioLS5").innerHTML = parseFloat(parseFloat(document.getElementById("sumLS5").innerHTML / document.getElementById("sumLS3").innerHTML).toFixed(2));
+	document.getElementById("ratioLS4").innerHTML = parseFloat(parseFloat(document.getElementById("sumLS4").innerHTML / document.getElementById("sumLS3").innerHTML).toFixed(2));
 	if (document.getElementById("optSumLS").checked == true) {
 		document.getElementById("sumLS").style.display = "block";
 	} else {
@@ -140,7 +146,7 @@ function generate() {
 	} else {
 		document.getElementById("ratioLS").style.display = "block";
 	}
-	
+
 	// Convert HTML to PNG
 	if (document.getElementById("optPNG").checked == true) {
 		html2canvas(document.getElementById("tableOutput")).then(function(canvas) {
@@ -173,7 +179,7 @@ function importCSV() {
 	for (i = 0; i < charLS.length; i++) {
 		charLS[i].value = "";
 	}
-	var charRarity = document.querySelectorAll("tbody tr td input[type='radio']")	;
+	var charRarity = document.querySelectorAll("tbody tr td input[type='radio']");
 	for (i = 0; i < charRarity.length; i++) {
 		if (charRarity[i].value == "0") {
 			charRarity[i].checked = true;
@@ -183,38 +189,46 @@ function importCSV() {
 	for (i = 0; i < charAS.length; i++) {
 		charAS[i].checked = false;
 	}
-	
+
+	// Remove optIncNo and optIncDate if checked
+	// if (document.getElementById("optIncDate").checked == true) {
+	// if (substr(0, t.lastIndexOf("("));
+
+	// Legacy converter
 	var textArea = document.getElementById("csv").value;
 	if (textArea.indexOf("AS") > 0 || textArea.indexOf("Both") > 0) {
 		console.log("Legacy CSV format found.");
-		textArea = textArea.replace(/AS/g, "A0").replace(/Both/g, "A5");
-		document.getElementById("csv").value = textArea;
+		document.getElementById("csv").value = textArea.replace(/AS/g, "A0").replace(/Both/g, "A5");
 	}
-	
+	if (textArea.indexOf("Nopaew") > 0) {
+		console.log("Legacy CSV Id found.");
+		document.getElementById("csv").value = textArea.replace(/Nopaew/g, "Poporo");
+	}
+
 	var lines = $('#csv').val().split(/\n/)
 	var texts = [];
-		
+
 	for (i = 0; i < lines.length; i++) {
 		// only push this line if it contains a non whitespace character.
 		if (/\S/.test(lines[i])) {
 			texts.push($.trim(lines[i]));
 			var array = texts[i].split(',');
 		}
-			
+
 		if (i == 0) { // Special handler for first line (check if it is a header line or content line)
-			if (lines[0].indexOf("Id") == 0 ) {	
+			if (lines[0].indexOf("Id") == 0) {
 				console.log("Header line exists.");
 				var j = 0; // [0: Header line | 1: Content line]
-				if (lines[0].indexOf("title") > 0 ) {
+				if (lines[0].indexOf("title") > 0) {
 					var t = lines[0].indexOf("title");
-					console.log("Title found: [" + (t+6) + "] " + lines[0].substring(t+6));
-					document.getElementById("title").value = lines[0].substring(t+6);
+					console.log("Title found: [" + (t + 6) + "] " + lines[0].substring(t + 6));
+					document.getElementById("title").value = lines[0].substring(t + 6);
 				}
 			} else {
 				var j = 1;
 			}
 		}
-			
+
 		if (j == 1) { // Only execute the below script for content line.
 
 			// Check validity and set LS value
@@ -231,7 +245,7 @@ function importCSV() {
 				alert("Given data is corrupted: {" + texts[i] + "} - invalid rank"); // AS and Both for legacy compatibility
 			}
 			for (options = 0; options < id_rarity.length; options++) {
-				
+
 				// Import AS info, then remove AS indicator in array
 				if (array[2].charAt(0) == "A") {
 					if (document.querySelector("input[type='checkbox'][name='" + escape(array[0] + "_rank") + "']").disabled == false) {
@@ -251,17 +265,17 @@ function importCSV() {
 						}
 					}
 				} else {
-				// Import rarity info for non-AS characters
+					// Import rarity info for non-AS characters
 					if (id_rarity[options].value == array[2]) {
 						if (id_rarity[options].disabled == false) {
 							id_rarity[options].checked = true;
-							} else {
-								alert("Given data is corrupted: {" + texts[i] + "} - unavailable rank");
-								console.log("Given data is corrupted: {" + texts[i] + "} - unavailable rank");
-								console.log((id_rarity[options].disabled == false));
-								}
-							}
+						} else {
+							alert("Given data is corrupted: {" + texts[i] + "} - unavailable rank");
+							console.log("Given data is corrupted: {" + texts[i] + "} - unavailable rank");
+							console.log((id_rarity[options].disabled == false));
 						}
+					}
+				}
 			}
 		} else {
 			j = 1; // Enable the above script after header line.

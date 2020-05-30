@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<p>Last updated: 19/05/2020 by Snowdome<br> <a id="toEn" href=# onClick="toEn()">Switch to English</a><a id="toZh" href=# onClick="location.reload();">重設</a></p>
+	<p>Last updated: 29/05/2020 by Snowdome<br> <a id="toEn" href=# onClick="toEn()">Switch to English</a><a id="toZh" href=# onClick="location.reload();">重設</a></p>
 	<ol id="note-zh">
 		<li>Forked / inspired by magic-panda-engineer's <a href="https://magic-panda-engineer.github.io/another_picker/index.html">Another Picker</a></li>
 		<li>強烈建議先將遊戲語言轉成英文，再跟名稱排序，最後才填寫資料。(不要問我為什麼遊戲中Bertrand排得比Benedict前)</li>
@@ -304,12 +304,12 @@
 				<td><input type='radio' name='Feinne_rank' value='0' checked=''>N/A <input type='radio' name='Feinne_rank' value='3'>3 <input type='radio' name='Feinne_rank' value='4'>4 <input type='radio' name='Feinne_rank' value='5' disabled=''>5 <input type='checkbox' name='Feinne_rank' value='AS' disabled=''>AS</td>
 			</tr>
 			<tr id='Felmina' class='Shadow Dream'>
-				<td><img src='img/Felmina.jpg'></td>
+				<td><img src='img/Felmina.jpg'><img src='img/Felmina_AS.jpg'></td>
 				<td>Felmina</td>
 				<td>菲露米娜</td>
 				<td><img src='img/type/null_slash.png'><img src='img/type/null_blunt.png'><img src='img/type/wind_slash.png'><img src='img/type/wind_blunt.png'></td>
 				<td><input type='number' id='Felmina_LS' min='0' max='255' value=''></td>
-				<td><input type='radio' name='Felmina_rank' value='0' checked=''>N/A <input type='radio' name='Felmina_rank' value='3' disabled=''>3 <input type='radio' name='Felmina_rank' value='4'>4 <input type='radio' name='Felmina_rank' value='5'>5 <input type='checkbox' name='Felmina_rank' value='AS' disabled=''>AS</td>
+				<td><input type='radio' name='Felmina_rank' value='0' checked=''>N/A <input type='radio' name='Felmina_rank' value='3' disabled=''>3 <input type='radio' name='Felmina_rank' value='4'>4 <input type='radio' name='Felmina_rank' value='5'>5 <input type='checkbox' name='Felmina_rank' value='AS'>AS</td>
 			</tr>
 			<tr id='Foran' class='Light Dream'>
 				<td><img src='img/Foran.jpg'></td>
@@ -671,14 +671,6 @@
 				<td><input type='number' id='Noome_LS' min='0' max='255' value=''></td>
 				<td><input type='radio' name='Noome_rank' value='0' checked=''>N/A <input type='radio' name='Noome_rank' value='3'>3 <input type='radio' name='Noome_rank' value='4' disabled=''>4 <input type='radio' name='Noome_rank' value='5' disabled=''>5 <input type='checkbox' name='Noome_rank' value='AS' disabled=''>AS</td>
 			</tr>
-			<tr id='Nopaew' class='Light Free'>
-				<td><img src='img/Nopaew.jpg'></td>
-				<td>Nopaew</td>
-				<td>波波羅</td>
-				<td><img src='img/type/wind_null.png'></td>
-				<td><input type='number' id='Nopaew_LS' min='0' max='255' value=''></td>
-				<td><input type='radio' name='Nopaew_rank' value='0' checked=''>N/A <input type='radio' name='Nopaew_rank' value='3'>3 <input type='radio' name='Nopaew_rank' value='4'>4 <input type='radio' name='Nopaew_rank' value='5' disabled=''>5 <input type='checkbox' name='Nopaew_rank' value='AS' disabled=''>AS</td>
-			</tr>
 			<tr id='Oor' class='Light Dream'>
 				<td><img src='img/Oor.jpg'></td>
 				<td>Oor</td>
@@ -726,6 +718,14 @@
 				<td><img src='img/type/null_null.png'></td>
 				<td><input type='number' id='Pom_LS' min='0' max='255' value=''></td>
 				<td><input type='radio' name='Pom_rank' value='0' checked=''>N/A <input type='radio' name='Pom_rank' value='3'>3 <input type='radio' name='Pom_rank' value='4'>4 <input type='radio' name='Pom_rank' value='5' disabled=''>5 <input type='checkbox' name='Pom_rank' value='AS' disabled=''>AS</td>
+			</tr>
+			<tr id='Poporo' class='Light Free'>
+				<td><img src='img/Poporo.jpg'></td>
+				<td>Poporo</td>
+				<td>波波羅</td>
+				<td><img src='img/type/wind_null.png'></td>
+				<td><input type='number' id='Poporo_LS' min='0' max='255' value=''></td>
+				<td><input type='radio' name='Poporo_rank' value='0' checked=''>N/A <input type='radio' name='Poporo_rank' value='3'>3 <input type='radio' name='Poporo_rank' value='4'>4 <input type='radio' name='Poporo_rank' value='5' disabled=''>5 <input type='checkbox' name='Poporo_rank' value='AS' disabled=''>AS</td>
 			</tr>
 			<tr id='Prai' class='Shadow Dream'>
 				<td><img src='img/Prai.jpg'></td>
@@ -1045,7 +1045,7 @@
 				<p><label id="lab_opt5"><input type="checkbox" id="opt5" name="toggle5" value="toggle5" checked>顯示5★ + AS</label><br> <label id="lab_opt4"><input type="checkbox" id="opt4" name="toggle4" value="toggle4" checked>顯示4★</label><br> <label id="lab_opt3"><input type="checkbox" id="opt3" name="toggle3" value="toggle3" checked>顯示3★</label><br> <label id="lab_optIncNo"><input type="checkbox" id="optIncNo" name="optIncNo" value="optIncNo">標題包括角色數</label><br></p>
 			</div>
 			<div id="optionsCol2">
-				<p><label id="lab_optSumLS"><input type="checkbox" id="optSumLS" name="showSumLS" value="showSumLS" checked>計算夢見角天冥總值</label><br> <label id="lab_optRatioLS"><input type="checkbox" id="optRatioLS" name="showRatioLS" value="showRatioLS" checked>計算夢見角天冥比例</label><br> <label id="lab_optPNG"><input type="checkbox" id="optPNG" name="toPNG" value="toPNG">直出PNG (Beta，不支援iPhone)</label><br></p>
+				<p><label id="lab_optIncDate"><input type="checkbox" id="optIncDate" name="optIncDate" value="optIncDate">包括製圖日期</label><br><label id="lab_optSumLS"><input type="checkbox" id="optSumLS" name="showSumLS" value="showSumLS" checked>計算夢見角天冥總值</label><br> <label id="lab_optRatioLS"><input type="checkbox" id="optRatioLS" name="showRatioLS" value="showRatioLS" checked>計算夢見角天冥比例</label><br> <label id="lab_optPNG"><input type="checkbox" id="optPNG" name="toPNG" value="toPNG">直出PNG (Beta，不支援iPhone)</label><br></p>
 			</div>
 		</div>
 	</div>
