@@ -35,7 +35,7 @@ Felmina.jpg
 Foran.jpg
 Galliard.jpg
 Gariyu.jpg
-GoodMacky.jpg
+Good_Macky.jpg
 Guildna.jpg
 Helena.jpg
 Hismena.jpg
@@ -77,13 +77,13 @@ Nixa.jpg
 Nomar.jpg
 Nonold.jpg
 Noome.jpg
-Nopaew.jpg
 Oor.jpg
 Otoha.jpg
 Parisa.jpg
 Pasia.jpg
 Philo.jpg
 Pom.jpg
+Poporo.jpg
 Prai.jpg
 Premaya.jpg
 Radica.jpg
@@ -109,6 +109,7 @@ Soira.jpg
 Strawboy.jpg
 Suzette.jpg
 Tayme.jpg
+Tiramisu.jpg
 Tohme.jpg
 Toole.jpg
 Toova.jpg
