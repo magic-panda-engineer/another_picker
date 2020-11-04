@@ -73,6 +73,7 @@
                 <option data-img-src="img-sm/Guildna.jpg" value="img-sm/Guildna.jpg">基爾德那</option>
                 <option data-img-src="img-sm/Hardy.jpg" value="img-sm/Hardy.jpg">哈迪</option>
                 <option data-img-src="img-sm/Hozuki.jpg" value="img-sm/Hozuki.jpg">皓月</option>
+                <option data-img-src="img-sm/Jade.jpg" value="img-sm/Jade.jpg">賈德</option>
                 <option data-img-src="img-sm/Joker.jpg" value="img-sm/Joker.jpg">JOKER</option>
                 <option data-img-src="img-sm/Lovely.jpg" value="img-sm/Lovely.jpg">拉布莉</option>
                 <option data-img-src="img-sm/Miyu.jpg" value="img-sm/Miyu.jpg">米悠</option>
@@ -117,6 +118,7 @@
                 <option data-img-src="img-sm/Bria.jpg" value="img-sm/Bria.jpg">布利亞</option>
                 <option data-img-src="img-sm/Cyrus.jpg" value="img-sm/Cyrus.jpg">賽勒斯</option>
                 <option data-img-src="img-sm/Dewey.jpg" value="img-sm/Dewey.jpg">杜伊</option>
+                <option data-img-src="img-sm/Foran_AS.jpg" value="img-sm/Foran_AS.jpg">芙朗AS</option>
                 <option data-img-src="img-sm/Hismena.jpg" value="img-sm/Hismena.jpg">希斯梅娜</option>
                 <option data-img-src="img-sm/Laclair_AS.jpg" value="img-sm/Laclair_AS.jpg">拉克萊兒AS</option>
                 <option data-img-src="img-sm/Laclair.jpg" value="img-sm/Laclair.jpg">拉克萊兒</option>
@@ -158,6 +160,10 @@
                 <option data-img-src="img-sm/Toova.jpg" value="img-sm/Toova.jpg">杜娃</option>
                 <option data-img-src="img-sm/Tsubame.jpg" value="img-sm/Tsubame.jpg">燕</option>
             </select>
+            <span><img src="img-sm/t_shadow.png" alt=""></span>
+            <select id="5-star-shadow" multiple="multiple">
+                <option data-img-src="img-sm/Thillelille.jpg" value="img-sm/Thillelille.jpg">琪路莉露</option>
+            </select>
             <span><img src="img-sm/t_none.png" alt=""></span>
             <select id="5-star-none" multiple="multiple" >
                 <option data-img-src="img-sm/Altena.jpg" value="img-sm/Altena.jpg">阿露緹娜</option>
@@ -181,6 +187,7 @@
                 <option data-img-src="img-sm/Guildna.jpg" value="img-sm/Guildna.jpg">基爾德那</option>
                 <option data-img-src="img-sm/Hardy.jpg" value="img-sm/Hardy.jpg">哈迪</option>
                 <option data-img-src="img-sm/Hozuki.jpg" value="img-sm/Hozuki.jpg">皓月</option>
+                <option data-img-src="img-sm/Jade_4.jpg" value="img-sm/Jade_4.jpg">賈德</option>
                 <option data-img-src="img-sm/Joker.jpg" value="img-sm/Joker.jpg">JOKER</option>
                 <option data-img-src="img-sm/Lovely.jpg" value="img-sm/Lovely.jpg">拉布莉</option>
                 <option data-img-src="img-sm/Miyu.jpg" value="img-sm/Miyu.jpg">米悠</option>
@@ -215,6 +222,7 @@
                 <option data-img-src="img-sm/Bria_old.jpg" value="img-sm/Bria_old.jpg">布利亞</option>
                 <option data-img-src="img-sm/Cyrus.jpg" value="img-sm/Cyrus.jpg">賽勒斯</option>
                 <option data-img-src="img-sm/Dewey.jpg" value="img-sm/Dewey.jpg">杜伊</option>
+                <option data-img-src="img-sm/Foran.jpg" value="img-sm/Foran.jpg">芙朗</option>
                 <option data-img-src="img-sm/Hismena.jpg" value="img-sm/Hismena.jpg">希斯梅娜</option>
                 <option data-img-src="img-sm/Laclair.jpg" value="img-sm/Laclair.jpg">拉克萊兒</option>
                 <option data-img-src="img-sm/Melina.jpg" value="img-sm/Melina.jpg">玫莉娜</option>
@@ -243,6 +251,10 @@
                 <option data-img-src="img-sm/Tiramisu.jpg" value="img-sm/Tiramisu.jpg">提拉米蘇</option>
                 <option data-img-src="img-sm/Toova.jpg" value="img-sm/Toova.jpg">杜娃</option>
                 <option data-img-src="img-sm/Tsubame.jpg" value="img-sm/Tsubame.jpg">燕</option>
+            </select>
+            <span><img src="img-sm/t_shadow.png" alt=""></span>
+            <select id="4-star-shadow" multiple="multiple">
+                <option data-img-src="img-sm/Thillelille.jpg" value="img-sm/Thillelille.jpg">琪路莉露</option>
             </select>
             <span><img src="img-sm/t_none.png" alt=""></span>
             <select id="4-star-none" multiple="multiple">
@@ -290,6 +302,10 @@
         hide_select: true,
         show_label: true
         });
+    $("#5-star-shadow").imagepicker({
+        hide_select: true,
+        show_label: true
+        });
     $("#5-star-none").imagepicker({
         hide_select: true,
         show_label: true
@@ -308,6 +324,10 @@
         show_label: true
         });
     $("#4-star-earth").imagepicker({
+        hide_select: true,
+        show_label: true
+        });
+    $("#4-star-shadow").imagepicker({
         hide_select: true,
         show_label: true
         });
@@ -331,27 +351,31 @@
         var five_water_list = $("#5-star-water").data("picker").selected_values();
         var five_earth_list = $("#5-star-earth").data("picker").selected_values();
         var five_wind_list = $("#5-star-wind").data("picker").selected_values();
+        var five_shadow_list = $("#5-star-shadow").data("picker").selected_values();
         var five_none_list = $("#5-star-none").data("picker").selected_values();
 
         var four_fire_list = $("#4-star-fire").data("picker").selected_values();
         var four_water_list = $("#4-star-water").data("picker").selected_values();
         var four_earth_list = $("#4-star-earth").data("picker").selected_values();
         var four_wind_list = $("#4-star-wind").data("picker").selected_values();
+        var four_shadow_list = $("#4-star-shadow").data("picker").selected_values();
         var four_none_list = $("#4-star-none").data("picker").selected_values();
 
         var five_fire_len = five_fire_list.length;
         var five_water_len = five_water_list.length;
         var five_earth_len = five_earth_list.length;
         var five_wind_len = five_wind_list.length;
+        var five_shadow_len = five_shadow_list.length;
         var five_none_len = five_none_list.length;
-        var five_len = five_fire_len + five_water_len + five_earth_len + five_wind_len + five_none_len;
+        var five_len = five_fire_len + five_water_len + five_earth_len + five_wind_len + five_none_len + five_shadow_len;
 
         var four_fire_len = four_fire_list.length;
         var four_water_len = four_water_list.length;
         var four_earth_len = four_earth_list.length;
         var four_wind_len = four_wind_list.length;
+        var four_shadow_len = four_shadow_list.length;
         var four_none_len = four_none_list.length;
-        var four_len = four_fire_len + four_water_len + four_earth_len + four_wind_len + four_none_len;
+        var four_len = four_fire_len + four_water_len + four_earth_len + four_wind_len + four_none_len + four_shadow_len;
         
         var total = five_len + four_len;
         var sqrt = Math.ceil(Math.sqrt(total));
@@ -387,11 +411,13 @@
         water_icon.src = "img-sm/t_water.png"
         var earth_icon = new Image();
         earth_icon.src = "img-sm/t_earth.png"
+        var shadow_icon = new Image();
+        shadow_icon.src = "img-sm/t_shadow.png"
         var none_icon = new Image();
         none_icon.src = "img-sm/t_none.png"
 
         //five fire
-        context.drawImage(fire_icon, 10, 120, 40, 40);
+        if(five_fire_len != 0) context.drawImage(fire_icon, 10, 120, 40, 40);
         for(var i = 0; i < five_fire_len; i++){
             var x = new Image();
             x.src = five_fire_list[i];
@@ -409,7 +435,7 @@
         //five wind
         if (five_fire_len % 10 != 0) row += 1;
         col = 0;
-        context.drawImage(wind_icon, 10, 100 * row +100, 40, 40);
+        if (five_wind_len != 0) context.drawImage(wind_icon, 10, 100 * row +100, 40, 40);
         for (var i = 0; i < five_wind_len; i++) {
             var x = new Image();
             x.src = five_wind_list[i];
@@ -427,7 +453,7 @@
         //five water
         if (five_wind_len % 10 != 0) row += 1;
         col = 0;
-        context.drawImage(water_icon, 10, 100 * row + 100, 40, 40);
+        if (five_water_len != 0) context.drawImage(water_icon, 10, 100 * row + 100, 40, 40);
         for (var i = 0; i < five_water_len; i++) {
             var x = new Image();
             x.src = five_water_list[i];
@@ -445,7 +471,7 @@
         //five earth
         if (five_water_len % 10 != 0) row += 1;
         col = 0;
-        context.drawImage(earth_icon, 10, 100 * row + 100, 40, 40);
+        if (five_earth_len != 0) context.drawImage(earth_icon, 10, 100 * row + 100, 40, 40);
         for (var i = 0; i < five_earth_len; i++) {
             var x = new Image();
             x.src = five_earth_list[i];
@@ -460,10 +486,27 @@
             }
         }
 
-        //five none
+        //five shadow
         if (five_earth_len % 10 != 0) row += 1;
         col = 0;
-        context.drawImage(none_icon, 10, 100 * row + 100, 40, 40);
+        if (five_shadow_len != 0) context.drawImage(shadow_icon, 10, 100 * row + 100, 40, 40);
+        for (var i = 0; i < five_shadow_len; i++) {
+            var x = new Image();
+            x.src = five_shadow_list[i];
+
+            context.drawImage(x, (col * 100) + 60, (row * 100) + 100, 80, 80);
+
+            col += 1;
+
+            if ((i + 1) % 10 === 0) {
+                row += 1;
+                col = 0;
+            }
+        }
+        //five none
+        if (five_shadow_len % 10 != 0) row += 1;
+        col = 0;
+        if (five_none_len != 0) context.drawImage(none_icon, 10, 100 * row + 100, 40, 40);
         for (var i = 0; i < five_none_len; i++) {
             var x = new Image();
             x.src = five_none_list[i];
