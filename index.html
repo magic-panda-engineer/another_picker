@@ -60,7 +60,9 @@
     <div class="container">
         <h1>第一步. 選擇你的 <span style="background-color: goldenrod;">五星角</span></h1>
         <div class="row five-star">
-            <span><img src="img-sm/t_fire.png" alt=""></span>
+            <div class="container">
+                <span><img src="img-sm/t_fire.png" alt=""></span>
+            </div>
             <select id="5-star-fire" multiple="multiple" >
                 <option data-img-src="img-sm/Akane_AS.jpg" value="img-sm/Akane_AS.jpg">茜AS</option>
                 <option data-img-src="img-sm/Aldo.jpg" value="img-sm/Aldo.jpg">阿爾德</option>
@@ -86,7 +88,10 @@
                 <option data-img-src="img-sm/Shion.jpg" value="img-sm/Shion.jpg">紫央</option>
                 <option data-img-src="img-sm/Tsukiha.jpg" value="img-sm/Tsukiha.jpg">月華</option>
             </select>
-            <span><img src="img-sm/t_wind.png" alt=""></span>
+
+            <div class="container">
+                <span><img src="img-sm/t_wind.png" alt=""></span>
+            </div>
             <select id="5-star-wind" multiple="multiple" >
                 <option data-img-src="img-sm/Amy.jpg" value="img-sm/Amy.jpg">艾米</option>
                 <option data-img-src="img-sm/Azami.jpg" value="img-sm/Azami.jpg">阿佐美</option>
@@ -111,7 +116,10 @@
                 <option data-img-src="img-sm/Veina.jpg" value="img-sm/Veina.jpg">維娜</option>
                 <option data-img-src="img-sm/Yipha.jpg" value="img-sm/Yipha.jpg">伊法</option>
             </select>
-            <span><img src="img-sm/t_water.png" alt=""></span>
+
+            <div class="container">
+                <span><img src="img-sm/t_water.png" alt=""></span>
+            </div>
             <select id="5-star-water" multiple="multiple" >
                 <option data-img-src="img-sm/Anabel_AS.jpg" value="img-sm/Anabel_AS.jpg">安娜貝爾AS</option>
                 <option data-img-src="img-sm/Anabel.jpg" value="img-sm/Anabel.jpg">安娜貝爾</option>
@@ -136,7 +144,10 @@
                 <option data-img-src="img-sm/Yuna_AS.jpg" value="img-sm/Yuna_AS.jpg">由奈AS</option>
                 <option data-img-src="img-sm/Zeviro.jpg" value="img-sm/Zeviro.jpg">塞維羅</option>
             </select>
-            <span><img src="img-sm/t_earth.png" alt=""></span>
+
+            <div class="container">
+                <span><img src="img-sm/t_earth.png" alt=""></span>
+            </div>
             <select id="5-star-earth" multiple="multiple" >
                 <option data-img-src="img-sm/Bertrand.jpg" value="img-sm/Bertrand.jpg">貝特朗</option>
                 <option data-img-src="img-sm/Cerrine.jpg" value="img-sm/Cerrine.jpg">思琳</option>
@@ -159,13 +170,28 @@
                 <option data-img-src="img-sm/Toova_AS.jpg" value="img-sm/Toova_AS.jpg">杜娃AS</option>
                 <option data-img-src="img-sm/Toova.jpg" value="img-sm/Toova.jpg">杜娃</option>
                 <option data-img-src="img-sm/Tsubame.jpg" value="img-sm/Tsubame.jpg">燕</option>
+                <option data-img-src="img-sm/Violet.jpg" value="img-sm/Violet.jpg">Violet</option>
             </select>
-            <span><img src="img-sm/t_shadow.png" alt=""></span>
+
+            <div class="container">
+                <img src="img-sm/t_shadow.png" alt="">
+            </div>
             <select id="5-star-shadow" multiple="multiple">
                 <option data-img-src="img-sm/Thillelille.jpg" value="img-sm/Thillelille.jpg">琪路莉露</option>
             </select>
-            <span><img src="img-sm/t_none.png" alt=""></span>
-            <select id="5-star-none" multiple="multiple" >
+
+            <div class="container">
+                <span><img src="img-sm/t_thunder.png" alt=""></span>
+            </div>
+            <select id="5-star-thunder" multiple="multiple">
+                <option data-img-src="img-sm/Skull.jpg" value="img-sm/Skull.jpg">Skull</option>
+                <option data-img-src="img-sm/Victor.jpg" value="img-sm/Victor.jpg">維克多</option>
+            </select>
+
+            <div class="container">
+                <span><img src="img-sm/t_none.png" alt=""></span>
+            </div>
+            <select id="5-star-none" multiple="multiple">
                 <option data-img-src="img-sm/Altena.jpg" value="img-sm/Altena.jpg">阿露緹娜</option>
                 <option data-img-src="img-sm/Mana.jpg" value="img-sm/Mana.jpg">瑪娜</option>
                 <option data-img-src="img-sm/Mariel_AS.jpg" value="img-sm/Mariel_AS.jpg">瑪莉艾爾AS</option>
@@ -256,6 +282,10 @@
             <select id="4-star-shadow" multiple="multiple">
                 <option data-img-src="img-sm/Thillelille.jpg" value="img-sm/Thillelille.jpg">琪路莉露</option>
             </select>
+            <span><img src="img-sm/t_thunder.png" alt=""></span>
+            <select id="4-star-thunder" multiple="multiple">
+                <option data-img-src="img-sm/Victor.jpg" value="img-sm/Victor.jpg">維克多</option>
+            </select>
             <span><img src="img-sm/t_none.png" alt=""></span>
             <select id="4-star-none" multiple="multiple">
                 <option data-img-src="img-sm/Mariel.jpg" value="img-sm/Mariel.jpg">瑪莉艾爾</option>
@@ -306,6 +336,10 @@
         hide_select: true,
         show_label: true
         });
+    $("#5-star-thunder").imagepicker({
+        hide_select: true,
+        show_label: true
+        });
     $("#5-star-none").imagepicker({
         hide_select: true,
         show_label: true
@@ -331,6 +365,10 @@
         hide_select: true,
         show_label: true
         });
+    $("#4-star-thunder").imagepicker({
+        hide_select: true,
+        show_label: true
+        });
     $("#4-star-none").imagepicker({
         hide_select: true,
         show_label: true
@@ -352,6 +390,7 @@
         var five_earth_list = $("#5-star-earth").data("picker").selected_values();
         var five_wind_list = $("#5-star-wind").data("picker").selected_values();
         var five_shadow_list = $("#5-star-shadow").data("picker").selected_values();
+        var five_thunder_list = $("#5-star-thunder").data("picker").selected_values();
         var five_none_list = $("#5-star-none").data("picker").selected_values();
 
         var four_fire_list = $("#4-star-fire").data("picker").selected_values();
@@ -359,6 +398,7 @@
         var four_earth_list = $("#4-star-earth").data("picker").selected_values();
         var four_wind_list = $("#4-star-wind").data("picker").selected_values();
         var four_shadow_list = $("#4-star-shadow").data("picker").selected_values();
+        var four_thunder_list = $("#4-star-thunder").data("picker").selected_values();
         var four_none_list = $("#4-star-none").data("picker").selected_values();
 
         var five_fire_len = five_fire_list.length;
@@ -366,16 +406,18 @@
         var five_earth_len = five_earth_list.length;
         var five_wind_len = five_wind_list.length;
         var five_shadow_len = five_shadow_list.length;
+        var five_thunder_len = five_thunder_list.length;
         var five_none_len = five_none_list.length;
-        var five_len = five_fire_len + five_water_len + five_earth_len + five_wind_len + five_none_len + five_shadow_len;
+        var five_len = five_fire_len + five_water_len + five_earth_len + five_wind_len + five_none_len + five_shadow_len + five_thunder_len;
 
         var four_fire_len = four_fire_list.length;
         var four_water_len = four_water_list.length;
         var four_earth_len = four_earth_list.length;
         var four_wind_len = four_wind_list.length;
         var four_shadow_len = four_shadow_list.length;
+        var four_thunder_len = four_thunder_list.length;
         var four_none_len = four_none_list.length;
-        var four_len = four_fire_len + four_water_len + four_earth_len + four_wind_len + four_none_len + four_shadow_len;
+        var four_len = four_fire_len + four_water_len + four_earth_len + four_wind_len + four_none_len + four_shadow_len + four_thunder_len;
         
         var total = five_len + four_len;
         var sqrt = Math.ceil(Math.sqrt(total));
@@ -413,6 +455,8 @@
         earth_icon.src = "img-sm/t_earth.png"
         var shadow_icon = new Image();
         shadow_icon.src = "img-sm/t_shadow.png"
+        var thunder_icon = new Image();
+        thunder_icon.src = "img-sm/t_thunder.png"
         var none_icon = new Image();
         none_icon.src = "img-sm/t_none.png"
 
@@ -503,6 +547,25 @@
                 col = 0;
             }
         }
+
+        //five thunder
+        if (five_shadow_len % 10 != 0) row += 1;
+        col = 0;
+        if (five_thunder_len != 0) context.drawImage(thunder_icon, 10, 100 * row + 100, 40, 40);
+        for (var i = 0; i < five_thunder_len; i++) {
+            var x = new Image();
+            x.src = five_thunder_list[i];
+
+            context.drawImage(x, (col * 100) + 60, (row * 100) + 100, 80, 80);
+
+            col += 1;
+
+            if ((i + 1) % 10 === 0) {
+                row += 1;
+                col = 0;
+            }
+        }
+
         //five none
         if (five_shadow_len % 10 != 0) row += 1;
         col = 0;
@@ -529,7 +592,10 @@
         context.fillText("四星角", 10, (row * 100) + 120);
 
         //four star
-        let four_combine = four_fire_list.concat(four_wind_list).concat(four_water_list).concat(four_earth_list).concat(four_none_list)
+        let four_combine = four_fire_list.concat(four_wind_list)
+                            .concat(four_water_list).concat(four_earth_list)
+                            .concat(four_shadow_list).concat(four_thunder_list)
+                            .concat(four_none_list)
         
         for (var i = 0; i < four_combine.length; i++) {
             var x = new Image();
