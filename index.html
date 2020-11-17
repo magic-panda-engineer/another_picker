@@ -428,7 +428,7 @@
         var five_row = Math.ceil(five_len / 10) > 0 ? Math.ceil(five_len / 10) : 1;
         var four_row = Math.ceil(four_len / 10) > 0 ? Math.ceil(four_len / 10) : 1;
         canvas.width = 1100;
-        canvas.height = (five_row  *100 + four_row * 100 +500) > 800 ? (five_row * 100 + four_row * 100 + 500) : 800;
+        canvas.height = (five_row  *100 + four_row * 100 +500) > 1000 ? (five_row * 100 + four_row * 100 + 500) : 1200;
         context.fillStyle = "#f5f5f5";
         context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -567,7 +567,7 @@
         }
 
         //five none
-        if (five_shadow_len % 10 != 0) row += 1;
+        if (five_thunder_len % 10 != 0) row += 1;
         col = 0;
         if (five_none_len != 0) context.drawImage(none_icon, 10, 100 * row + 100, 40, 40);
         for (var i = 0; i < five_none_len; i++) {
