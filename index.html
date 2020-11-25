@@ -189,6 +189,14 @@
             </select>
 
             <div class="container">
+                <span><img src="img-sm/t_crystal.png" alt=""></span>
+            </div>
+            <select id="5-star-crystal" multiple="multiple">
+                <option data-img-src="img-sm/Mistrare.jpg" value="img-sm/Mistrare.jpg">米絲特蕾婭</option>
+                <option data-img-src="img-sm/Clarte.jpg" value="img-sm/Clarte.jpg" disabled>古拉爾迪(還沒出不能選)</option>
+            </select>
+
+            <div class="container">
                 <span><img src="img-sm/t_none.png" alt=""></span>
             </div>
             <select id="5-star-none" multiple="multiple">
@@ -286,6 +294,11 @@
             <select id="4-star-thunder" multiple="multiple">
                 <option data-img-src="img-sm/Victor.jpg" value="img-sm/Victor.jpg">維克多</option>
             </select>
+            <span><img src="img-sm/t_crystal.png" alt=""></span>
+            <select id="4-star-crystal" multiple="multiple">
+                <option data-img-src="img-sm/Mistrare.jpg" value="img-sm/Mistrare.jpg">米絲特蕾婭</option>
+                <option data-img-src="img-sm/Clarte_4.jpg" value="img-sm/Clarte_4.jpg">古拉爾迪</option>
+            </select>
             <span><img src="img-sm/t_none.png" alt=""></span>
             <select id="4-star-none" multiple="multiple">
                 <option data-img-src="img-sm/Mariel.jpg" value="img-sm/Mariel.jpg">瑪莉艾爾</option>
@@ -340,6 +353,10 @@
         hide_select: true,
         show_label: true
         });
+    $("#5-star-crystal").imagepicker({
+        hide_select: true,
+        show_label: true
+    });
     $("#5-star-none").imagepicker({
         hide_select: true,
         show_label: true
@@ -369,6 +386,10 @@
         hide_select: true,
         show_label: true
         });
+    $("#4-star-crystal").imagepicker({
+        hide_select: true,
+        show_label: true
+        });
     $("#4-star-none").imagepicker({
         hide_select: true,
         show_label: true
@@ -391,6 +412,7 @@
         var five_wind_list = $("#5-star-wind").data("picker").selected_values();
         var five_shadow_list = $("#5-star-shadow").data("picker").selected_values();
         var five_thunder_list = $("#5-star-thunder").data("picker").selected_values();
+        var five_crystal_list = $("#5-star-crystal").data("picker").selected_values();
         var five_none_list = $("#5-star-none").data("picker").selected_values();
 
         var four_fire_list = $("#4-star-fire").data("picker").selected_values();
@@ -399,6 +421,7 @@
         var four_wind_list = $("#4-star-wind").data("picker").selected_values();
         var four_shadow_list = $("#4-star-shadow").data("picker").selected_values();
         var four_thunder_list = $("#4-star-thunder").data("picker").selected_values();
+        var four_crystal_list = $("#4-star-crystal").data("picker").selected_values();
         var four_none_list = $("#4-star-none").data("picker").selected_values();
 
         var five_fire_len = five_fire_list.length;
@@ -407,8 +430,9 @@
         var five_wind_len = five_wind_list.length;
         var five_shadow_len = five_shadow_list.length;
         var five_thunder_len = five_thunder_list.length;
+        var five_crystal_len = five_crystal_list.length;
         var five_none_len = five_none_list.length;
-        var five_len = five_fire_len + five_water_len + five_earth_len + five_wind_len + five_none_len + five_shadow_len + five_thunder_len;
+        var five_len = five_fire_len + five_water_len + five_earth_len + five_wind_len + five_none_len + five_shadow_len + five_thunder_len + five_crystal_len;
 
         var four_fire_len = four_fire_list.length;
         var four_water_len = four_water_list.length;
@@ -416,8 +440,9 @@
         var four_wind_len = four_wind_list.length;
         var four_shadow_len = four_shadow_list.length;
         var four_thunder_len = four_thunder_list.length;
+        var four_crystal_len = four_crystal_list.length;
         var four_none_len = four_none_list.length;
-        var four_len = four_fire_len + four_water_len + four_earth_len + four_wind_len + four_none_len + four_shadow_len + four_thunder_len;
+        var four_len = four_fire_len + four_water_len + four_earth_len + four_wind_len + four_none_len + four_shadow_len + four_thunder_len + four_crystal_len;
         
         var total = five_len + four_len;
         var sqrt = Math.ceil(Math.sqrt(total));
@@ -428,7 +453,7 @@
         var five_row = Math.ceil(five_len / 10) > 0 ? Math.ceil(five_len / 10) : 1;
         var four_row = Math.ceil(four_len / 10) > 0 ? Math.ceil(four_len / 10) : 1;
         canvas.width = 1100;
-        canvas.height = (five_row  *100 + four_row * 100 +500) > 1000 ? (five_row * 100 + four_row * 100 + 500) : 1200;
+        canvas.height = (five_row  *100 + four_row * 100 +500) > 1000 ? (five_row * 100 + four_row * 100 + 500) : 1300;
         context.fillStyle = "#f5f5f5";
         context.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -457,6 +482,8 @@
         shadow_icon.src = "img-sm/t_shadow.png"
         var thunder_icon = new Image();
         thunder_icon.src = "img-sm/t_thunder.png"
+        var crystal_icon = new Image();
+        crystal_icon.src = "img-sm/t_crystal.png"
         var none_icon = new Image();
         none_icon.src = "img-sm/t_none.png"
 
@@ -566,8 +593,26 @@
             }
         }
 
-        //five none
+        //five crystal
         if (five_thunder_len % 10 != 0) row += 1;
+        col = 0;
+        if (five_crystal_len != 0) context.drawImage(crystal_icon, 10, 100 * row + 100, 40, 40);
+        for (var i = 0; i < five_crystal_len; i++) {
+            var x = new Image();
+            x.src = five_crystal_list[i];
+
+            context.drawImage(x, (col * 100) + 60, (row * 100) + 100, 80, 80);
+
+            col += 1;
+
+            if ((i + 1) % 10 === 0) {
+                row += 1;
+                col = 0;
+            }
+        }
+
+        //five none
+        if (five_crystal_len % 10 != 0) row += 1;
         col = 0;
         if (five_none_len != 0) context.drawImage(none_icon, 10, 100 * row + 100, 40, 40);
         for (var i = 0; i < five_none_len; i++) {
@@ -595,7 +640,7 @@
         let four_combine = four_fire_list.concat(four_wind_list)
                             .concat(four_water_list).concat(four_earth_list)
                             .concat(four_shadow_list).concat(four_thunder_list)
-                            .concat(four_none_list)
+                            .concat(four_crystal_list).concat(four_none_list)
         
         for (var i = 0; i < four_combine.length; i++) {
             var x = new Image();
